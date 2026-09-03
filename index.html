@@ -1,0 +1,3826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#070b18">
+<meta name="description" content="PELOCO — From a tiny nest to something bigger.">
+<title>PELOCO — The Starry Chick Coin</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#070b18;
+  --bg2:#0b1122;
+  --panel:#0e162b;
+  --panel2:#111b32;
+  --text:#f8f7f2;
+  --muted:#9da8bd;
+  --gold:#f5c84b;
+  --gold2:#ffe69a;
+  --line:rgba(255,255,255,.09);
+  --goldline:rgba(245,200,75,.28);
+  --shadow:0 30px 100px rgba(0,0,0,.38);
+  --radius:28px;
+  --max:1240px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(245,200,75,.10),transparent 30%),
+    radial-gradient(circle at 10% 35%,rgba(70,110,220,.08),transparent 30%),
+    var(--bg);
+  color:var(--text);
+  font-family:"DM Sans",sans-serif;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.18;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.7) 0 1px,transparent 1px);
+  background-size:97px 97px;
+  mask-image:linear-gradient(to bottom,black,transparent 80%);
+  z-index:0;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+button,
+a{
+  -webkit-tap-highlight-color:transparent;
+}
+
+.container{
+  width:min(calc(100% - 40px),var(--max));
+  margin:auto;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.nav{
+  position:fixed;
+  z-index:1000;
+  top:0;
+  left:0;
+  right:0;
+  height:78px;
+  background:rgba(7,11,24,.76);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.nav-inner{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  border:0;
+  background:transparent;
+  color:var(--text);
+  font-family:"Fredoka",sans-serif;
+  font-size:1.4rem;
+  font-weight:700;
+  letter-spacing:-.04em;
+  white-space:nowrap;
+  cursor:pointer;
+  padding:6px 0;
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
+}
+
+.nav-link,
+.lang-btn{
+  border:1px solid transparent;
+  background:transparent;
+  color:var(--muted);
+  padding:9px 13px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:.22s ease;
+  font-size:.76rem;
+  font-weight:700;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible,
+.lang-btn:hover,
+.lang-btn:focus-visible{
+  color:var(--text);
+  border-color:var(--line);
+  background:rgba(255,255,255,.04);
+  outline:none;
+}
+
+.nav-link.active{
+  color:var(--gold);
+  border-color:var(--goldline);
+  background:rgba(245,200,75,.06);
+}
+
+.lang-switch{
+  display:flex;
+  align-items:center;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:3px;
+}
+
+.lang-btn.active{
+  color:#111;
+  background:var(--gold);
+}
+
+/* =========================================================
+   VIEWS
+   ========================================================= */
+
+.view{
+  display:none;
+  position:relative;
+  z-index:1;
+  min-height:calc(100vh - 78px);
+  padding-top:78px;
+}
+
+.view.active{
+  display:block;
+}
+
+.view-inner{
+  min-height:calc(100vh - 78px);
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.eyebrow{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.72rem;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+h1,
+h2,
+h3{
+  font-family:"Fredoka",sans-serif;
+  margin:0;
+  line-height:1;
+}
+
+h1{
+  font-size:clamp(4rem,8vw,8.5rem);
+  letter-spacing:-.065em;
+}
+
+h2{
+  font-size:clamp(2.7rem,6vw,5.5rem);
+  letter-spacing:-.05em;
+}
+
+h3{
+  letter-spacing:-.025em;
+}
+
+p{
+  line-height:1.7;
+}
+
+.gold{
+  color:var(--gold);
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.lead{
+  color:#dbe0ea;
+  font-size:clamp(1.1rem,2vw,1.45rem);
+}
+
+/* =========================================================
+   HOME / THE NEST
+   ========================================================= */
+
+.home{
+  min-height:calc(100vh - 78px);
+  display:grid;
+  align-items:center;
+  padding:40px 0 70px;
+}
+
+.home-grid{
+  display:grid;
+  grid-template-columns:.78fr 1.22fr;
+  gap:55px;
+  align-items:center;
+}
+
+.home-copy{
+  position:relative;
+  z-index:10;
+}
+
+.home-copy p{
+  max-width:520px;
+}
+
+.home-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:30px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:50px;
+  padding:0 20px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  font-weight:700;
+  font-size:.82rem;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary{
+  background:var(--gold);
+  border-color:var(--gold);
+  color:#111;
+}
+
+.btn-secondary{
+  background:rgba(255,255,255,.035);
+  color:var(--text);
+}
+
+.nest-stage{
+  position:relative;
+  min-height:610px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.nest-stage::before{
+  content:"";
+  position:absolute;
+  width:78%;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:
+    radial-gradient(circle,
+      rgba(245,200,75,.13),
+      rgba(245,200,75,.025) 42%,
+      transparent 70%);
+  filter:blur(10px);
+}
+
+.nest-stage::after{
+  content:"";
+  position:absolute;
+  inset:8%;
+  border-radius:50%;
+  border:1px solid rgba(245,200,75,.08);
+  transform:rotate(-8deg);
+}
+
+.hero-frame{
+  position:relative;
+  z-index:3;
+  width:min(100%,700px);
+  max-height:650px;
+  min-height:450px;
+  border-radius:42px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  background:
+    radial-gradient(circle at 50% 20%,rgba(245,200,75,.08),transparent 55%),
+    #090f20;
+  box-shadow:var(--shadow);
+}
+
+.hero-frame img{
+  width:100%;
+  height:100%;
+  min-height:450px;
+  max-height:650px;
+  object-fit:contain;
+}
+
+/* =========================================================
+   STAR DETAILS
+   ========================================================= */
+
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#fff;
+  opacity:.7;
+  box-shadow:0 0 12px rgba(255,255,255,.5);
+}
+
+.star.s1{top:12%;left:14%}
+.star.s2{top:24%;right:11%;width:2px;height:2px}
+.star.s3{bottom:25%;left:8%;width:2px;height:2px}
+.star.s4{bottom:14%;right:17%}
+.star.s5{top:8%;right:32%;width:2px;height:2px}
+
+/* =========================================================
+   P COIN DRAG
+   ========================================================= */
+
+.coin{
+  position:absolute;
+  z-index:30;
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at 30% 25%,
+      #fff5b8,
+      #f5c84b 45%,
+      #b88418 100%);
+  color:#3b2903;
+  font-family:"Fredoka",sans-serif;
+  font-size:2rem;
+  font-weight:700;
+  border:4px solid #ffe995;
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.4),
+    0 0 35px rgba(245,200,75,.18);
+  user-select:none;
+  -webkit-user-select:none;
+  touch-action:none;
+  cursor:grab;
+  left:8%;
+  top:17%;
+  transform:translate(0,0);
+  transition:
+    left .45s cubic-bezier(.2,.8,.2,1),
+    top .45s cubic-bezier(.2,.8,.2,1),
+    transform .2s ease,
+    box-shadow .2s ease;
+  will-change:left,top,transform;
+}
+
+.coin:focus-visible{
+  outline:3px solid var(--gold2);
+  outline-offset:5px;
+}
+
+.coin.dragging{
+  cursor:grabbing;
+  transform:scale(1.1);
+  box-shadow:
+    0 20px 45px rgba(0,0,0,.5),
+    0 0 45px rgba(245,200,75,.3);
+  transition:none;
+}
+
+.coin.animating{
+  transition:
+    left .6s cubic-bezier(.2,.8,.2,1),
+    top .6s cubic-bezier(.2,.8,.2,1),
+    transform .6s cubic-bezier(.2,.8,.2,1);
+}
+
+.coin.drop-success{
+  pointer-events:none;
+}
+
+.explore-target{
+  position:absolute;
+  z-index:20;
+  left:50%;
+  bottom:24px;
+  transform:translateX(-50%);
+  min-width:200px;
+  min-height:60px;
+  padding:0 24px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--gold);
+  background:rgba(245,200,75,.09);
+  color:var(--gold2);
+  font-weight:800;
+  letter-spacing:.07em;
+  transition:.22s ease;
+}
+
+.explore-target.ready{
+  background:var(--gold);
+  color:#111;
+  box-shadow:0 0 50px rgba(245,200,75,.28);
+  transform:translateX(-50%) scale(1.07);
+}
+
+.drag-hint{
+  position:absolute;
+  left:50%;
+  bottom:-16px;
+  transform:translate(-50%,100%);
+  color:var(--muted);
+  font-size:.7rem;
+  text-align:center;
+  width:100%;
+}
+
+/* =========================================================
+   INTERNAL VIEW HEADER
+   ========================================================= */
+
+.internal{
+  padding:100px 0 90px;
+}
+
+.internal-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:40px;
+  margin-bottom:55px;
+}
+
+.internal-head p{
+  max-width:500px;
+  margin:0;
+}
+
+.back-home{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+  border-radius:999px;
+  padding:10px 15px;
+  color:var(--muted);
+  font-size:.76rem;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.back-home:hover{
+  color:var(--text);
+  border-color:var(--goldline);
+}
+
+/* =========================================================
+   IDEA
+   ========================================================= */
+
+.idea-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.idea-statement{
+  padding:45px;
+  border:1px solid var(--line);
+  border-radius:34px;
+  background:
+    radial-gradient(circle at 80% 10%,rgba(245,200,75,.08),transparent 50%),
+    var(--panel);
+}
+
+.idea-statement strong{
+  display:block;
+  font-family:"Fredoka",sans-serif;
+  font-size:clamp(2rem,4vw,3.5rem);
+  line-height:1;
+  margin-bottom:20px;
+}
+
+.idea-list{
+  margin-top:32px;
+  display:grid;
+  gap:12px;
+}
+
+.idea-item{
+  padding:17px 20px;
+  border-left:2px solid var(--gold);
+  background:rgba(255,255,255,.025);
+  color:#dbe0ea;
+}
+
+/* =========================================================
+   COMMUNITY / FREEDOM
+   ========================================================= */
+
+.principles{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-top:45px;
+}
+
+.principle{
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.025);
+}
+
+.principle h3{
+  font-size:1.3rem;
+  margin-bottom:12px;
+}
+
+.principle p{
+  color:var(--muted);
+  margin:0;
+}
+
+.choice-area{
+  margin-top:75px;
+  padding-top:75px;
+  border-top:1px solid var(--line);
+}
+
+.choice-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:35px;
+}
+
+.choice{
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:rgba(255,255,255,.025);
+  font-family:"Fredoka",sans-serif;
+  font-size:1.55rem;
+  color:var(--gold2);
+}
+
+.choice small{
+  display:block;
+  margin-top:8px;
+  color:var(--muted);
+  font-family:"DM Sans",sans-serif;
+  font-size:.78rem;
+}
+
+/* =========================================================
+   VERIFY
+   ========================================================= */
+
+.verify-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:45px;
+}
+
+.verify-card{
+  min-height:190px;
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.025);
+  transition:.25s ease;
+}
+
+.verify-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--goldline);
+  background:rgba(245,200,75,.035);
+}
+
+.verify-card h3{
+  font-size:1.25rem;
+  margin-bottom:12px;
+}
+
+.verify-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:.88rem;
+}
+
+.contract-box{
+  margin-top:35px;
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:#060a15;
+}
+
+.contract-label{
+  color:var(--muted);
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  margin-bottom:10px;
+}
+
+.contract-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.contract-code{
+  flex:1;
+  min-width:0;
+  color:var(--gold2);
+  font-size:.74rem;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.copy-btn{
+  flex:none;
+  border:1px solid var(--goldline);
+  background:rgba(245,200,75,.08);
+  color:var(--gold2);
+  border-radius:13px;
+  padding:12px 15px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.copy-btn:hover{
+  background:var(--gold);
+  color:#111;
+}
+
+/* =========================================================
+   FLOCK
+   ========================================================= */
+
+.flock-view{
+  padding-bottom:110px;
+}
+
+.flock-stage{
+  display:grid;
+  grid-template-columns:.35fr 1.65fr;
+  gap:20px;
+  min-height:650px;
+}
+
+.flock-selector{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.flock-option{
+  position:relative;
+  min-height:76px;
+  padding:14px 15px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.025);
+  color:var(--muted);
+  text-align:left;
+  cursor:pointer;
+  transition:.22s ease;
+}
+
+.flock-option:hover{
+  border-color:var(--goldline);
+  color:var(--text);
+}
+
+.flock-option.active{
+  border-color:var(--gold);
+  color:var(--text);
+  background:rgba(245,200,75,.06);
+}
+
+.flock-option strong{
+  display:block;
+  font-family:"Fredoka",sans-serif;
+  font-size:1rem;
+}
+
+.flock-option span{
+  display:block;
+  margin-top:5px;
+  font-size:.7rem;
+  color:var(--muted);
+}
+
+.flock-display{
+  position:relative;
+  min-height:650px;
+  border:1px solid var(--line);
+  border-radius:38px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 30%,rgba(245,200,75,.10),transparent 45%),
+    var(--panel);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.flock-display::before{
+  content:"";
+  position:absolute;
+  width:70%;
+  aspect-ratio:1;
+  border-radius:50%;
+  border:1px solid rgba(245,200,75,.08);
+}
+
+.flock-character{
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+  max-height:650px;
+  object-fit:contain;
+  padding:30px;
+  transition:opacity .25s ease,transform .35s ease;
+}
+
+.flock-meta{
+  position:absolute;
+  z-index:5;
+  left:26px;
+  right:26px;
+  bottom:22px;
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.flock-meta strong{
+  font-family:"Fredoka",sans-serif;
+  font-size:1.6rem;
+}
+
+.flock-meta span{
+  color:var(--gold);
+  font-size:.7rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.flock-loading{
+  color:var(--muted);
+  font-size:.8rem;
+}
+
+/* =========================================================
+   NEST
+   ========================================================= */
+
+.nest-joke{
+  min-height:520px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+}
+
+.nest-joke-box{
+  max-width:800px;
+  padding:65px 35px;
+  border:1px solid var(--line);
+  border-radius:38px;
+  background:
+    radial-gradient(circle at 50% 0,rgba(245,200,75,.08),transparent 55%),
+    var(--panel);
+}
+
+.nest-icon{
+  font-size:4rem;
+  margin-bottom:20px;
+}
+
+/* =========================================================
+   RESERVE
+   ========================================================= */
+
+.reserve{
+  display:grid;
+  grid-template-columns:1fr .75fr;
+  gap:75px;
+  align-items:center;
+}
+
+.future-box{
+  padding:55px 35px;
+  border:1px solid var(--goldline);
+  border-radius:35px;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 0,rgba(245,200,75,.1),transparent 65%),
+    var(--panel);
+}
+
+.future-p{
+  font-family:"Fredoka",sans-serif;
+  color:var(--gold);
+  font-size:5rem;
+  margin-bottom:12px;
+}
+
+/* =========================================================
+   PHILOSOPHY
+   ========================================================= */
+
+.manifesto{
+  max-width:900px;
+  margin:auto;
+}
+
+.manifesto-lines{
+  margin-top:50px;
+  border-top:1px solid var(--line);
+}
+
+.manifesto-line{
+  padding:24px 0;
+  border-bottom:1px solid var(--line);
+  font-family:"Fredoka",sans-serif;
+  font-size:clamp(1.5rem,3vw,2.6rem);
+}
+
+.manifesto-line.highlight{
+  color:var(--gold);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer{
+  position:relative;
+  z-index:2;
+  padding:55px 0 70px;
+  border-top:1px solid var(--line);
+}
+
+.footer-grid{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.footer-logo{
+  font-family:"Fredoka",sans-serif;
+  font-size:1.5rem;
+  font-weight:700;
+}
+
+.footer-logo span{
+  color:var(--gold);
+}
+
+.footer-note{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.7;
+}
+
+.footer-links{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.footer-links a,
+.footer-links button{
+  border:0;
+  background:none;
+  color:var(--muted);
+  cursor:pointer;
+  font-size:.8rem;
+  padding:4px;
+}
+
+.footer-links a:hover,
+.footer-links button:hover{
+  color:var(--gold);
+}
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast{
+  position:fixed;
+  z-index:3000;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,20px);
+  opacity:0;
+  pointer-events:none;
+  padding:12px 17px;
+  border-radius:999px;
+  background:var(--gold);
+  color:#111;
+  font-weight:800;
+  font-size:.8rem;
+  transition:.25s ease;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:1000px){
+
+  .home-grid,
+  .idea-layout,
+  .reserve{
+    grid-template-columns:1fr;
+    gap:45px;
+  }
+
+  .home{
+    padding-top:50px;
+  }
+
+  .nest-stage{
+    min-height:520px;
+  }
+
+  .principles{
+    grid-template-columns:1fr;
+  }
+
+  .verify-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .choice-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .flock-stage{
+    grid-template-columns:1fr;
+  }
+
+  .flock-selector{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+  }
+
+  .flock-option{
+    min-height:70px;
+  }
+}
+
+@media(max-width:760px){
+
+  .container{
+    width:min(calc(100% - 28px),var(--max));
+  }
+
+  .nav{
+    height:auto;
+    min-height:70px;
+  }
+
+  .nav-inner{
+    padding:9px 0;
+    align-items:flex-start;
+  }
+
+  .nav-links{
+    max-width:74%;
+    overflow-x:auto;
+    justify-content:flex-start;
+    flex-wrap:nowrap;
+    scrollbar-width:none;
+  }
+
+  .nav-links::-webkit-scrollbar{
+    display:none;
+  }
+
+  .nav-link{
+    padding:8px 9px;
+    font-size:.67rem;
+    white-space:nowrap;
+  }
+
+  .logo{
+    font-size:1.15rem;
+  }
+
+  .view{
+    padding-top:70px;
+  }
+
+  .home{
+    min-height:calc(100vh - 70px);
+    padding:35px 0 75px;
+  }
+
+  h1{
+    font-size:clamp(3.5rem,18vw,5.3rem);
+  }
+
+  h2{
+    font-size:clamp(2.7rem,13vw,4.4rem);
+  }
+
+  .home-actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .nest-stage{
+    min-height:410px;
+  }
+
+  .hero-frame{
+    min-height:340px;
+    border-radius:27px;
+  }
+
+  .hero-frame img{
+    min-height:340px;
+  }
+
+  .coin{
+    width:62px;
+    height:62px;
+    font-size:1.55rem;
+    left:6%;
+    top:13%;
+  }
+
+  .explore-target{
+    min-width:175px;
+    min-height:55px;
+    bottom:18px;
+  }
+
+  .drag-hint{
+    bottom:-8px;
+  }
+
+  .internal{
+    padding:70px 0 75px;
+  }
+
+  .internal-head{
+    display:block;
+    margin-bottom:40px;
+  }
+
+  .internal-head p{
+    margin-top:18px;
+  }
+
+  .back-home{
+    margin-top:22px;
+  }
+
+  .idea-statement{
+    padding:30px;
+  }
+
+  .verify-grid{
+    grid-template-columns:1fr;
+  }
+
+  .choice-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .contract-row{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .contract-code{
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+
+  .copy-btn{
+    width:100%;
+  }
+
+  .flock-selector{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .flock-option:last-child{
+    grid-column:1/-1;
+  }
+
+  .flock-display{
+    min-height:470px;
+    border-radius:28px;
+  }
+
+  .flock-character{
+    min-height:450px;
+    padding:20px;
+  }
+
+  .flock-meta{
+    left:18px;
+    right:18px;
+    bottom:16px;
+  }
+
+  .flock-meta strong{
+    font-size:1.25rem;
+  }
+
+  .reserve{
+    gap:35px;
+  }
+
+  .future-box{
+    padding:45px 25px;
+  }
+
+  .footer-grid{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+
+    <button
+      class="logo"
+      id="homeLogo"
+      aria-label="PELOCO Home">
+      <span>PELOCO</span> 🐣
+    </button>
+
+    <nav class="nav-links" aria-label="Main navigation">
+
+      <button class="nav-link" data-view="idea">
+        <span data-en="IDEA" data-pt="IDEIA">IDEA</span>
+      </button>
+
+      <button class="nav-link" data-view="flock">
+        FLOCK
+      </button>
+
+      <button class="nav-link" data-view="verify">
+        VERIFY
+      </button>
+
+      <button class="nav-link" data-view="philosophy">
+        PHILOSOPHY
+      </button>
+
+      <div class="lang-switch" aria-label="Language selector">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pt">PT</button>
+      </div>
+
+    </nav>
+
+  </div>
+</header>
+
+
+<main>
+
+<!-- =======================================================
+     HOME
+     ======================================================= -->
+
+<section class="view active" id="view-home">
+
+  <div class="home">
+
+    <div class="container home-grid">
+
+      <div class="home-copy">
+
+        <div
+          class="eyebrow"
+          data-en="FROM A TINY NEST"
+          data-pt="DE UM PEQUENO NINHO">
+          FROM A TINY NEST
+        </div>
+
+        <h1>
+          The Starry
+          <span class="gold">Chick</span>
+          Coin
+        </h1>
+
+        <p
+          class="lead"
+          data-en="From a tiny nest to something bigger. 🐣💛"
+          data-pt="De um pequeno ninho para algo maior. 🐣💛">
+          From a tiny nest to something bigger. 🐣💛
+        </p>
+
+        <p
+          class="muted"
+          data-en="A small chick. A big universe. Explore PELOCO."
+          data-pt="Um pequeno pintinho. Um universo enorme. Explore o PELOCO.">
+          A small chick. A big universe. Explore PELOCO.
+        </p>
+
+        <div class="home-actions">
+
+          <a
+            class="btn btn-primary"
+            href="https://join.pump.fun/HSag/bzak5fc"
+            target="_blank"
+            rel="noopener noreferrer">
+            EXPLORE PELOCO
+          </a>
+
+          <button
+            class="btn btn-secondary"
+            data-view="flock">
+            MEET THE FLOCK
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="nest-stage" id="dragArea">
+
+        <span class="star s1"></span>
+        <span class="star s2"></span>
+        <span class="star s3"></span>
+        <span class="star s4"></span>
+        <span class="star s5"></span>
+
+        <div class="hero-frame">
+
+          <img
+            id="heroImage"
+            alt="PELOCO — The Starry Chick Coin"
+            loading="eager">
+
+          <div
+            class="flock-loading"
+            id="heroLoading">
+            Loading the nest…
+          </div>
+
+        </div>
+
+
+        <div
+          id="coin"
+          class="coin"
+          role="button"
+          tabindex="0"
+          aria-label="Drag the PELOCO P coin toward Explore"
+          title="Drag the P toward Explore">
+          P
+        </div>
+
+
+        <a
+          id="exploreTarget"
+          class="explore-target"
+          href="https://join.pump.fun/HSag/bzak5fc"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Explore PELOCO on Pump.fun">
+          EXPLORE
+        </a>
+
+        <div class="drag-hint">
+          Drag the P toward EXPLORE
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <footer>
+
+    <div class="container footer-grid">
+
+      <div>
+
+        <div class="footer-logo">
+          <span>PELOCO</span> 🐣💛
+        </div>
+
+        <div class="footer-note">
+          From Family to Community.<br>
+          From one nest to the world.
+        </div>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a
+          href="https://join.pump.fun/HSag/bzak5fc"
+          target="_blank"
+          rel="noopener noreferrer">
+          Pump.fun
+        </a>
+
+        <a
+          href="https://dexscreener.com/solana/HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump"
+          target="_blank"
+          rel="noopener noreferrer">
+          DexScreener
+        </a>
+
+        <a
+          href="https://solscan.io/token/HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump"
+          target="_blank"
+          rel="noopener noreferrer">
+          Solscan
+        </a>
+
+        <a
+          href="https://x.com/PelocoCoin"
+          target="_blank"
+          rel="noopener noreferrer">
+          X
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+</section>
+
+
+<!-- =======================================================
+     IDEA
+     ======================================================= -->
+
+<section class="view" id="view-idea">
+
+  <div class="internal">
+
+    <div class="container">
+
+      <div class="internal-head">
+
+        <div>
+
+          <div class="eyebrow">THE IDEA</div>
+
+          <h2>
+            Built from
+            <span class="gold">zero.</span>
+          </h2>
+
+        </div>
+
+        <div>
+
+          <p
+            class="lead"
+            data-en="PELOCO started small. Very small."
+            data-pt="O PELOCO começou pequeno. Muito pequeno.">
+            PELOCO started small. Very small.
+          </p>
+
+          <button
+            class="back-home"
+            data-view="home">
+            ← Home
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="idea-layout">
+
+        <div>
+
+          <p
+            class="lead"
+            data-en="We are building from zero, one real step at a time."
+            data-pt="Estamos construindo do zero, um passo real de cada vez.">
+            We are building from zero, one real step at a time.
+          </p>
+
+          <p
+            class="muted"
+            data-en="No pretending to be bigger than we are. No turning expectations into facts. The nest is built one piece at a time."
+            data-pt="Sem fingir que somos maiores do que somos. Sem transformar expectativa em fato. O ninho é construído uma peça de cada vez.">
+            No pretending to be bigger than we are. No turning expectations into facts. The nest is built one piece at a time.
+          </p>
+
+        </div>
+
+
+        <div class="idea-statement">
+
+          <strong>
+            Small now.<br>
+            <span class="gold">Real now.</span>
+          </strong>
+
+          <div class="idea-list">
+
+            <div class="idea-item">
+              Build it.
+            </div>
+
+            <div class="idea-item">
+              Verify it.
+            </div>
+
+            <div class="idea-item">
+              Document it.
+            </div>
+
+            <div class="idea-item">
+              Show it when it is real.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="choice-area">
+
+        <div class="eyebrow">COMMUNITY FIRST</div>
+
+        <h2>
+          People before
+          <span class="gold">numbers.</span>
+        </h2>
+
+        <div class="principles">
+
+          <article class="principle">
+
+            <h3>Community First.</h3>
+
+            <p>
+              People matter before numbers.
+            </p>
+
+          </article>
+
+
+          <article class="principle">
+
+            <h3>Organic Growth.</h3>
+
+            <p>
+              Grow because something real is being built.
+            </p>
+
+          </article>
+
+
+          <article class="principle">
+
+            <h3>Transparency.</h3>
+
+            <p>
+              Say what is true. Make what is verifiable visible.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+
+      <div class="choice-area">
+
+        <div class="eyebrow">FREEDOM OF CHOICE</div>
+
+        <h2>
+          Your choice
+          is <span class="gold">yours.</span>
+        </h2>
+
+        <p
+          class="lead"
+          data-en="Buy. Sell. Trade. Hold."
+          data-pt="Comprar. Vender. Fazer trade. Manter.">
+          Buy. Sell. Trade. Hold.
+        </p>
+
+        <p
+          class="muted"
+          data-en="PELOCO does not pressure anyone to buy. Everyone decides for themselves. Our responsibility is to keep building."
+          data-pt="O PELOCO não pressiona ninguém a comprar. Cada pessoa decide por si. Nossa responsabilidade é continuar construindo.">
+          PELOCO does not pressure anyone to buy. Everyone decides for themselves. Our responsibility is to keep building.
+        </p>
+
+        <div class="choice-grid">
+
+          <div class="choice">
+            Buy.
+            <small>Your decision.</small>
+          </div>
+
+          <div class="choice">
+            Sell.
+            <small>Your decision.</small>
+          </div>
+
+          <div class="choice">
+            Trade.
+            <small>Your decision.</small>
+          </div>
+
+          <div class="choice">
+            Hold.
+            <small>Your decision.</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     FLOCK
+     ======================================================= -->
+
+<section class="view" id="view-flock">
+
+  <div class="internal flock-view">
+
+    <div class="container">
+
+      <div class="internal-head">
+
+        <div>
+
+          <div class="eyebrow">THE FLOCK</div>
+
+          <h2>
+            Explore the
+            <span class="gold">Flock.</span>
+          </h2>
+
+        </div>
+
+        <div>
+
+          <p
+            class="muted"
+            data-en="One little chick can become many things. Different worlds. Different styles. Still PELOCO."
+            data-pt="Um pequeno pintinho pode se tornar muitas coisas. Mundos diferentes. Estilos diferentes. Ainda PELOCO.">
+            One little chick can become many things. Different worlds. Different styles. Still PELOCO.
+          </p>
+
+          <button
+            class="back-home"
+            data-view="home">
+            ← Home
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="flock-stage">
+
+        <div
+          class="flock-selector"
+          id="flockSelector">
+
+          <button class="flock-option active" data-index="0">
+            <strong>Style 01</strong>
+            <span>PELOCO</span>
+          </button>
+
+          <button class="flock-option" data-index="1">
+            <strong>Style 02</strong>
+            <span>PELOCO</span>
+          </button>
+
+          <button class="flock-option" data-index="2">
+            <strong>Style 03</strong>
+            <span>PELOCO</span>
+          </button>
+
+          <button class="flock-option" data-index="3">
+            <strong>Style 04</strong>
+            <span>PELOCO</span>
+          </button>
+
+          <button class="flock-option" data-index="4">
+            <strong>Style 05</strong>
+            <span>PELOCO</span>
+          </button>
+
+        </div>
+
+
+        <div class="flock-display">
+
+          <img
+            id="flockCharacter"
+            class="flock-character"
+            alt="PELOCO character">
+
+          <div
+            id="flockLoading"
+            class="flock-loading">
+            Discovering the flock…
+          </div>
+
+          <div class="flock-meta">
+
+            <div>
+              <strong id="flockName">
+                Style 01
+              </strong>
+            </div>
+
+            <span>
+              PELOCO
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     VERIFY
+     ======================================================= -->
+
+<section class="view" id="view-verify">
+
+  <div class="internal">
+
+    <div class="container">
+
+      <div class="internal-head">
+
+        <div>
+
+          <div class="eyebrow">VERIFY THE NEST</div>
+
+          <h2>
+            Don't just look.
+            <span class="gold">Verify.</span>
+          </h2>
+
+        </div>
+
+        <div>
+
+          <p
+            class="lead"
+            data-en="Independent verification belongs to everyone."
+            data-pt="A verificação independente pertence a todos.">
+            Independent verification belongs to everyone.
+          </p>
+
+          <button
+            class="back-home"
+            data-view="home">
+            ← Home
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="verify-grid">
+
+        <a
+          class="verify-card"
+          href="https://join.pump.fun/HSag/bzak5fc"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          <h3>Pump.fun</h3>
+
+          <p>
+            Explore the PELOCO page directly.
+          </p>
+
+        </a>
+
+
+        <a
+          class="verify-card"
+          href="https://dexscreener.com/solana/HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          <h3>DexScreener</h3>
+
+          <p>
+            View PELOCO directly on DexScreener.
+          </p>
+
+        </a>
+
+
+        <a
+          class="verify-card"
+          href="https://solscan.io/token/HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          <h3>Solscan</h3>
+
+          <p>
+            Inspect the PELOCO token on-chain.
+          </p>
+
+        </a>
+
+
+        <a
+          class="verify-card"
+          href="https://x.com/PelocoCoin"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          <h3>X</h3>
+
+          <p>
+            Follow the official PELOCO account.
+          </p>
+
+        </a>
+
+      </div>
+
+
+      <div class="contract-box">
+
+        <div class="contract-label">
+          Contract
+        </div>
+
+        <div class="contract-row">
+
+          <div
+            id="contract"
+            class="contract-code">
+            HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump
+          </div>
+
+          <button
+            id="copyButton"
+            class="copy-btn">
+            COPY
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     PHILOSOPHY
+     ======================================================= -->
+
+<section class="view" id="view-philosophy">
+
+  <div class="internal">
+
+    <div class="container">
+
+      <div class="internal-head">
+
+        <div>
+
+          <div class="eyebrow">OUR PHILOSOPHY</div>
+
+          <h2>
+            From Family
+            to <span class="gold">Community.</span>
+          </h2>
+
+        </div>
+
+        <div>
+
+          <p
+            class="lead"
+            data-en="Build first. Show it when it is real."
+            data-pt="Construa primeiro. Mostre quando for real.">
+            Build first. Show it when it is real.
+          </p>
+
+          <button
+            class="back-home"
+            data-view="home">
+            ← Home
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="manifesto">
+
+        <p
+          class="lead"
+          data-en="We do not call something finished just because it has been written down."
+          data-pt="Não consideramos algo pronto apenas porque foi escrito.">
+          We do not call something finished just because it has been written down.
+        </p>
+
+        <div class="manifesto-lines">
+
+          <div class="manifesto-line">
+            Community first.
+          </div>
+
+          <div class="manifesto-line">
+            Organic growth.
+          </div>
+
+          <div class="manifesto-line">
+            Long-term building.
+          </div>
+
+          <div class="manifesto-line">
+            Transparency.
+          </div>
+
+          <div class="manifesto-line">
+            Freedom of choice.
+          </div>
+
+          <div class="manifesto-line highlight">
+            Defined ≠ Implemented.
+          </div>
+
+          <div class="manifesto-line highlight">
+            Build. Verify. Document. Show.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="choice-area">
+
+        <div class="eyebrow">THE NEST</div>
+
+        <div class="nest-joke">
+
+          <div class="nest-joke-box">
+
+            <div class="nest-icon">
+              🪺🐣
+            </div>
+
+            <h2>
+              Yes, this is the nest.
+            </h2>
+
+            <p class="lead">
+              We're still building it.
+            </p>
+
+            <p class="muted">
+              Small beginnings are still beginnings.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="choice-area">
+
+        <div class="reserve">
+
+          <div>
+
+            <div class="eyebrow">
+              LONG-TERM VISION
+            </div>
+
+            <h2>
+              Public
+              <span class="gold">Reserve.</span>
+            </h2>
+
+            <p
+              class="lead"
+              data-en="A future public, separate and verifiable on-chain reserve."
+              data-pt="Uma futura reserva pública, separada e verificável on-chain.">
+              A future public, separate and verifiable on-chain reserve.
+            </p>
+
+            <p
+              class="muted"
+              data-en="The long-term vision is to create a public reserve that the community can independently follow on-chain."
+              data-pt="A visão de longo prazo é criar uma reserva pública que a comunidade possa acompanhar de forma independente on-chain.">
+              The long-term vision is to create a public reserve that the community can independently follow on-chain.
+            </p>
+
+            <p
+              class="muted"
+              data-en="This is a future vision. It is not implemented yet. No wallet. No balance. No artificial numbers."
+              data-pt="Esta é uma visão futura. Ainda não está implementada. Sem carteira. Sem saldo. Sem números artificiais.">
+              This is a future vision. It is not implemented yet. No wallet. No balance. No artificial numbers.
+            </p>
+
+          </div>
+
+
+          <div class="future-box">
+
+            <div class="future-p">
+              P
+            </div>
+
+            <h3>
+              Future
+            </h3>
+
+            <p class="muted">
+              Defined ≠ Implemented.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<div
+  id="toast"
+  class="toast"
+  role="status"
+  aria-live="polite">
+  Copied!
+</div>
+
+
+<script>
+"use strict";
+
+/* =========================================================
+   PELOCO CORE
+   ========================================================= */
+
+const CONTRACT =
+  "HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump";
+
+const PUMP_URL =
+  "https://join.pump.fun/HSag/bzak5fc";
+
+const DEX_URL =
+  "https://dexscreener.com/solana/HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump";
+
+const SOLSCAN_URL =
+  "https://solscan.io/token/HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump";
+
+const X_URL =
+  "https://x.com/PelocoCoin";
+
+const BINANCE_WEB3_URL =
+  "https://app.binance.com/uni-qr/web3-token-details?utm_medium=share&tokenCA=HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump&binanceChainId=CT_501&chain=sol";
+
+const REPO_API =
+  "https://api.github.com/repos/7z94kyks4n-design/PELOCO/contents/";
+
+const RAW_BASE =
+  "https://raw.githubusercontent.com/7z94kyks4n-design/PELOCO/main/";
+
+const IMAGE_TYPES =
+  /\.(jpe?g|png|webp|gif)$/i;
+
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+let currentView = "home";
+let repositoryImages = [];
+let flockImages = [];
+let currentFlockIndex = 0;
+
+
+/* =========================================================
+   VIEW NAVIGATION
+   ========================================================= */
+
+const viewElements =
+  document.querySelectorAll(".view");
+
+const navigationButtons =
+  document.querySelectorAll("[data-view]");
+
+function showView(viewName){
+
+  if(
+    !document.getElementById(
+      "view-" + viewName
+    )
+  ){
+    viewName = "home";
+  }
+
+  currentView = viewName;
+
+  viewElements.forEach(view => {
+
+    view.classList.toggle(
+      "active",
+      view.id === "view-" + viewName
+    );
+
+  });
+
+  document
+    .querySelectorAll(".nav-link[data-view]")
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.view === viewName
+      );
+
+    });
+
+  const reduceMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+  window.scrollTo({
+    top:0,
+    behavior:reduceMotion ? "auto" : "smooth"
+  });
+
+  history.replaceState(
+    null,
+    "",
+    viewName === "home"
+      ? "#"
+      : "#" + viewName
+  );
+}
+
+navigationButtons.forEach(button => {
+
+  button.addEventListener(
+    "click",
+    () => showView(
+      button.dataset.view
+    )
+  );
+
+});
+
+
+document
+  .getElementById("homeLogo")
+  ?.addEventListener(
+    "click",
+    () => showView("home")
+  );
+
+
+function loadViewFromHash(){
+
+  const hash =
+    location.hash.replace("#","");
+
+  if(
+    hash &&
+    document.getElementById(
+      "view-" + hash
+    )
+  ){
+    showView(hash);
+  }else{
+    showView("home");
+  }
+
+}
+
+window.addEventListener(
+  "hashchange",
+  loadViewFromHash
+);
+
+
+/* =========================================================
+   LANGUAGE
+   ========================================================= */
+
+const languageButtons =
+  document.querySelectorAll(".lang-btn");
+
+function setLanguage(lang){
+
+  const selected =
+    lang === "pt"
+      ? "pt"
+      : "en";
+
+  document.documentElement.lang =
+    selected === "pt"
+      ? "pt-BR"
+      : "en";
+
+  document
+    .querySelectorAll("[data-en]")
+    .forEach(element => {
+
+      const value =
+        selected === "pt"
+          ? element.dataset.pt
+          : element.dataset.en;
+
+      if(value){
+        element.textContent =
+          value;
+      }
+
+    });
+
+  languageButtons.forEach(button => {
+
+    button.classList.toggle(
+      "active",
+      button.dataset.lang === selected
+    );
+
+  });
+
+  try{
+    localStorage.setItem(
+      "peloco-language",
+      selected
+    );
+  }catch(error){}
+
+}
+
+languageButtons.forEach(button => {
+
+  button.addEventListener(
+    "click",
+    () => setLanguage(
+      button.dataset.lang
+    )
+  );
+
+});
+
+let savedLanguage = "en";
+
+try{
+  savedLanguage =
+    localStorage.getItem(
+      "peloco-language"
+    ) || "en";
+}catch(error){}
+
+setLanguage(savedLanguage);
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+const toast =
+  document.getElementById("toast");
+
+let toastTimer = null;
+
+function showToast(message){
+
+  if(!toast)
+    return;
+
+  toast.textContent =
+    message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer =
+    setTimeout(
+      () => toast.classList.remove("show"),
+      1600
+    );
+
+}
+
+
+/* =========================================================
+   COPY CONTRACT
+   ========================================================= */
+
+const copyButton =
+  document.getElementById(
+    "copyButton"
+  );
+
+async function copyContract(){
+
+  try{
+
+    if(
+      navigator.clipboard &&
+      window.isSecureContext
+    ){
+
+      await navigator.clipboard.writeText(
+        CONTRACT
+      );
+
+    }else{
+
+      const textarea =
+        document.createElement("textarea");
+
+      textarea.value =
+        CONTRACT;
+
+      textarea.style.position =
+        "fixed";
+
+      textarea.style.opacity =
+        "0";
+
+      document.body.appendChild(
+        textarea
+      );
+
+      textarea.focus();
+      textarea.select();
+
+      document.execCommand(
+        "copy"
+      );
+
+      textarea.remove();
+
+    }
+
+    if(copyButton){
+
+      const original =
+        copyButton.textContent;
+
+      copyButton.textContent =
+        "Copied!";
+
+      setTimeout(() => {
+
+        copyButton.textContent =
+          original;
+
+      },1600);
+
+    }
+
+    showToast("Copied!");
+
+  }catch(error){
+
+    showToast(
+      "Copy failed"
+    );
+
+  }
+
+}
+
+copyButton?.addEventListener(
+  "click",
+  copyContract
+);
+
+
+/* =========================================================
+   GITHUB IMAGE DISCOVERY
+   ========================================================= */
+
+async function getRepositoryImages(){
+
+  const response =
+    await fetch(
+      REPO_API,
+      {
+        headers:{
+          "Accept":
+            "application/vnd.github+json"
+        },
+        cache:"no-store"
+      }
+    );
+
+  if(!response.ok){
+
+    throw new Error(
+      "GitHub returned " +
+      response.status
+    );
+
+  }
+
+  const files =
+    await response.json();
+
+  return files
+    .filter(
+      file =>
+        file.type === "file" &&
+        IMAGE_TYPES.test(
+          file.name
+        )
+    )
+    .map(file => {
+
+      return {
+        name:file.name,
+        url:
+          RAW_BASE +
+          encodeURIComponent(
+            file.name
+          )
+      };
+
+    });
+
+}
+
+
+/* =========================================================
+   IMAGE INSPECTION
+   ========================================================= */
+
+function inspectImage(source){
+
+  return new Promise(resolve => {
+
+    const image =
+      new Image();
+
+    image.onload = () => {
+
+      resolve({
+        ...source,
+        width:image.naturalWidth,
+        height:image.naturalHeight,
+        ratio:
+          image.naturalWidth /
+          image.naturalHeight
+      });
+
+    };
+
+    image.onerror = () => {
+
+      resolve(null);
+
+    };
+
+    image.src =
+      source.url;
+
+  });
+
+}
+
+
+/* =========================================================
+   IMAGE CLASSIFICATION
+   ========================================================= */
+
+async function inspectRepositoryImages(
+  images
+){
+
+  const inspected =
+    (
+      await Promise.all(
+        images.map(
+          inspectImage
+        )
+      )
+    )
+    .filter(Boolean);
+
+  const portrait =
+    inspected.filter(
+      image =>
+        image.ratio < 1.35
+    );
+
+  const wide =
+    inspected.filter(
+      image =>
+        image.ratio >= 1.35
+    );
+
+  return {
+    all:inspected,
+    portrait,
+    wide
+  };
+
+}
+
+
+/* =========================================================
+   HERO IMAGE
+   ========================================================= */
+
+function selectHeroImage(
+  inspected
+){
+
+  if(!inspected.length)
+    return null;
+
+  const wide =
+    inspected.filter(
+      image =>
+        image.ratio >= 1.35
+    );
+
+  if(wide.length){
+
+    return [...wide]
+      .sort(
+        (a,b) =>
+          (b.width*b.height) -
+          (a.width*a.height)
+      )[0];
+
+  }
+
+  return [...inspected]
+    .sort(
+      (a,b) =>
+        (b.width*b.height) -
+        (a.width*a.height)
+    )[0];
+
+}
+
+
+function loadHeroImage(
+  inspected
+){
+
+  const hero =
+    document.getElementById(
+      "heroImage"
+    );
+
+  const loading =
+    document.getElementById(
+      "heroLoading"
+    );
+
+  const selected =
+    selectHeroImage(
+      inspected
+    );
+
+  if(
+    !hero ||
+    !selected
+  ){
+
+    if(loading){
+      loading.textContent =
+        "The nest is waiting.";
+    }
+
+    return;
+
+  }
+
+  hero.src =
+    selected.url;
+
+  hero.alt =
+    "PELOCO — The Starry Chick Coin";
+
+  hero.addEventListener(
+    "load",
+    () => {
+
+      if(loading){
+        loading.style.display =
+          "none";
+      }
+
+    },
+    {once:true}
+  );
+
+}
+
+
+/* =========================================================
+   FLOCK
+   ========================================================= */
+
+function chooseFlockImages(
+  inspected
+){
+
+  const portrait =
+    [...inspected]
+      .filter(
+        image =>
+          image.ratio < 1.35
+      )
+      .sort(
+        (a,b) =>
+          (b.width*b.height) -
+          (a.width*a.height)
+      );
+
+  const remaining =
+    [...inspected]
+      .filter(
+        image =>
+          !portrait.includes(image)
+      )
+      .sort(
+        (a,b) =>
+          (b.width*b.height) -
+          (a.width*a.height)
+      );
+
+  return [
+    ...portrait,
+    ...remaining
+  ].slice(0,5);
+
+}
+
+
+function setFlockCharacter(
+  index
+){
+
+  if(
+    !flockImages.length
+  ){
+    return;
+  }
+
+  currentFlockIndex =
+    Math.max(
+      0,
+      Math.min(
+        index,
+        flockImages.length - 1
+      )
+    );
+
+  const image =
+    flockImages[
+      currentFlockIndex
+    ];
+
+  const character =
+    document.getElementById(
+      "flockCharacter"
+    );
+
+  const loading =
+    document.getElementById(
+      "flockLoading"
+    );
+
+  const name =
+    document.getElementById(
+      "flockName"
+    );
+
+  if(!character)
+    return;
+
+  character.style.opacity =
+    "0";
+
+  character.src =
+    image.url;
+
+  character.alt =
+    "PELOCO character " +
+    String(
+      currentFlockIndex + 1
+    ).padStart(2,"0");
+
+  character.onload =
+    () => {
+
+      character.style.opacity =
+        "1";
+
+      if(loading){
+        loading.style.display =
+          "none";
+      }
+
+    };
+
+  if(name){
+
+    name.textContent =
+      "Style " +
+      String(
+        currentFlockIndex + 1
+      ).padStart(2,"0");
+
+  }
+
+  document
+    .querySelectorAll(
+      ".flock-option"
+    )
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        Number(
+          button.dataset.index
+        ) === currentFlockIndex
+      );
+
+    });
+
+}
+
+
+document
+  .querySelectorAll(
+    ".flock-option"
+  )
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        setFlockCharacter(
+          Number(
+            button.dataset.index
+          )
+        );
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   IMAGE INITIALIZATION
+   ========================================================= */
+
+async function initializeImages(){
+
+  try{
+
+    repositoryImages =
+      await getRepositoryImages();
+
+    if(
+      !repositoryImages.length
+    ){
+      throw new Error(
+        "No repository images found."
+      );
+    }
+
+    const inspected =
+      await inspectRepositoryImages(
+        repositoryImages
+      );
+
+    loadHeroImage(
+      inspected.all
+    );
+
+    flockImages =
+      chooseFlockImages(
+        inspected.all
+      );
+
+    if(
+      flockImages.length
+    ){
+
+      setFlockCharacter(0);
+
+    }
+
+    console.info(
+      "PELOCO image system:",
+      repositoryImages.length,
+      "repository images found;",
+      flockImages.length,
+      "character candidates selected."
+    );
+
+  }catch(error){
+
+    console.error(
+      "PELOCO image system error:",
+      error
+    );
+
+    const heroLoading =
+      document.getElementById(
+        "heroLoading"
+      );
+
+    const flockLoading =
+      document.getElementById(
+        "flockLoading"
+      );
+
+    if(heroLoading){
+      heroLoading.textContent =
+        "The nest is waiting.";
+    }
+
+    if(flockLoading){
+      flockLoading.textContent =
+        "The flock is waiting.";
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   P → EXPLORE
+   REAL POINTER / TOUCH DRAG
+   ========================================================= */
+
+const coin =
+  document.getElementById(
+    "coin"
+  );
+
+const exploreTarget =
+  document.getElementById(
+    "exploreTarget"
+  );
+
+const dragArea =
+  document.getElementById(
+    "dragArea"
+  );
+
+
+/*
+  Explicitly initialized.
+  These variables are required by the
+  drag implementation.
+*/
+
+let startX = 0;
+let startY = 0;
+
+let dragging = false;
+let activePointerId = null;
+
+let targetReady = false;
+let animationInProgress = false;
+
+let initialLeft = "";
+let initialTop = "";
+
+if(coin){
+
+  initialLeft =
+    coin.style.left;
+
+  initialTop =
+    coin.style.top;
+
+}
+
+
+/* =========================================================
+   USER-GESTURE WINDOW
+   =========================================================
+
+   Some browsers block window.open() if it occurs
+   after an asynchronous animation.
+
+   To preserve the user's gesture while still ensuring
+   that Pump.fun is only NAVIGATED TO after the
+   animation finishes, we prepare a blank tab on
+   pointerdown and navigate it only after completion.
+
+   If the browser does not allow the preparation,
+   the final navigation falls back to the current tab.
+   ========================================================= */
+
+let pendingPumpWindow = null;
+
+function preparePumpWindow(){
+
+  if(
+    pendingPumpWindow &&
+    !pendingPumpWindow.closed
+  ){
+    return;
+  }
+
+  try{
+
+    pendingPumpWindow =
+      window.open(
+        "about:blank",
+        "_blank"
+      );
+
+    if(pendingPumpWindow){
+
+      try{
+
+        pendingPumpWindow.opener =
+          null;
+
+      }catch(error){}
+
+    }
+
+  }catch(error){
+
+    pendingPumpWindow =
+      null;
+
+  }
+
+}
+
+
+function openPumpAfterAnimation(){
+
+  /*
+    The Pump.fun URL is assigned only here,
+    after the physical coin animation completes.
+  */
+
+  if(
+    pendingPumpWindow &&
+    !pendingPumpWindow.closed
+  ){
+
+    try{
+
+      pendingPumpWindow.location.href =
+        PUMP_URL;
+
+      pendingPumpWindow.opener =
+        null;
+
+      pendingPumpWindow =
+        null;
+
+      return;
+
+    }catch(error){}
+
+  }
+
+  /*
+    Fallback for browsers that did not allow
+    the prepared tab.
+  */
+
+  try{
+
+    window.location.assign(
+      PUMP_URL
+    );
+
+  }catch(error){
+
+    console.error(
+      "PELOCO Pump.fun navigation failed:",
+      error
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   TARGET DETECTION
+   ========================================================= */
+
+function isPointInsideBuy(
+  clientX,
+  clientY
+){
+
+  if(!exploreTarget)
+    return false;
+
+  const rect =
+    exploreTarget.getBoundingClientRect();
+
+  return (
+    clientX >= rect.left &&
+    clientX <= rect.right &&
+    clientY >= rect.top &&
+    clientY <= rect.bottom
+  );
+
+}
+
+
+/* =========================================================
+   COIN POSITION
+   ========================================================= */
+
+function moveCoinToPointer(
+  clientX,
+  clientY
+){
+
+  if(
+    !coin ||
+    !dragArea
+  ){
+    return;
+  }
+
+  const areaRect =
+    dragArea.getBoundingClientRect();
+
+  const coinWidth =
+    coin.offsetWidth;
+
+  const coinHeight =
+    coin.offsetHeight;
+
+  /*
+    startX/startY preserve the exact point
+    where the user grabbed the coin.
+  */
+
+  let x =
+    clientX -
+    areaRect.left -
+    startX;
+
+  let y =
+    clientY -
+    areaRect.top -
+    startY;
+
+  const padding = 4;
+
+  x =
+    Math.max(
+      padding,
+      Math.min(
+        x,
+        areaRect.width -
+        coinWidth -
+        padding
+      )
+    );
+
+  y =
+    Math.max(
+      padding,
+      Math.min(
+        y,
+        areaRect.height -
+        coinHeight -
+        padding
+      )
+    );
+
+  coin.style.left =
+    x + "px";
+
+  coin.style.top =
+    y + "px";
+
+  coin.style.transform =
+    "scale(1.1)";
+
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+function resetCoin(){
+
+  if(!coin)
+    return;
+
+  dragging = false;
+  activePointerId = null;
+  targetReady = false;
+  animationInProgress = false;
+
+  coin.classList.remove(
+    "dragging",
+    "animating",
+    "drop-success"
+  );
+
+  exploreTarget?.classList.remove(
+    "ready"
+  );
+
+  coin.style.left =
+    initialLeft || "8%";
+
+  coin.style.top =
+    initialTop || "17%";
+
+  coin.style.transform =
+    "translate(0,0)";
+
+}
+
+
+/* =========================================================
+   CANCEL PENDING WINDOW
+   ========================================================= */
+
+function closePendingPumpWindow(){
+
+  if(
+    pendingPumpWindow &&
+    !pendingPumpWindow.closed
+  ){
+
+    try{
+      pendingPumpWindow.close();
+    }catch(error){}
+
+  }
+
+  pendingPumpWindow =
+    null;
+
+}
+
+
+/* =========================================================
+   COMPLETE ANIMATION
+   ========================================================= */
+
+function animateCoinToExplore(){
+
+  if(
+    !coin ||
+    !exploreTarget ||
+    !dragArea ||
+    animationInProgress
+  ){
+    return;
+  }
+
+  animationInProgress =
+    true;
+
+  dragging = false;
+  targetReady = false;
+
+  coin.classList.remove(
+    "dragging"
+  );
+
+  coin.classList.add(
+    "drop-success"
+  );
+
+  exploreTarget.classList.remove(
+    "ready"
+  );
+
+  const coinRect =
+    coin.getBoundingClientRect();
+
+  const buttonRect =
+    exploreTarget.getBoundingClientRect();
+
+  const areaRect =
+    dragArea.getBoundingClientRect();
+
+  /*
+    Freeze the current visual position
+    before starting the transition.
+  */
+
+  const currentLeft =
+    coinRect.left -
+    areaRect.left;
+
+  const currentTop =
+    coinRect.top -
+    areaRect.top;
+
+  coin.style.left =
+    currentLeft + "px";
+
+  coin.style.top =
+    currentTop + "px";
+
+  /*
+    Compute the real center-to-center
+    displacement.
+  */
+
+  const coinCenterX =
+    coinRect.left +
+    coinRect.width / 2;
+
+  const coinCenterY =
+    coinRect.top +
+    coinRect.height / 2;
+
+  const buttonCenterX =
+    buttonRect.left +
+    buttonRect.width / 2;
+
+  const buttonCenterY =
+    buttonRect.top +
+    buttonRect.height / 2;
+
+  const deltaX =
+    buttonCenterX -
+    coinCenterX;
+
+  const deltaY =
+    buttonCenterY -
+    coinCenterY;
+
+
+  /*
+    Force layout before adding the
+    animated transform.
+  */
+
+  void coin.offsetWidth;
+
+
+  /*
+    Required final state:
+    left + top + transform all transition
+    for the same 600ms duration.
+  */
+
+  coin.classList.add(
+    "animating"
+  );
+
+  coin.style.transform =
+    "translate(" +
+    deltaX +
+    "px," +
+    deltaY +
+    "px) scale(.72)";
+
+
+  /*
+    Deterministic transition tracking.
+
+    We do NOT use:
+      transitionend -> open
+
+    because transitionend fires independently
+    for left, top and transform.
+
+    Instead we explicitly wait for all three
+    required properties.
+  */
+
+  const requiredProperties =
+    new Set([
+      "left",
+      "top",
+      "transform"
+    ]);
+
+  const completedProperties =
+    new Set();
+
+  let finished =
+    false;
+
+  const finishAnimation =
+    () => {
+
+      if(finished)
+        return;
+
+      finished = true;
+
+      coin.removeEventListener(
+        "transitionend",
+        onTransitionEnd
+      );
+
+      /*
+        Pump.fun is navigated to ONLY after
+        all required transitions completed.
+      */
+
+      openPumpAfterAnimation();
+
+      /*
+        Reset after initiating navigation.
+      */
+
+      setTimeout(
+        () => {
+
+          resetCoin();
+
+        },
+        80
+      );
+
+    };
+
+
+  const onTransitionEnd =
+    event => {
+
+      if(
+        event.target !== coin
+      ){
+        return;
+      }
+
+      if(
+        requiredProperties.has(
+          event.propertyName
+        )
+      ){
+
+        completedProperties.add(
+          event.propertyName
+        );
+
+      }
+
+      if(
+        completedProperties.size ===
+        requiredProperties.size
+      ){
+
+        finishAnimation();
+
+      }
+
+    };
+
+
+  coin.addEventListener(
+    "transitionend",
+    onTransitionEnd
+  );
+
+
+  /*
+    If reduced motion is enabled,
+    CSS may reduce the duration to almost zero.
+    transitionend should still normally fire.
+
+    This microtask fallback only checks computed
+    transition state and does NOT open Pump.fun
+    prematurely.
+  */
+
+  const computed =
+    window.getComputedStyle(
+      coin
+    );
+
+  const durationValues =
+    computed.transitionDuration
+      .split(",");
+
+  const hasRealDuration =
+    durationValues.some(
+      value =>
+        parseFloat(value) > 0
+    );
+
+  if(!hasRealDuration){
+
+    /*
+      Reduced-motion path:
+      there may be no meaningful transition.
+      The animation is considered immediately
+      complete because motion was explicitly
+      requested to be reduced.
+    */
+
+    requiredProperties.forEach(
+      property =>
+        completedProperties.add(
+          property
+        )
+    );
+
+    finishAnimation();
+
+  }
+
+}
+
+
+/* =========================================================
+   POINTER DOWN
+   ========================================================= */
+
+coin?.addEventListener(
+  "pointerdown",
+  event => {
+
+    if(animationInProgress)
+      return;
+
+    if(
+      event.pointerType === "mouse" &&
+      event.button !== 0
+    ){
+      return;
+    }
+
+    dragging = true;
+
+    activePointerId =
+      event.pointerId;
+
+    /*
+      Prepare the user-gesture window now.
+      Pump.fun itself is NOT opened/navigated
+      until the animation has completed.
+    */
+
+    preparePumpWindow();
+
+    try{
+
+      coin.setPointerCapture(
+        activePointerId
+      );
+
+    }catch(error){}
+
+    const rect =
+      coin.getBoundingClientRect();
+
+    startX =
+      event.clientX -
+      rect.left;
+
+    startY =
+      event.clientY -
+      rect.top;
+
+    coin.classList.add(
+      "dragging"
+    );
+
+    event.preventDefault();
+
+  }
+);
+
+
+/* =========================================================
+   POINTER MOVE
+   ========================================================= */
+
+coin?.addEventListener(
+  "pointermove",
+  event => {
+
+    if(
+      !dragging ||
+      event.pointerId !==
+        activePointerId
+    ){
+      return;
+    }
+
+    moveCoinToPointer(
+      event.clientX,
+      event.clientY
+    );
+
+    const inside =
+      isPointInsideBuy(
+        event.clientX,
+        event.clientY
+      );
+
+    targetReady =
+      inside;
+
+    exploreTarget?.classList.toggle(
+      "ready",
+      inside
+    );
+
+    event.preventDefault();
+
+  }
+);
+
+
+/* =========================================================
+   POINTER UP
+   ========================================================= */
+
+coin?.addEventListener(
+  "pointerup",
+  event => {
+
+    if(
+      !dragging ||
+      event.pointerId !==
+        activePointerId
+    ){
+      return;
+    }
+
+    /*
+      Capture the final target state before
+      ending the interaction.
+    */
+
+    const valid =
+      isPointInsideBuy(
+        event.clientX,
+        event.clientY
+      );
+
+    if(valid){
+
+      animateCoinToExplore();
+
+    }else{
+
+      closePendingPumpWindow();
+      resetCoin();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   POINTER CANCEL
+   ========================================================= */
+
+coin?.addEventListener(
+  "pointercancel",
+  () => {
+
+    closePendingPumpWindow();
+    resetCoin();
+
+  }
+);
+
+
+/* =========================================================
+   TOUCH CANCEL
+   =========================================================
+
+   Pointer Events normally cover touch devices,
+   but this explicit listener is retained as an
+   additional cancellation path.
+   ========================================================= */
+
+coin?.addEventListener(
+  "touchcancel",
+  () => {
+
+    closePendingPumpWindow();
+    resetCoin();
+
+  },
+  {
+    passive:true
+  }
+);
+
+
+/* =========================================================
+   LOST POINTER CAPTURE
+   ========================================================= */
+
+coin?.addEventListener(
+  "lostpointercapture",
+  () => {
+
+    if(
+      dragging &&
+      !animationInProgress
+    ){
+
+      closePendingPumpWindow();
+      resetCoin();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   ESCAPE
+   ========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key === "Escape" &&
+      dragging
+    ){
+
+      closePendingPumpWindow();
+      resetCoin();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   BLUR
+   ========================================================= */
+
+window.addEventListener(
+  "blur",
+  () => {
+
+    if(dragging){
+
+      closePendingPumpWindow();
+      resetCoin();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   VISIBILITY
+   ========================================================= */
+
+document.addEventListener(
+  "visibilitychange",
+  () => {
+
+    if(
+      document.hidden &&
+      dragging
+    ){
+
+      closePendingPumpWindow();
+      resetCoin();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   PAGEHIDE
+   ========================================================= */
+
+window.addEventListener(
+  "pagehide",
+  () => {
+
+    if(dragging){
+
+      closePendingPumpWindow();
+      resetCoin();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   KEYBOARD ACCESS
+   ========================================================= */
+
+coin?.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key === "Enter" ||
+      event.key === " "
+    ){
+
+      event.preventDefault();
+
+      /*
+        Keyboard activation is a direct user gesture.
+      */
+
+      window.open(
+        PUMP_URL,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+loadViewFromHash();
+
+initializeImages();
+
+</script>
+
+</body>
+</html>
