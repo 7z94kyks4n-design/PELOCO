@@ -2,36 +2,45 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PELOCO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PELOCO - The Starry Chick Coin</title>
 <style>
-body{margin:0;font-family:sans-serif;background:#FFFDF0;text-align:center}
-header{background:#FFD400;padding:15px;border-bottom:4px solid #000;position:sticky;top:0}
-h1{margin:0;font-size:30px}
-.hero{background:#1a1a2e;position:relative;min-height:450px;display:flex;align-items:center;justify-content:center}
-.hero img{position:absolute;width:100%;height:100%;object-fit:cover}
-.hero div{position:relative;z-index:2;color:white;background:rgba(0,0,0,.5);padding:20px;border-radius:20px}
-.btn{background:#FF6B35;color:white;padding:15px 30px;border-radius:50px;text-decoration:none;font-weight:bold;border:3px solid #000;display:inline-block;margin-top:10px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;padding:20px}
-.card{background:white;border:3px solid #000;border-radius:20px;overflow:hidden}
-.card img{width:100%;height:200px;object-fit:cover}
+body{margin:0;font-family:sans-serif;background:#0a1931;color:#fff}
+header{background:#08142a;padding:14px;display:flex;justify-content:space-between;border-bottom:1px solid #1e335e}
+.logo{color:#f5d76e;font-weight:900;letter-spacing:3px}
+.hero{padding:30px;background:radial-gradient(#1a2f5a,#0a1931);min-height:80vh;position:relative}
+.p-area{margin-top:20px;height:110px;background:#0e1e3a;border:1px dashed #2a3f6d;border-radius:12px;display:flex;align-items:center;position:relative}
+#P{width:60px;height:60px;background:radial-gradient(#f5d76e,#d4af37);border-radius:50%;color:#0a1931;display:grid;place-items:center;font-weight:900;font-size:24px;position:absolute;left:10px;cursor:grab;touch-action:none;transition:.4s}
+#BUY{margin-left:auto;background:#f5d76e;color:#0a1931;border:0;padding:14px 30px;border-radius:10px;font-weight:900}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;padding:20px}
+.card{background:#121f3d;border:1px solid #1e335e;border-radius:12px;padding:10px}
+.card img{width:100%;height:180px;object-fit:cover;border-radius:8px}
 </style>
 </head>
 <body>
-<header><h1>PELOCO 🐥</h1></header>
+<header><div class="logo">PELOCO</div><a href="https://join.pump.fun/HSag/bzak5fc" style="background:#f5d76e;color:#0a1931;padding:6px 14px;border-radius:999px;text-decoration:none;font-weight:800">Buy</a></header>
+
 <div class="hero">
-<img id="hero" src="">
-<div><h2>A MARCA DO PINTINHO</h2><a class="btn" href="#grid">VER COLEÇÃO</a></div>
+<p style="color:#f5d76e">From a tiny nest to something bigger</p>
+<h1 style="font-size:40px">The Starry Chick Coin</h1>
+<img id="heroImg" style="width:100%;max-width:500px;border-radius:12px;margin-top:10px">
+<div class="p-area" id="zone">
+<div id="P">P</div>
+<button id="BUY">BUY</button>
 </div>
-<div class="grid" id="grid"></div>
+<p id="log" style="font-size:10px;color:#8aa0c8;margin-top:6px">Idle - Arraste P -> BUY</p>
+</div>
+
+<div id="grid" class="grid"></div>
+
 <script>
-fetch('https://api.github.com/repos/7z94kyks4n/PELOCO/contents').then(r=>r.json()).then(files=>{
-let jpgs=files.filter(f=>f.name.toLowerCase().includes('.jp')).map(f=>f.name);
-document.getElementById('hero').src=jpgs[0];
-let g=document.getElementById('grid');
-g.innerHTML='';
-jpgs.forEach((n,i)=>{g.innerHTML+=`<div class="card"><img src="${n}"><div style="padding:10px"><b>PELUCO #${i+1}</b><br>R$ 89,90</div></div>`});
-});
+const P=document.getElementById('P'), BUY=document.getElementById('BUY'), zone=document.getElementById('zone'), log=document.getElementById('log'), heroImg=document.getElementById('heroImg');
+let drag=false,sx,sy,over=false;
+function isOver(){const a=P.getBoundingClientRect(),b=BUY.getBoundingClientRect();return!(a.right<b.left||a.left>b.right||a.bottom<b.top||a.top>b.bottom)}
+P.onpointerdown=e=>{drag=true;P.setPointerCapture(e.pointerId);P.style.transition='none';sx=e.clientX-P.getBoundingClientRect().left;sy=e.clientY-P.getBoundingClientRect().top}
+P.onpointermove=e=>{if(!drag)return;const z=zone.getBoundingClientRect();let x=e.clientX-z.left-sx,y=e.clientY-z.top-sy;x=Math.max(0,Math.min(x,z.width-60));y=Math.max(0,Math.min(y,z.height-60));P.style.left=x+'px';P.style.top=y+'px';let o=isOver();if(o!=over){over=o;log.textContent=o?'DRAG -> BUY detectado':'Idle'}}
+P.onpointerup=e=>{if(!drag)return;drag=false;P.style.transition='.4s';if(over){const z=zone.getBoundingClientRect(),b=BUY.getBoundingClientRect();P.style.left=(b.left+b.width/2-z.left-30)+'px';P.style.top=(b.top+b.height/2-z.top-30)+'px';P.style.transform='scale(1.3) rotate(360deg)';log.textContent='✓ left ✓ top ✓ transform 3/3 SUCCESS';setTimeout(()=>window.open('https://join.pump.fun/HSag/bzak5fc','_blank'),500)}else{P.style.left='10px';P.style.top='0px';P.style.transform='scale(1)'}}
+fetch('https://api.github.com/repos/7z94kyks4n-design/PELOCO/contents').then(r=>r.json()).then(files=>{let jpgs=files.filter(f=>f.name.match(/jpg|jpeg|png/i));if(jpgs[0])heroImg.src='./'+jpgs[0].name;let g=document.getElementById('grid');jpgs.forEach((f,i)=>{g.innerHTML+=`<div class=card><img src=./${f.name}><p>Peloco #${i+1}</p></div>`})})
 </script>
 </body>
 </html>
