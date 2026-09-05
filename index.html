@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PELOCO • From Family to Community</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{--gold:rgb(245,215,110);--dark:rgb(7,10,20);--dark2:rgb(11,15,31)}
+body{background:var(--dark);color:white;font-family:Inter,sans-serif}
+.glass{background:rgba(15,20,40,0.75);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.08);border-radius:16px}
+.gallery-item{aspect-ratio:1;border-radius:16px;overflow:hidden;background:rgb(18,26,51);border:2px solid transparent;cursor:pointer;position:relative}
+.gallery-item.best{border-color:var(--gold);box-shadow:0 0 24px rgba(245,215,110,0.5)}
+</style></head><body>
+<nav style="position:fixed;top:0;width:100%;z-index:50;background:rgba(7,10,20,0.9);padding:16px;border-bottom:1px solid rgba(255,255,255,0.08)"><div style="max-width:1320px;margin:auto;display:flex;justify-content:space-between"><div style="font-weight:900;color:rgb(245,215,110);font-size:24px">PELOCO • $PELO</div><span id="galleryCount" class="glass" style="padding:8px 16px;font-size:11px">LOADING 28...</span></div></nav>
+
+<section style="padding-top:120px;max-width:1320px;margin:auto;padding:0 24px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px">
+<div><h1 style="font-size:84px;font-weight:900;color:rgb(245,215,110)">PELOCO</h1><p style="font-size:22px;color:rgb(168,178,208)">From Family to Community</p><p style="font-size:28px">From Zero to Building</p><p id="bestLabel" style="margin-top:20px;font-weight:800;color:rgb(245,215,110)">LOADING BEST...</p></div>
+<div><img id="heroImg" src="" style="width:100%;border-radius:28px;min-height:560px;background:rgb(15,18,32);object-fit:cover"></div>
+</section>
+
+<section style="background:rgb(11,15,31);padding:60px 0;margin-top:60px"><div style="max-width:1320px;margin:auto;padding:0 24px"><h2 style="font-weight:900;font-size:24px;margin-bottom:20px">GALLERY 28 • BEST AUTO</h2><div id="grid28" style="display:grid;grid-template-columns:repeat(7,1fr);gap:12px"></div></div></section>
+
+<script>
+async function loadGallery(){
+  const REPO='7z94kyks4n-design/PELOCO';
+  const grid=document.getElementById('grid28');
+  const hero=document.getElementById('heroImg');
+  const label=document.getElementById('bestLabel');
+  const count=document.getElementById('galleryCount');
+  try{
+    const res=await fetch('https://api.github.com/repos/'+REPO+'/contents?'+Date.now());
+    const files=await res.json();
+    let imgs=files.filter(f=>f.type==='file'&&f.name.match(/\.(jpg|jpeg|png|webp)$/i)&&!f.name.toLowerCase().includes('manifesto'));
+    imgs.sort((a,b)=>a.name.localeCompare(b.name,undefined,{numeric:true}));
+    if(imgs.length>28) imgs=imgs.slice(0,28);
+    if(count) count.textContent=imgs.length+' IMAGENS • FIXED RELATIVE';
+    let best=imgs[0];
+    hero.src=encodeURI(best.name);
+    if(label) label.textContent='BEST: '+best.name.toUpperCase()+' ★ FIXED';
+    grid.innerHTML='';
+    imgs.forEach(f=>{
+      const wrap=document.createElement('div');wrap.className='gallery-item'+(f.name===best.name?' best':'');
+      const src=encodeURI(f.name);
+      wrap.innerHTML='<img src="'+src+'" style="width:100%;height:100%;object-fit:cover" loading="lazy">';
+      wrap.querySelector('img').onclick=()=>{document.querySelectorAll('.gallery-item').forEach(i=>i.classList.remove('best'));wrap.classList.add('best');hero.src=src;if(label) label.textContent='BEST: '+f.name.toUpperCase();window.scrollTo({top:0,behavior:'smooth'});};
+      grid.appendChild(wrap);
+    });
+  }catch(e){
+    if(count) count.textContent='FALLBACK 01-28';
+    for(let i=1;i<=28;i++){
+      const n2=String(i).padStart(2,'0');const src=n2+'.jpg';
+      const wrap=document.createElement('div');wrap.className='gallery-item';
+      const img=document.createElement('img');img.src=src;img.style.width='100%';img.style.height='100%';img.style.objectFit='cover';
+      img.onerror=()=>wrap.remove();
+      img.onload=()=>{if(!hero.src){hero.src=src;if(label) label.textContent='BEST: '+src;wrap.classList.add('best');}};
+      img.onclick=()=>{document.querySelectorAll('.gallery-item').forEach(x=>x.classList.remove('best'));wrap.classList.add('best');hero.src=src;};
+      wrap.appendChild(img);grid.appendChild(wrap);
+    }
+  }
+}
+loadGallery();
+</script>
+</body></html>
