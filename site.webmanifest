@@ -1,0 +1,19 @@
+{
+  "name": "PELOCO",
+  "short_name": "PELOCO",
+  "description": "Da família à comunidade. Construção pública na Solana.",
+  "lang": "pt-BR",
+  "start_url": "./#/home",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071a31",
+  "theme_color": "#0a2846",
+  "icons": [
+    {
+      "src": "peloco-logo-header.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
