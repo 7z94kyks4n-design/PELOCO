@@ -935,43 +935,22 @@ h3 {
   z-index: 1;
   width: min(100%, 430px);
   aspect-ratio: 3 / 4;
-  background-image: url("peloco-official-360.webp");
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-size: 400% 200%;
-  touch-action: pan-y;
+  touch-action: pan-y pinch-zoom;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
 }
 
-.avatar-view.dragging {
-  cursor: grabbing;
+.avatar-view img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
 }
 
-.avatar-view.frame-0 {
-  background-position: 0 0;
-}
-.avatar-view.frame-1 {
-  background-position: 33.333% 0;
-}
-.avatar-view.frame-2 {
-  background-position: 66.667% 0;
-}
-.avatar-view.frame-3 {
-  background-position: 100% 0;
-}
-.avatar-view.frame-4 {
-  background-position: 0 100%;
-}
-.avatar-view.frame-5 {
-  background-position: 33.333% 100%;
-}
-.avatar-view.frame-6 {
-  background-position: 66.667% 100%;
-}
-.avatar-view.frame-7 {
-  background-position: 100% 100%;
+.avatar-view.dragging {
+  cursor: grabbing;
 }
 
 .rotate-controls {
