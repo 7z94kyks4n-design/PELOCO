@@ -1,6 +1,10 @@
 name: Update public on-chain data
 
 on:
+  push:
+    paths:
+      - ".github/workflows/update-live-data.yml"
+      - "tools/update_live_data.py"
   schedule:
     - cron: "17 * * * *"
   workflow_dispatch:

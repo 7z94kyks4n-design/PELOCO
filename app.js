@@ -1054,11 +1054,6 @@
               notation: "compact",
               maximumFractionDigits: 2,
             }).format(pumpMarketCap);
-            document.querySelectorAll('[data-market="cap"]').forEach((node) => {
-              node.textContent = cap;
-              const detail = node.closest(".stat")?.querySelector("small");
-              if (detail) detail.textContent = `Pump.fun · ${updated}`;
-            });
             const pumpSource = document.querySelector("[data-pump-source]");
             if (pumpSource)
               pumpSource.innerHTML = `${tr("Avaliação atual da Bonding Curve", "Current Bonding Curve valuation", "Valoración actual de la Bonding Curve")}: <strong>${cap}</strong> · Pump.fun · ${updated} · <a href="${links.pump}" target="_blank" rel="noopener noreferrer">${tr("verificar", "verify", "verificar")} ↗</a>`;
@@ -1173,14 +1168,8 @@
 
       async function setupMarketData() {
         const status = document.getElementById("marketStatus");
-        const resetMarket = (preservePumpCap = false) => {
+        const resetMarket = () => {
           document.querySelectorAll("[data-market]").forEach((node) => {
-            if (
-              preservePumpCap &&
-              node.dataset.market === "cap" &&
-              node.textContent !== "—"
-            )
-              return;
             node.textContent = "—";
             node.classList.remove("positive", "negative");
           });
@@ -1214,7 +1203,7 @@
                 Number(b?.volume?.h24 || 0) - Number(a?.volume?.h24 || 0),
             )[0] || null;
           if (!pair) {
-            resetMarket(true);
+            resetMarket();
             setStatus(
               tr(
                 "Nenhum par DEX confirmado. Preço, liquidez, volume e variação permanecem indisponíveis; a avaliação da Bonding Curve é exibida separadamente quando o snapshot da Pump.fun está atual.",
@@ -1276,7 +1265,7 @@
             ),
           );
         } catch {
-          resetMarket(true);
+          resetMarket();
           setStatus(
             tr(
               "Dados temporariamente indisponíveis. Verifique diretamente no DexScreener.",
