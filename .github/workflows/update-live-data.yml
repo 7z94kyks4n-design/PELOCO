@@ -1,0 +1,30 @@
+name: Update public on-chain data
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: peloco-live-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query Solana and DexScreener
+        run: python3 tools/update_live_data.py
+      - name: Publish timestamped snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/live.json data/history.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update public on-chain data"
+          git push

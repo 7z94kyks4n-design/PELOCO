@@ -4,25 +4,24 @@
         "BGAmHnySzhRd25ikw7Xpgf2P3DJuHJhaU79tuucgkTmG",
         "2BvMhRQS3bghmgJav8sbnGXfh1UqcKwrJPTPAaRSHrEk",
       ];
-      const CREATOR = CREATOR_WALLETS[1];
+      const CREATOR_ADDRESS = "BGAmHnySzhRd25ikw7Xpgf2P3DJuHJhaU79tuucgkTmG";
       const CURVE = "CjesdxRmP3ncNpnSzLxabPw3AAiVts2HEKH7i3nbK262";
       const links = {
-        pump: "https://join.pump.fun/HSag/bzak5fc",
+        pump: "https://pump.fun/coin/" + TOKEN,
         dex: "https://dexscreener.com/solana/" + TOKEN,
         token: "https://solscan.io/token/" + TOKEN,
-        creator: "https://solscan.io/account/" + CREATOR,
+        creator: "https://solscan.io/account/" + CREATOR_ADDRESS,
         curve: "https://solscan.io/account/" + CURVE,
-        binance: "https://web3.binance.com/en/",
+        binance:
+          "https://app.binance.com/uni-qr/web3-token-details?utm_medium=share&tokenCA=" +
+          TOKEN +
+          "&binanceChainId=CT_501&chain=sol",
       };
       const images = [
         "10EBDDE5-6EFC-42A9-8C39-8ADF569518FC_6AF52B24-1924-4FE1-B6BF-E5B06A9C6182.jpeg",
         "37C68752-7929-47C6-B080-F33EDFA8AE2B_4F0AB4BE-8861-48A3-823C-5DEECA4E7DE6.jpeg",
         "4D3348E3-6B5E-4FF7-8256-31750DCAA853_E1EAD1A2-36FD-4883-941B-12DF49912FDC.jpeg",
         "61B5FB93-6FF4-45FE-9BB8-EEBF14E950A0_E4A9C9AF-06F7-4953-BE19-4FDEDDF4F293.jpeg",
-        "62DC19DB-506C-4D16-B883-F02C547E6795_B469795E-B7A8-43EE-9EE5-9FF1D378B4E6.jpeg",
-        "75E23C7C-017B-41A7-8DE7-DC8B355FA942_F3386D0D-81B6-4D65-80AA-337C3CC6CEE5.jpeg",
-        "7B749770-48D0-47FC-B320-05D662DA5B63_E2DEACD4-8A45-49B2-ACDA-CA0F70B2914C.jpeg",
-        "96340E40-7BE1-4B0A-91DE-8DDE83E442FB_1BAAED1C-50CB-4310-B109-6F64052E47C0.jpeg",
         "A33563E8-3A9F-4A8B-9E9E-330255DCB047_C369DCE9-325A-4493-B95D-48137FE69CD4.jpeg",
         "A6A72B13-752A-49F9-B75A-9F1D53F88CE2_C811238D-81A6-4766-AFD8-4936F5C7AE40.jpeg",
         "AC9D9DDC-22D7-4424-8A0F-1A25B58981AC_79434228-D26C-423F-904B-DCB309DBAE45.jpeg",
@@ -118,6 +117,8 @@
         savedLang = localStorage.getItem("peloco-lang") || "pt";
       } catch {}
       let lang = supportedLangs.includes(savedLang) ? savedLang : "pt";
+      let marketTimer = null;
+      let liveDataTimer = null;
       const tr = (pt, en, es) => ({ pt, en, es })[lang];
       const shell = (x) =>
         `<section class="page"><div class="shell">${x}</div></section>`;
@@ -225,7 +226,7 @@
           ],
           [
             "O CRIADOR E SUAS HOLDINGS",
-            "O PELOCO está distribuído em três carteiras declaradas do criador. A participação agregada atual só será publicada após confirmação on-chain com data e fonte. Permanecer abaixo de 5%, alcançar 4,8%–4,9% e realizar um lock de dois anos são planos ainda não implementados.",
+            "O PELOCO está distribuído em três carteiras declaradas. Como os saldos mudam, a participação agregada atual deve ser consultada no snapshot on-chain datado da página Transparência. Permanecer abaixo de 5%, alcançar 4,8%–4,9% e realizar um lock de dois anos são planos ainda não implementados.",
           ],
           [
             "CREATOR FEES E REINVESTIMENTO",
@@ -285,7 +286,7 @@
           ],
           [
             "RESUMO DOS PRINCIPAIS COMPROMISSOS",
-            "Supply total de 1 bilhão e três carteiras declaradas existentes; participação agregada pendente de confirmação; limites, lock e Public Reserve identificados como planejados.",
+            "Supply total de 1 bilhão e três carteiras declaradas existentes; participação agregada publicada como dado dinâmico e datado; limites, lock e Public Reserve identificados como planejados.",
           ],
           [
             "A REGRA",
@@ -327,7 +328,7 @@
           ],
           [
             "THE CREATOR AND THEIR HOLDINGS",
-            "PELOCO is held across three declared creator wallets. The current aggregate share will only be published after on-chain confirmation with a date and source. Staying below 5%, reaching 4.8%–4.9%, and a two-year lock are plans, not active mechanisms.",
+            "PELOCO is held across three declared wallets. Because balances change, the current aggregate share must be checked in the dated on-chain snapshot on the Transparency page. Staying below 5%, reaching 4.8%–4.9%, and a two-year lock are plans, not active mechanisms.",
           ],
           [
             "CREATOR FEES AND REINVESTMENT",
@@ -387,7 +388,7 @@
           ],
           [
             "SUMMARY OF KEY COMMITMENTS",
-            "An existing Total Supply of 1 billion and three declared wallets; aggregate position pending confirmation; limits, lock, and Public Reserve identified as planned.",
+            "An existing Total Supply of 1 billion and three declared wallets; aggregate position published as dated dynamic data; limits, lock, and Public Reserve identified as planned.",
           ],
           [
             "THE RULE",
@@ -429,7 +430,7 @@
           ],
           [
             "EL CREADOR Y SUS HOLDINGS",
-            "PELOCO está distribuido en tres carteras declaradas del creador. La participación agregada actual solo se publicará tras confirmación on-chain con fecha y fuente. Mantenerse por debajo del 5%, alcanzar entre 4,8% y 4,9% y realizar un bloqueo de dos años son planes aún no implementados.",
+            "PELOCO está distribuido en tres carteras declaradas. Como los saldos cambian, la participación agregada actual debe consultarse en la captura on-chain fechada de la página Transparencia. Mantenerse por debajo del 5%, alcanzar entre 4,8% y 4,9% y realizar un bloqueo de dos años son planes aún no implementados.",
           ],
           [
             "CREATOR FEES Y REINVERSIÓN",
@@ -489,7 +490,7 @@
           ],
           [
             "RESUMEN DE LOS PRINCIPALES COMPROMISOS",
-            "Supply total de mil millones y tres carteras declaradas existentes; posición agregada pendiente de confirmación; límites, bloqueo y Public Reserve identificados como planificados.",
+            "Supply total de mil millones y tres carteras declaradas existentes; posición agregada publicada como dato dinámico y fechado; límites, bloqueo y Public Reserve identificados como planificados.",
           ],
           [
             "LA REGLA",
@@ -553,7 +554,7 @@
           },
         }[lang];
         const pdfActions = (file, viewLabel, downloadLabel) =>
-          `<div class="pdf-actions"><a class="btn primary" href="${file}" target="_blank" rel="noopener noreferrer">${viewLabel} ↗</a><a class="btn" href="${file}" download="${file}">${downloadLabel} ↓</a></div>`;
+          `<div class="pdf-actions"><a class="btn primary" href="${file}?v=20260907-2" target="_blank" rel="noopener noreferrer">${viewLabel} ↗</a><a class="btn" href="${file}?v=20260907-2" download="${file}">${downloadLabel} ↓</a></div>`;
         return shell(
           head(
             tr("Manifesto", "Manifesto", "Manifiesto"),
@@ -564,7 +565,13 @@
         );
       }
       function marketPanel() {
-        return `<section class="market-live" aria-labelledby="marketTitle"><div class="market-live-head"><h3 id="marketTitle">${tr("Dados de mercado", "Market data", "Datos de mercado")}</h3><a class="market-source" href="${links.dex}" target="_blank" rel="noopener noreferrer">${tr("Fonte pública: DexScreener", "Public source: DexScreener", "Fuente pública: DexScreener")} ↗</a></div><div class="market-grid"><div class="market-item"><strong data-market="price">—</strong><span>${tr("Preço em USD", "Price in USD", "Precio en USD")}</span></div><div class="market-item"><strong data-market="cap">—</strong><span>Market Cap</span></div><div class="market-item"><strong data-market="liquidity">—</strong><span>${tr("Liquidez", "Liquidity", "Liquidez")}</span></div><div class="market-item"><strong data-market="change">—</strong><span>${tr("Variação em 24h", "24h change", "Variación en 24h")}</span></div></div><p class="market-status" id="marketStatus" role="status" aria-live="polite">${tr("Carregando dados públicos…", "Loading public data…", "Cargando datos públicos…")}</p></section>`;
+        return `<section class="market-live" aria-labelledby="marketTitle"><div class="market-live-head"><h3 id="marketTitle">${tr("Dados de mercado", "Market data", "Datos de mercado")}</h3><a class="market-source" href="${links.dex}" target="_blank" rel="noopener noreferrer">${tr("Fonte pública: DexScreener", "Public source: DexScreener", "Fuente pública: DexScreener")} ↗</a></div><div class="market-grid"><div class="market-item"><strong data-market="price">—</strong><span>${tr("Preço em USD", "Price in USD", "Precio en USD")}</span></div><div class="market-item"><strong data-market="cap">—</strong><span>Market Cap</span></div><div class="market-item"><strong data-market="liquidity">—</strong><span>${tr("Liquidez", "Liquidity", "Liquidez")}</span></div><div class="market-item"><strong data-market="change">—</strong><span>${tr("Variação em 24h", "24h change", "Variación en 24h")}</span></div><div class="market-item"><strong data-market="volume">—</strong><span>${tr("Volume em 24h", "24h volume", "Volumen en 24h")}</span></div></div><p class="market-status" data-pump-source>${tr("Avaliação da Bonding Curve: aguardando snapshot da Pump.fun…", "Bonding Curve valuation: waiting for the Pump.fun snapshot…", "Valoración de la Bonding Curve: esperando la captura de Pump.fun…")}</p><p class="market-status" id="marketStatus" role="status" aria-live="polite">${tr("Carregando dados públicos…", "Loading public data…", "Cargando datos públicos…")}</p></section>`;
+      }
+      function creatorHoldingsPanel() {
+        return `<section class="technical-data creator-holdings" aria-labelledby="creatorHoldingsTitle"><span class="eyebrow">${tr("Holdings declaradas", "Declared holdings", "Holdings declaradas")}</span><h3 id="creatorHoldingsTitle">${tr("Três carteiras declaradas", "Three declared wallets", "Tres carteras declaradas")}</h3><p class="muted">${tr("Saldos calculados on-chain. Estas carteiras declaradas não são automaticamente o Creator Address do token.", "Balances calculated on-chain. These declared wallets are not automatically the token Creator Address.", "Saldos calculados on-chain. Estas carteras declaradas no son automáticamente el Creator Address del token.")}</p><p class="market-status" data-bonding-status>${tr("Status da Bonding Curve: consultando a Pump.fun…", "Bonding Curve status: checking Pump.fun…", "Estado de la Bonding Curve: consultando Pump.fun…")}</p><div class="market-grid">${CREATOR_WALLETS.map((wallet, index) => `<div class="market-item"><strong data-creator-balance="${index}">—</strong><span>${tr("Carteira declarada", "Declared wallet", "Cartera declarada")} ${index + 1}</span></div>`).join("")}<div class="market-item"><strong data-creator-aggregate>—</strong><span>${tr("Total agregado confirmado", "Confirmed aggregate total", "Total agregado confirmado")}</span></div></div><p class="market-status" data-creator-status>${tr("Consultando o snapshot on-chain…", "Checking the on-chain snapshot…", "Consultando la captura on-chain…")}</p></section>`;
+      }
+      function holdersHistoryPanel() {
+        return `<section class="market-live holders-history" aria-labelledby="holdersHistoryTitle"><div class="market-live-head"><h3 id="holdersHistoryTitle">${tr("Histórico de holders", "Holder history", "Historial de holders")}</h3><span class="market-source">7D · ${tr("Fonte on-chain", "On-chain source", "Fuente on-chain")}</span></div><div id="holdersHistory" class="history-plot" role="img" aria-label="${tr("Gráfico do histórico real de holders", "Chart of real holder history", "Gráfico del historial real de holders")}"><p class="market-status">${tr("Coleta de snapshots reais iniciada. O gráfico aparecerá após três registros.", "Collection of real snapshots has started. The chart will appear after three records.", "La recopilación de capturas reales ha comenzado. El gráfico aparecerá después de tres registros.")}</p></div></section>`;
       }
       function transparency() {
         return shell(
@@ -581,7 +588,7 @@
               "Los datos siguientes son referencias públicas del proyecto. Los datos actuales, la información técnica y los planes están claramente separados.",
             ),
           ) +
-            `<div class="stats"><div class="stat"><strong>Solana</strong><span>${tr("Rede", "Network", "Red")}</span></div><div class="stat"><strong>1B PELOCO</strong><span>${tr("Supply total", "Total Supply", "Supply total")}</span></div><div class="stat"><strong data-holders>—</strong><span>${tr("Holders atuais", "Current Holders", "Holders actuales")}</span><small>${tr("Fonte on-chain em validação", "On-chain source under validation", "Fuente on-chain en validación")}</small></div><div class="stat"><strong data-market="cap">—</strong><span>Market Cap</span><small>DexScreener</small></div></div><div class="grid">${card("", tr("Existe hoje", "Exists today", "Existe hoy"), tr("Token identificável on-chain, supply total definido, presença pública, comunidade inicial e três carteiras declaradas do criador.", "On-chain identifiable token, defined total supply, public presence, initial community, and three declared creator wallets.", "Token identificable on-chain, supply total definido, presencia pública, comunidad inicial y tres carteras declaradas del creador."), status("exists", "EXISTE HOJE", "EXISTS TODAY", "EXISTE HOY"))}${card("", tr("Em construção", "Being built", "En construcción"), tr("Identidade, comunidade, documentação, histórico e estrutura pública de acompanhamento.", "Identity, community, documentation, track record, and a public tracking structure.", "Identidad, comunidad, documentación, historial y una estructura pública de seguimiento."), status("building", "EM CONSTRUÇÃO", "BEING BUILT", "EN CONSTRUCCIÓN"))}${card("", tr("Planejado — ainda não implementado", "Planned — not yet implemented", "Planificado — aún no implementado"), tr("Metas futuras: holdings agregadas do criador abaixo de 5%, lock de 2 anos e Public Reserve abaixo de 6%. Os mecanismos ainda serão divulgados e verificados.", "Future goals: aggregate creator holdings below 5%, a 2-year lock, and a Public Reserve below 6%. The mechanisms are yet to be disclosed and verified.", "Metas futuras: holdings agregadas del creador por debajo del 5%, bloqueo de 2 años y Public Reserve por debajo del 6%. Los mecanismos aún deberán publicarse y verificarse."), status("planned", "PLANEJADO", "PLANNED", "PLANIFICADO"))}</div>${marketPanel()}<section class="technical-data"><span class="eyebrow">${tr("Dados técnicos", "Technical data", "Datos técnicos")}</span><div class="data-row"><strong>${tr("Endereço do token", "Token address", "Dirección del token")}</strong><code>${TOKEN}</code><a class="btn" href="${links.token}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div><div class="data-row"><strong>Bonding curve</strong><code>${CURVE}</code><a class="btn" href="${links.curve}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div></section>`,
+            `<div class="stats"><div class="stat"><strong>Solana</strong><span>${tr("Rede", "Network", "Red")}</span></div><div class="stat"><strong>1B PELOCO</strong><span>${tr("Supply total", "Total Supply", "Supply total")}</span></div><div class="stat"><strong data-holders>—</strong><span>${tr("Holders atuais", "Current Holders", "Holders actuales")}</span><small>${tr("Fonte on-chain em validação", "On-chain source under validation", "Fuente on-chain en validación")}</small></div><div class="stat"><strong data-market="cap">—</strong><span>Market Cap</span><small>DexScreener</small></div></div><div class="grid">${card("", tr("Existe hoje", "Exists today", "Existe hoy"), tr("Token identificável on-chain, supply total definido, presença pública, comunidade inicial e três carteiras declaradas do criador.", "On-chain identifiable token, defined total supply, public presence, initial community, and three declared creator wallets.", "Token identificable on-chain, supply total definido, presencia pública, comunidad inicial y tres carteras declaradas del creador."), status("exists", "EXISTE HOJE", "EXISTS TODAY", "EXISTE HOY"))}${card("", tr("Em construção", "Being built", "En construcción"), tr("Identidade, comunidade, documentação, histórico e estrutura pública de acompanhamento.", "Identity, community, documentation, track record, and a public tracking structure.", "Identidad, comunidad, documentación, historial y una estructura pública de seguimiento."), status("building", "EM CONSTRUÇÃO", "BEING BUILT", "EN CONSTRUCCIÓN"))}${card("", tr("Planejado — ainda não implementado", "Planned — not yet implemented", "Planificado — aún no implementado"), tr("Metas futuras: holdings agregadas do criador abaixo de 5%, lock de 2 anos e Public Reserve abaixo de 6%. Os mecanismos ainda serão divulgados e verificados.", "Future goals: aggregate creator holdings below 5%, a 2-year lock, and a Public Reserve below 6%. The mechanisms are yet to be disclosed and verified.", "Metas futuras: holdings agregadas del creador por debajo del 5%, bloqueo de 2 años y Public Reserve por debajo del 6%. Los mecanismos aún deberán publicarse y verificarse."), status("planned", "PLANEJADO", "PLANNED", "PLANIFICADO"))}</div>${marketPanel()}${creatorHoldingsPanel()}${holdersHistoryPanel()}<section class="technical-data"><span class="eyebrow">${tr("Dados técnicos", "Technical data", "Datos técnicos")}</span><div class="data-row"><strong>${tr("Endereço do token", "Token address", "Dirección del token")}</strong><code>${TOKEN}</code><a class="btn" href="${links.token}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div><div class="data-row"><strong>Bonding curve</strong><code>${CURVE}</code><a class="btn" href="${links.curve}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div></section>`,
         );
       }
       function building() {
@@ -636,7 +643,7 @@
         const label = tr("Copiar", "Copy", "Copiar");
         const walletRows = CREATOR_WALLETS.map(
           (wallet, index) =>
-            `<div class="data-row"><strong>${tr("Carteira do criador", "Creator wallet", "Cartera del creador")} ${index + 1}</strong><code>${wallet}</code><span class="wallet-actions"><button class="btn copy" data-copy="${wallet}">${label}</button><a class="btn" href="https://solscan.io/account/${wallet}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></span></div>`,
+            `<div class="data-row"><strong>${tr("Carteira declarada", "Declared holdings wallet", "Cartera declarada")} ${index + 1}</strong><code>${wallet}</code><span class="wallet-actions"><button class="btn copy" data-copy="${wallet}">${label}</button><a class="btn" href="https://solscan.io/account/${wallet}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></span></div>`,
         ).join("");
         return shell(
           head(
@@ -656,7 +663,7 @@
               "Utiliza las direcciones y enlaces oficiales. Compruébalos siempre antes de cualquier interacción.",
             ),
           ) +
-            `<div class="card"><div class="data-row"><strong>Token</strong><code>${TOKEN}</code><button class="btn copy" data-copy="${TOKEN}">${label}</button></div>${walletRows}<div class="data-row"><strong>Bonding curve</strong><code>${CURVE}</code><a class="btn" href="${links.curve}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div></div><p class="build-note">${tr("As três carteiras são apresentadas separadamente para permitir verificação pública. O percentual agregado só será atualizado após confirmação on-chain.", "The three wallets are shown separately for public verification. The aggregated percentage will only be updated after on-chain confirmation.", "Las tres carteras se muestran por separado para permitir su verificación pública. El porcentaje agregado solo se actualizará después de la confirmación on-chain.")}</p><div class="link-list verify-links">${[
+            `<div class="card"><div class="data-row"><strong>Token</strong><code>${TOKEN}</code><button class="btn copy" data-copy="${TOKEN}">${label}</button></div><div class="data-row"><strong>Creator Address</strong><code>${CREATOR_ADDRESS}</code><span class="wallet-actions"><button class="btn copy" data-copy="${CREATOR_ADDRESS}">${label}</button><a class="btn" href="${links.creator}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></span></div>${walletRows}<div class="data-row"><strong>Bonding curve</strong><code>${CURVE}</code><a class="btn" href="${links.curve}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div></div><p class="build-note">${tr("As três carteiras são apresentadas separadamente. Os saldos e o percentual agregado são calculados no snapshot on-chain datado da página Transparência.", "The three wallets are shown separately. Their balances and aggregate percentage are calculated in the dated on-chain snapshot on the Transparency page.", "Las tres carteras se muestran por separado. Sus saldos y el porcentaje agregado se calculan en la captura on-chain fechada de la página Transparencia.")}</p><div class="link-list verify-links">${[
               ["Pump.fun", links.pump],
               ["DexScreener", links.dex],
               ["Solscan — Token", links.token],
@@ -675,19 +682,19 @@
       function updates() {
         const events = {
           pt: [
-            ["DIA 1", "LANÇAMENTO"],
-            ["DIA 4", "PEQUENOS PASSOS"],
-            ["DIA 6", "REGISTRO PÚBLICO"],
+            ["DIA 1", "LANÇAMENTO", "Marco inicial registrado."],
+            ["DIA 4", "PEQUENOS PASSOS", "Evolução inicial registrada."],
+            ["DIA 6", "REGISTRO PÚBLICO", "Início da documentação pública."],
           ],
           en: [
-            ["DAY 1", "LAUNCH"],
-            ["DAY 4", "SMALL STEPS"],
-            ["DAY 6", "PUBLIC SNAPSHOT"],
+            ["DAY 1", "LAUNCH", "Initial milestone recorded."],
+            ["DAY 4", "SMALL STEPS", "Early progress recorded."],
+            ["DAY 6", "PUBLIC RECORD", "Public documentation began."],
           ],
           es: [
-            ["DÍA 1", "LANZAMIENTO"],
-            ["DÍA 4", "PEQUEÑOS PASOS"],
-            ["DÍA 6", "REGISTRO PÚBLICO"],
+            ["DÍA 1", "LANZAMIENTO", "Hito inicial registrado."],
+            ["DÍA 4", "PEQUEÑOS PASOS", "Progreso inicial registrado."],
+            ["DÍA 6", "REGISTRO PÚBLICO", "Inicio de la documentación pública."],
           ],
         }[lang];
         return shell(
@@ -704,7 +711,7 @@
               "Solo acontecimientos registrados. Sin llenar vacíos con eventos inventados.",
             ),
           ) +
-            `<div class="timeline">${events.map((x) => `<article class="card event"><div class="number">${x[0]}</div><h3>${x[1]}</h3></article>`).join("")}</div>`,
+            `<div class="timeline">${events.map((x) => `<article class="card event"><div class="number">${x[0]}</div><h3>${x[1]}</h3><p class="muted">${x[2]}</p></article>`).join("")}</div><p class="build-note">${tr("O histórico não preenche dias sem registro. Novos marcos e detalhes só serão acrescentados quando houver informação real e verificável.", "The history does not fill unrecorded days. New milestones and details will be added only when real, verifiable information exists.", "El historial no rellena días sin registro. Solo se añadirán nuevos hitos y detalles cuando exista información real y verificable.")}</p>`,
         );
       }
       function flock() {
@@ -754,7 +761,7 @@
         }[lang];
         return shell(
           head("FLOCK • AVATAR STUDIO", t.title, t.lead) +
-            `<div class="flock-studio"><div class="avatar-stage"><div class="avatar-view" id="avatarView" role="img" aria-label="PELOCO 360°" tabindex="0"><img id="avatarFrame" src="peloco-360-0.webp" alt="" draggable="false" decoding="async" width="384" height="512"></div><div class="rotate-controls"><button type="button" id="rotateLeft" aria-label="${tr("Girar para a esquerda", "Rotate left", "Girar a la izquierda")}">←</button><span class="rotate-hint">↔ ${t.hint}</span><button type="button" id="rotateRight" aria-label="${tr("Girar para a direita", "Rotate right", "Girar a la derecha")}">→</button></div></div><div class="studio-panel"><section class="studio-card"><span class="eyebrow">360°</span><h3>${t.choose}</h3><div class="choice-grid"><button class="avatar-choice active" type="button"><strong>🐣 ${t.base}</strong><span>${t.ready}</span></button><button class="avatar-choice" type="button" disabled><strong>🩺 ${t.doctor}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏗️ ${t.builder}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏄 ${t.surfer}</strong><span>${t.soon}</span></button></div><p class="build-note">${tr("Cada roupa será criada sobre o mesmo avatar oficial e validada em todos os ângulos antes de ser liberada.", "Every outfit will use the same official avatar and be validated from every angle before release.", "Cada traje se creará sobre el mismo avatar oficial y se validará desde todos los ángulos antes de su lanzamiento.")}</p></section><section class="studio-card"><span class="eyebrow">${t.gestures}</span><img class="expression-sheet" src="peloco-expressions.webp" alt="${tr("PELOCO em oito gestos e emoções oficiais", "PELOCO in eight official gestures and emotions", "PELOCO en ocho gestos y emociones oficiales")}" loading="lazy" decoding="async" width="1536" height="1024"></section></div></div><div class="section-head"><span class="eyebrow">${t.gallery}</span><h2>${tr("Ele pode ser tudo o que quiser.", "He can be anything he wants.", "Puede ser todo lo que quiera.")}</h2></div><div class="gallery">${images.map((src, i) => `<figure><img src="${src}" loading="lazy" decoding="async" alt="PELOCO FLOCK — ${tr("arte", "art", "arte")} ${i + 1}"></figure>`).join("")}</div>`,
+            `<div class="flock-studio"><div class="avatar-stage"><div class="avatar-view" id="avatarView" role="img" aria-label="PELOCO 360°" tabindex="0"><img id="avatarFrame" src="peloco-360-v2-0.webp" alt="" draggable="false" decoding="async" width="384" height="512"></div><div class="rotate-controls"><button type="button" id="rotateLeft" aria-label="${tr("Girar para a esquerda", "Rotate left", "Girar a la izquierda")}">←</button><span class="rotate-hint">↔ ${t.hint}</span><button type="button" id="rotateRight" aria-label="${tr("Girar para a direita", "Rotate right", "Girar a la derecha")}">→</button></div></div><div class="studio-panel"><section class="studio-card"><span class="eyebrow">360°</span><h3>${t.choose}</h3><div class="choice-grid"><button class="avatar-choice active" type="button"><strong>🐣 ${t.base}</strong><span>${t.ready}</span></button><button class="avatar-choice" type="button" disabled><strong>🩺 ${t.doctor}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏗️ ${t.builder}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏄 ${t.surfer}</strong><span>${t.soon}</span></button></div><p class="build-note">${tr("Cada roupa será criada sobre o mesmo avatar oficial e validada em todos os ângulos antes de ser liberada.", "Every outfit will use the same official avatar and be validated from every angle before release.", "Cada traje se creará sobre el mismo avatar oficial y se validará desde todos los ángulos antes de su lanzamiento.")}</p></section><section class="studio-card"><span class="eyebrow">${t.gestures}</span><img class="expression-sheet" src="peloco-expressions.webp" alt="${tr("PELOCO em oito gestos e emoções oficiais", "PELOCO in eight official gestures and emotions", "PELOCO en ocho gestos y emociones oficiales")}" loading="lazy" decoding="async" width="1536" height="1024"></section></div></div><div class="section-head"><span class="eyebrow">${t.gallery}</span><h2>${tr("Ele pode ser tudo o que quiser.", "He can be anything he wants.", "Puede ser todo lo que quiera.")}</h2></div><div class="gallery">${images.map((src, i) => `<figure><img src="${src}" loading="lazy" decoding="async" alt="PELOCO FLOCK — ${tr("arte", "art", "arte")} ${i + 1}"></figure>`).join("")}</div>`,
         );
       }
       function community() {
@@ -772,7 +779,7 @@
               "Cada persona es libre de analizar, cuestionar, acompañar, participar o no participar.",
             ),
           ) +
-            `<div class="grid">${card("01", tr("Liberdade", "Freedom", "Libertad"), tr("Sem pressão e sem confiança cega. Cada decisão é individual.", "No pressure and no blind trust. Every decision is individual.", "Sin presión y sin confianza ciega. Cada decisión es individual."))}${card("02", tr("Verdade", "Truth", "Verdad"), tr("Não fabricamos atividade, volume, engajamento ou comunidade.", "We do not manufacture activity, volume, engagement, or community.", "No fabricamos actividad, volumen, interacción o comunidad."))}${card("03", tr("Participação real", "Real participation", "Participación real"), tr("Preferimos uma comunidade pequena e verdadeira a uma grande e artificial.", "We prefer a small, real community to a large, artificial one.", "Preferimos una comunidad pequeña y auténtica a una grande y artificial."))}</div><div class="actions"><a class="btn primary" href="https://t.me/pelococoin" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a class="btn" href="https://discord.gg/wnXxWjftUZ" target="_blank" rel="noopener noreferrer">Discord ↗</a><a class="btn" href="https://x.com/PelocoCoin" target="_blank" rel="noopener noreferrer">X ↗</a></div>`,
+            `<div class="grid">${card("01", tr("Liberdade", "Freedom", "Libertad"), tr("Sem pressão e sem confiança cega. Cada decisão é individual.", "No pressure and no blind trust. Every decision is individual.", "Sin presión y sin confianza ciega. Cada decisión es individual."))}${card("02", tr("Verdade", "Truth", "Verdad"), tr("Não fabricamos atividade, volume, engajamento ou comunidade.", "We do not manufacture activity, volume, engagement, or community.", "No fabricamos actividad, volumen, interacción o comunidad."))}${card("03", tr("Participação real", "Real participation", "Participación real"), tr("Preferimos uma comunidade pequena e verdadeira a uma grande e artificial.", "We prefer a small, real community to a large, artificial one.", "Preferimos una comunidad pequeña y auténtica a una grande y artificial."))}</div><div class="actions"><a class="btn primary" href="https://t.me/pelocochat" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a class="btn" href="https://discord.gg/wnXxWjftUZ" target="_blank" rel="noopener noreferrer">Discord ↗</a><a class="btn" href="https://x.com/PelocoCoin" target="_blank" rel="noopener noreferrer">X ↗</a></div>`,
         );
       }
       function vision() {
@@ -930,8 +937,251 @@
           "Saltar al contenido",
         );
       }
+      async function setupHolderHistory() {
+        const host = document.getElementById("holdersHistory");
+        if (!host) return;
+        try {
+          const response = await fetch(`data/history.json?t=${Date.now()}`, {
+            cache: "no-store",
+            referrerPolicy: "no-referrer",
+          });
+          if (!response.ok) throw new Error("history response");
+          const history = await response.json();
+          const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+          const points = Array.isArray(history?.snapshots)
+            ? history.snapshots
+                .map((item) => ({
+                  time: new Date(item?.checkedAt).getTime(),
+                  value: Number(item?.holders),
+                }))
+                .filter(
+                  (item) =>
+                    Number.isFinite(item.time) &&
+                    item.time >= cutoff &&
+                    Number.isInteger(item.value) &&
+                    item.value >= 0,
+                )
+            : [];
+          if (points.length < 3) return;
+          const minTime = Math.min(...points.map((item) => item.time));
+          const maxTime = Math.max(...points.map((item) => item.time));
+          const minValue = Math.min(...points.map((item) => item.value));
+          const maxValue = Math.max(...points.map((item) => item.value));
+          const timeRange = Math.max(1, maxTime - minTime);
+          const valueRange = Math.max(1, maxValue - minValue);
+          const coordinates = points
+            .map((item) => {
+              const x = 42 + ((item.time - minTime) / timeRange) * 516;
+              const y = 166 - ((item.value - minValue) / valueRange) * 126;
+              return `${x.toFixed(1)},${y.toFixed(1)}`;
+            })
+            .join(" ");
+          const locale = { pt: "pt-BR", en: "en-US", es: "es-ES" }[lang];
+          const firstDate = new Intl.DateTimeFormat(locale, {
+            dateStyle: "short",
+            timeStyle: "short",
+          }).format(new Date(minTime));
+          const lastDate = new Intl.DateTimeFormat(locale, {
+            dateStyle: "short",
+            timeStyle: "short",
+          }).format(new Date(maxTime));
+          host.innerHTML = `<svg viewBox="0 0 600 210" aria-hidden="true" focusable="false"><line x1="42" y1="166" x2="558" y2="166"></line><polyline points="${coordinates}"></polyline><text x="42" y="194">${firstDate}</text><text x="558" y="194" text-anchor="end">${lastDate}</text><text x="42" y="28">${maxValue.toLocaleString(locale)}</text><text x="42" y="158">${minValue.toLocaleString(locale)}</text></svg><p class="market-status">${tr(`Último valor: ${points.at(-1).value.toLocaleString(locale)} holders · ${points.length} snapshots reais.`, `Latest value: ${points.at(-1).value.toLocaleString(locale)} holders · ${points.length} real snapshots.`, `Último valor: ${points.at(-1).value.toLocaleString(locale)} holders · ${points.length} capturas reales.`)}</p>`;
+        } catch {
+          host.innerHTML = `<p class="market-status">${tr("Histórico temporariamente indisponível.", "History temporarily unavailable.", "Historial temporalmente no disponible.")}</p>`;
+        }
+      }
+
+      async function setupLiveData() {
+        const holderNodes = document.querySelectorAll("[data-holders]");
+        if (!holderNodes.length) return;
+        const setHolderText = (value) =>
+          holderNodes.forEach((node) => {
+            node.textContent = value;
+          });
+        const setHolderDetails = (source, message) => {
+          holderNodes.forEach((node) => {
+            const card = node.closest(".stat");
+            const detail = card?.querySelector("small");
+            if (detail) detail.textContent = source;
+          });
+          document.querySelectorAll(".stats-note").forEach((node) => {
+            if (node.closest("main")) node.textContent = message;
+          });
+        };
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 8000);
+        try {
+          const response = await fetch(`data/live.json?t=${Date.now()}`, {
+            cache: "no-store",
+            referrerPolicy: "no-referrer",
+            signal: controller.signal,
+          });
+          if (!response.ok) throw new Error("snapshot response");
+          const snapshot = await response.json();
+          const checkedAt = new Date(snapshot?.checkedAt);
+          const age = Date.now() - checkedAt.getTime();
+          const holders = Number(snapshot?.onChain?.uniquePositiveOwners);
+          const valid =
+            snapshot?.mint === TOKEN &&
+            Number.isInteger(holders) &&
+            holders >= 0 &&
+            Number.isFinite(age) &&
+            age >= 0 &&
+            age <= 3 * 60 * 60 * 1000;
+          if (!valid) throw new Error("stale snapshot");
+          const locale = { pt: "pt-BR", en: "en-US", es: "es-ES" }[lang];
+          const updated = new Intl.DateTimeFormat(locale, {
+            dateStyle: "short",
+            timeStyle: "short",
+            timeZone: "UTC",
+          }).format(checkedAt);
+          setHolderText(holders.toLocaleString(locale));
+          const pump = snapshot?.pumpFun;
+          const pumpMarketCap = Number(pump?.marketCapUsd);
+          const pumpIsVerified =
+            pump?.creatorAddress === CREATOR_ADDRESS &&
+            pump?.bondingCurve === CURVE &&
+            pump?.migrationComplete === false &&
+            Number.isFinite(pumpMarketCap) &&
+            pumpMarketCap > 0;
+          if (pumpIsVerified) {
+            const cap = new Intl.NumberFormat(locale, {
+              style: "currency",
+              currency: "USD",
+              notation: "compact",
+              maximumFractionDigits: 2,
+            }).format(pumpMarketCap);
+            document.querySelectorAll('[data-market="cap"]').forEach((node) => {
+              node.textContent = cap;
+              const detail = node.closest(".stat")?.querySelector("small");
+              if (detail) detail.textContent = `Pump.fun · ${updated} UTC`;
+            });
+            const pumpSource = document.querySelector("[data-pump-source]");
+            if (pumpSource)
+              pumpSource.innerHTML = `${tr("Avaliação atual da Bonding Curve", "Current Bonding Curve valuation", "Valoración actual de la Bonding Curve")}: <strong>${cap}</strong> · Pump.fun · ${updated} UTC · <a href="${links.pump}" target="_blank" rel="noopener noreferrer">${tr("verificar", "verify", "verificar")} ↗</a>`;
+            const bondingStatus = document.querySelector(
+              "[data-bonding-status]",
+            );
+            if (bondingStatus)
+              bondingStatus.textContent = tr(
+                `Bonding Curve em andamento; migração para DEX ainda não concluída. Fonte: Pump.fun · ${updated} UTC.`,
+                `Bonding Curve in progress; DEX migration not yet complete. Source: Pump.fun · ${updated} UTC.`,
+                `Bonding Curve en curso; la migración a DEX aún no se ha completado. Fuente: Pump.fun · ${updated} UTC.`,
+              );
+          }
+          const declared = snapshot?.onChain?.declaredWallets;
+          const aggregate = snapshot?.onChain?.declaredAggregate;
+          if (
+            Array.isArray(declared) &&
+            declared.length === CREATOR_WALLETS.length &&
+            declared.every(
+              (item, index) =>
+                item?.address === CREATOR_WALLETS[index] &&
+                Number.isFinite(Number(item?.balance)) &&
+                Number.isFinite(Number(item?.sharePercent)),
+            )
+          ) {
+            declared.forEach((item, index) => {
+              const node = document.querySelector(
+                `[data-creator-balance="${index}"]`,
+              );
+              if (node)
+                node.textContent = `${Number(item.balance).toLocaleString(locale, { maximumFractionDigits: 2 })} PELOCO · ${Number(item.sharePercent).toLocaleString(locale, { maximumFractionDigits: 4 })}%`;
+            });
+            const aggregateNode = document.querySelector(
+              "[data-creator-aggregate]",
+            );
+            if (aggregateNode && aggregate)
+              aggregateNode.textContent = `${Number(aggregate.balance).toLocaleString(locale, { maximumFractionDigits: 2 })} PELOCO · ${Number(aggregate.sharePercent).toLocaleString(locale, { maximumFractionDigits: 4 })}%`;
+            const creatorStatus = document.querySelector(
+              "[data-creator-status]",
+            );
+            if (creatorStatus)
+              creatorStatus.textContent = tr(
+                `Fonte: Solana JSON-RPC · ${updated} UTC. Atualização automática a cada hora.`,
+                `Source: Solana JSON-RPC · ${updated} UTC. Automatically updated hourly.`,
+                `Fuente: Solana JSON-RPC · ${updated} UTC. Actualización automática cada hora.`,
+              );
+          }
+          setHolderDetails(
+            tr(
+              `Solana on-chain • ${updated} UTC`,
+              `Solana on-chain • ${updated} UTC`,
+              `Solana on-chain • ${updated} UTC`,
+            ),
+            tr(
+              "Contagem de proprietários únicos com saldo positivo, incluindo contas técnicas. Fonte: Solana JSON-RPC. Atualização automática a cada hora.",
+              "Unique owners with a positive balance, including technical accounts. Source: Solana JSON-RPC. Automatically updated hourly.",
+              "Propietarios únicos con saldo positivo, incluidas las cuentas técnicas. Fuente: Solana JSON-RPC. Actualización automática cada hora.",
+            ),
+          );
+        } catch {
+          setHolderText("—");
+          const pumpSource = document.querySelector("[data-pump-source]");
+          if (pumpSource)
+            pumpSource.textContent = tr(
+              "Avaliação da Bonding Curve temporariamente indisponível.",
+              "Bonding Curve valuation temporarily unavailable.",
+              "Valoración de la Bonding Curve temporalmente no disponible.",
+            );
+          const bondingStatus = document.querySelector(
+            "[data-bonding-status]",
+          );
+          if (bondingStatus)
+            bondingStatus.textContent = tr(
+              "Status da Bonding Curve temporariamente indisponível.",
+              "Bonding Curve status temporarily unavailable.",
+              "Estado de la Bonding Curve temporalmente no disponible.",
+            );
+          document
+            .querySelectorAll(
+              "[data-creator-balance], [data-creator-aggregate]",
+            )
+            .forEach((node) => {
+              node.textContent = "—";
+            });
+          const creatorStatus = document.querySelector(
+            "[data-creator-status]",
+          );
+          if (creatorStatus)
+            creatorStatus.textContent = tr(
+              "Dados temporariamente indisponíveis.",
+              "Data temporarily unavailable.",
+              "Datos temporalmente no disponibles.",
+            );
+          setHolderDetails(
+            tr(
+              "Dados temporariamente indisponíveis",
+              "Data temporarily unavailable",
+              "Datos temporalmente no disponibles",
+            ),
+            tr(
+              "O snapshot on-chain não está atual. Nenhum número antigo ou estimado será exibido.",
+              "The on-chain snapshot is not current. No old or estimated number will be shown.",
+              "La captura on-chain no está actualizada. No se mostrará ningún número antiguo ni estimado.",
+            ),
+          );
+        }
+        clearTimeout(timeout);
+        setupHolderHistory();
+        clearInterval(liveDataTimer);
+        liveDataTimer = setInterval(setupLiveData, 5 * 60 * 1000);
+      }
+
       async function setupMarketData() {
         const status = document.getElementById("marketStatus");
+        const resetMarket = (preservePumpCap = false) => {
+          document.querySelectorAll("[data-market]").forEach((node) => {
+            if (
+              preservePumpCap &&
+              node.dataset.market === "cap" &&
+              node.textContent !== "—"
+            )
+              return;
+            node.textContent = "—";
+            node.classList.remove("positive", "negative");
+          });
+        };
         const setStatus = (message) => {
           if (status) status.textContent = message;
         };
@@ -960,7 +1210,17 @@
                   Number(a?.liquidity?.usd || 0) ||
                 Number(b?.volume?.h24 || 0) - Number(a?.volume?.h24 || 0),
             )[0] || null;
-          if (!pair) throw new Error("market pair");
+          if (!pair) {
+            resetMarket(true);
+            setStatus(
+              tr(
+                "Nenhum par DEX confirmado. Preço, liquidez, volume e variação permanecem indisponíveis; a avaliação da Bonding Curve é exibida separadamente quando o snapshot da Pump.fun está atual.",
+                "No confirmed DEX pair was found. Price, liquidity, volume, and change remain unavailable; the Bonding Curve valuation is shown separately when the Pump.fun snapshot is current.",
+                "No se encontró un par DEX confirmado. Precio, liquidez, volumen y variación siguen sin estar disponibles; la valoración de la Bonding Curve se muestra por separado cuando la captura de Pump.fun está actualizada.",
+              ),
+            );
+            return;
+          }
           const locale = { pt: "pt-BR", en: "en-US", es: "es-ES" }[lang];
           const money = (value, compact = false) =>
             new Intl.NumberFormat(locale, {
@@ -978,7 +1238,20 @@
           set("price", money(pair.priceUsd));
           const marketCap = Number(pair.marketCap);
           set("cap", marketCap > 0 ? money(marketCap, true) : "—");
-          set("liquidity", money(pair.liquidity?.usd || 0, true));
+          const liquidity = Number(pair.liquidity?.usd);
+          set(
+            "liquidity",
+            Number.isFinite(liquidity) && liquidity > 0
+              ? money(liquidity, true)
+              : "—",
+          );
+          const volume24h = Number(pair.volume?.h24);
+          set(
+            "volume",
+            Number.isFinite(volume24h) && volume24h > 0
+              ? money(volume24h, true)
+              : "—",
+          );
           const change = Number(pair.priceChange?.h24);
           const changeNodes = document.querySelectorAll(
             '[data-market="change"]',
@@ -1000,6 +1273,7 @@
             ),
           );
         } catch {
+          resetMarket(true);
           setStatus(
             tr(
               "Dados temporariamente indisponíveis. Verifique diretamente no DexScreener.",
@@ -1009,6 +1283,8 @@
           );
         } finally {
           clearTimeout(timeout);
+          clearInterval(marketTimer);
+          marketTimer = setInterval(setupMarketData, 60 * 1000);
         }
       }
       function setupFlock() {
@@ -1019,7 +1295,7 @@
         let lastValidFrame = 0;
         for (let index = 0; index < frameCount; index += 1) {
           const preload = new Image();
-          preload.src = `peloco-360-${index}.webp`;
+          preload.src = `peloco-360-v2-${index}.webp`;
         }
         const angles = {
           pt: [
@@ -1061,12 +1337,12 @@
         });
         frameImage.addEventListener("error", () => {
           frame = lastValidFrame;
-          const fallback = `peloco-360-${lastValidFrame}.webp`;
+          const fallback = `peloco-360-v2-${lastValidFrame}.webp`;
           if (!frameImage.src.endsWith(fallback)) frameImage.src = fallback;
         });
         const show = (next) => {
           frame = (next + frameCount) % frameCount;
-          frameImage.src = `peloco-360-${frame}.webp`;
+          frameImage.src = `peloco-360-v2-${frame}.webp`;
           viewer.setAttribute("aria-label", `PELOCO 360° — ${angles[frame]}`);
         };
         const rotate = (step) => show(frame + step);
@@ -1106,6 +1382,10 @@
         show(0);
       }
       function render() {
+        clearInterval(marketTimer);
+        clearInterval(liveDataTimer);
+        marketTimer = null;
+        liveDataTimer = null;
         const route = location.hash.replace("#/", "") || "home";
         const page =
           routes[route] ||
@@ -1162,7 +1442,10 @@
           }),
         );
         if (route === "flock") setupFlock();
-        if (route === "transparency" || route === "home") setupMarketData();
+        if (route === "transparency" || route === "home") {
+          setupLiveData();
+          setupMarketData();
+        }
         document.getElementById("mobileNav").classList.remove("open");
         document
           .getElementById("menuBtn")

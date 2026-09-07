@@ -534,6 +534,12 @@ h3 {
   background: rgba(255, 255, 255, 0.52);
 }
 
+.hero .actions .btn:nth-child(n + 3) {
+  border-color: transparent;
+  background: transparent;
+  font-weight: 720;
+}
+
 .stats,
 .grid,
 .flow,
@@ -738,6 +744,14 @@ h3 {
 .event {
   position: relative;
   margin-bottom: 18px;
+}
+
+.event h3 {
+  margin-bottom: 0.35rem;
+}
+
+.event p {
+  margin: 0;
 }
 
 .event::before {
@@ -1119,7 +1133,7 @@ h3 {
 }
 
 .market-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
 }
 
@@ -1156,6 +1170,36 @@ h3 {
 
 .market-status {
   margin: 10px 0 0;
+}
+
+.history-plot {
+  min-height: 190px;
+  display: grid;
+  align-content: center;
+}
+
+.history-plot svg {
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+}
+
+.history-plot line {
+  stroke: rgba(184, 216, 232, 0.35);
+  stroke-width: 1;
+}
+
+.history-plot polyline {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.history-plot text {
+  fill: var(--muted);
+  font: 12px PelocoSans, system-ui, sans-serif;
 }
 
 .verify-links {

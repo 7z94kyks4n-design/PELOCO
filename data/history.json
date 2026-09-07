@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "mint": "HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump",
+  "methodology": "unique positive-balance Token-2022 account owners",
+  "snapshots": [
+    {
+      "checkedAt": "2026-09-07T08:46:32Z",
+      "holders": 6,
+      "slot": 445023335,
+      "priceUsd": null,
+      "volume24h": null
+    }
+  ]
+}
