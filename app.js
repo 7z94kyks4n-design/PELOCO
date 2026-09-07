@@ -1031,9 +1031,12 @@
           if (!valid) throw new Error("stale snapshot");
           const locale = { pt: "pt-BR", en: "en-US", es: "es-ES" }[lang];
           const updated = new Intl.DateTimeFormat(locale, {
-            dateStyle: "short",
-            timeStyle: "short",
-            timeZone: "UTC",
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            timeZoneName: "short",
           }).format(checkedAt);
           setHolderText(holders.toLocaleString(locale));
           const pump = snapshot?.pumpFun;
@@ -1054,19 +1057,19 @@
             document.querySelectorAll('[data-market="cap"]').forEach((node) => {
               node.textContent = cap;
               const detail = node.closest(".stat")?.querySelector("small");
-              if (detail) detail.textContent = `Pump.fun · ${updated} UTC`;
+              if (detail) detail.textContent = `Pump.fun · ${updated}`;
             });
             const pumpSource = document.querySelector("[data-pump-source]");
             if (pumpSource)
-              pumpSource.innerHTML = `${tr("Avaliação atual da Bonding Curve", "Current Bonding Curve valuation", "Valoración actual de la Bonding Curve")}: <strong>${cap}</strong> · Pump.fun · ${updated} UTC · <a href="${links.pump}" target="_blank" rel="noopener noreferrer">${tr("verificar", "verify", "verificar")} ↗</a>`;
+              pumpSource.innerHTML = `${tr("Avaliação atual da Bonding Curve", "Current Bonding Curve valuation", "Valoración actual de la Bonding Curve")}: <strong>${cap}</strong> · Pump.fun · ${updated} · <a href="${links.pump}" target="_blank" rel="noopener noreferrer">${tr("verificar", "verify", "verificar")} ↗</a>`;
             const bondingStatus = document.querySelector(
               "[data-bonding-status]",
             );
             if (bondingStatus)
               bondingStatus.textContent = tr(
-                `Bonding Curve em andamento; migração para DEX ainda não concluída. Fonte: Pump.fun · ${updated} UTC.`,
-                `Bonding Curve in progress; DEX migration not yet complete. Source: Pump.fun · ${updated} UTC.`,
-                `Bonding Curve en curso; la migración a DEX aún no se ha completado. Fuente: Pump.fun · ${updated} UTC.`,
+                `Bonding Curve em andamento; migração para DEX ainda não concluída. Fonte: Pump.fun · ${updated}.`,
+                `Bonding Curve in progress; DEX migration not yet complete. Source: Pump.fun · ${updated}.`,
+                `Bonding Curve en curso; la migración a DEX aún no se ha completado. Fuente: Pump.fun · ${updated}.`,
               );
           }
           const declared = snapshot?.onChain?.declaredWallets;
@@ -1098,16 +1101,16 @@
             );
             if (creatorStatus)
               creatorStatus.textContent = tr(
-                `Fonte: Solana JSON-RPC · ${updated} UTC. Atualização automática a cada hora.`,
-                `Source: Solana JSON-RPC · ${updated} UTC. Automatically updated hourly.`,
-                `Fuente: Solana JSON-RPC · ${updated} UTC. Actualización automática cada hora.`,
+                `Fonte: Solana JSON-RPC · ${updated}. Atualização automática a cada hora.`,
+                `Source: Solana JSON-RPC · ${updated}. Automatically updated hourly.`,
+                `Fuente: Solana JSON-RPC · ${updated}. Actualización automática cada hora.`,
               );
           }
           setHolderDetails(
             tr(
-              `Solana on-chain • ${updated} UTC`,
-              `Solana on-chain • ${updated} UTC`,
-              `Solana on-chain • ${updated} UTC`,
+              `Solana on-chain • ${updated}`,
+              `Solana on-chain • ${updated}`,
+              `Solana on-chain • ${updated}`,
             ),
             tr(
               "Contagem de proprietários únicos com saldo positivo, incluindo contas técnicas. Fonte: Solana JSON-RPC. Atualização automática a cada hora.",
