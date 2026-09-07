@@ -829,6 +829,28 @@ h3 {
   line-height: 1.45;
 }
 
+.orbis-resident small {
+  margin-top: 5px;
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.resident-profession {
+  margin-top: 8px;
+  color: var(--white);
+  font-size: 0.88rem;
+}
+
+.resident-story {
+  margin: 2px 0 0;
+  color: #bdc9d8;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
 .manifesto-intro {
   display: grid;
   grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
