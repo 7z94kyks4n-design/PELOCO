@@ -140,6 +140,8 @@ def market_data() -> dict | None:
         "liquidityUsd": (pair.get("liquidity") or {}).get("usd"),
         "volume24h": (pair.get("volume") or {}).get("h24"),
         "change24h": (pair.get("priceChange") or {}).get("h24"),
+        "buys24h": ((pair.get("txns") or {}).get("h24") or {}).get("buys"),
+        "sells24h": ((pair.get("txns") or {}).get("h24") or {}).get("sells"),
     }
 
 
@@ -207,6 +209,10 @@ def main() -> None:
         "slot": result["onChain"]["slot"],
         "priceUsd": (result["market"] or {}).get("priceUsd"),
         "volume24h": (result["market"] or {}).get("volume24h"),
+        "marketCap": (result["market"] or {}).get("marketCap"),
+        "liquidityUsd": (result["market"] or {}).get("liquidityUsd"),
+        "buys24h": (result["market"] or {}).get("buys24h"),
+        "sells24h": (result["market"] or {}).get("sells24h"),
     }
     if snapshots:
         previous = datetime.fromisoformat(snapshots[-1]["checkedAt"].replace("Z", "+00:00"))

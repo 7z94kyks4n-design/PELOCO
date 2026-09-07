@@ -131,7 +131,7 @@
       function home() {
         const t = copy[lang].home;
         return shell(
-          `<div class="hero"><div><span class="eyebrow">${t.ey}</span><h1 class="hero-title">${t.title}</h1><p class="lead">${t.lead}</p><div class="actions"><a class="btn primary" href="#/idea">${tr("Explorar PELOCO", "Explore PELOCO", "Explorar PELOCO")} →</a><a class="btn" href="#/manifesto">${tr("Ler o Manifesto", "Read the Manifesto", "Leer el Manifiesto")}</a><a class="btn" href="#/verify">${tr("Verificar on-chain", "Verify on-chain", "Verificar on-chain")}</a><a class="btn" href="#/flock">${tr("Entrar na FLOCK", "Join the FLOCK", "Entrar en FLOCK")}</a></div></div><div class="hero-art"><img src="peloco-manifesto-cutout.webp" width="1254" height="1254" decoding="async" alt="${tr("PELOCO, o pequeno pintinho amarelo com corrente e medalha dourada", "PELOCO, the little yellow chick with a gold chain and medal", "PELOCO, el pequeño pollito amarillo con cadena y medalla dorada")}"><div class="pulse"><i></i>${tr("Construção pública", "Building in public", "Construcción pública")}</div></div></div><div class="stats"><div class="stat"><strong>Solana</strong><span>${tr("Rede", "Network", "Red")}</span></div><div class="stat"><strong>1B PELOCO</strong><span>${tr("Supply total", "Total Supply", "Supply total")}</span></div><div class="stat"><strong data-holders>—</strong><span>${tr("Holders atuais", "Current Holders", "Holders actuales")}</span><small>${tr("Dados temporariamente indisponíveis", "Data temporarily unavailable", "Datos temporalmente no disponibles")}</small></div><div class="stat"><strong data-market="cap">—</strong><span>Market Cap</span><small>DexScreener</small></div></div><p class="stats-note">${tr("Holders só serão exibidos quando houver uma fonte on-chain confiável. Nenhum número é estimado.", "Holders will only be shown when a reliable on-chain source is available. No number is estimated.", "Los holders solo se mostrarán cuando exista una fuente on-chain fiable. Ningún número es estimado.")}</p>`,
+          `<div class="hero"><div><span class="eyebrow">${t.ey}</span><h1 class="hero-title">${t.title}</h1><p class="lead">${t.lead}</p><div class="actions"><a class="btn primary" href="#/idea">${tr("Explorar PELOCO", "Explore PELOCO", "Explorar PELOCO")} →</a><a class="btn" href="#/manifesto">${tr("Ler o Manifesto", "Read the Manifesto", "Leer el Manifiesto")}</a><a class="btn subtle-link" href="#/verify">${tr("Verificar on-chain", "Verify on-chain", "Verificar on-chain")}</a><a class="btn subtle-link" href="#/flock">${tr("Entrar na FLOCK", "Join the FLOCK", "Entrar en FLOCK")}</a></div></div><div class="hero-art"><img src="peloco-manifesto-cutout.webp" width="1254" height="1254" decoding="async" alt="${tr("PELOCO, o pequeno pintinho amarelo com corrente e medalha dourada", "PELOCO, the little yellow chick with a gold chain and medal", "PELOCO, el pequeño pollito amarillo con cadena y medalla dorada")}"><div class="pulse"><i></i>${tr("Construção pública", "Building in public", "Construcción pública")}</div></div></div><div class="stats"><div class="stat"><strong>Solana</strong><span>${tr("Rede", "Network", "Red")}</span></div><div class="stat"><strong>1B PELOCO</strong><span>${tr("Supply total", "Total Supply", "Supply total")}</span></div><div class="stat"><strong data-holders>—</strong><span>${tr("Proprietários on-chain", "On-chain owners", "Propietarios on-chain")}</span><small>${tr("Carregando dados on-chain…", "Loading on-chain data…", "Cargando datos on-chain…")}</small></div><div class="stat"><strong data-market="cap">—</strong><span>Market Cap</span><small>DexScreener</small></div></div><p class="stats-note">${tr("Carregando a contagem de proprietários únicos com saldo positivo, incluindo contas técnicas.", "Loading the count of unique positive-balance owners, including technical accounts.", "Cargando el recuento de propietarios únicos con saldo positivo, incluidas las cuentas técnicas.")}</p>`,
         );
       }
       function idea() {
@@ -565,13 +565,16 @@
         );
       }
       function marketPanel() {
-        return `<section class="market-live" aria-labelledby="marketTitle"><div class="market-live-head"><h3 id="marketTitle">${tr("Dados de mercado", "Market data", "Datos de mercado")}</h3><a class="market-source" href="${links.dex}" target="_blank" rel="noopener noreferrer">${tr("Fonte pública: DexScreener", "Public source: DexScreener", "Fuente pública: DexScreener")} ↗</a></div><div class="market-grid"><div class="market-item"><strong data-market="price">—</strong><span>${tr("Preço em USD", "Price in USD", "Precio en USD")}</span></div><div class="market-item"><strong data-market="cap">—</strong><span>Market Cap</span></div><div class="market-item"><strong data-market="liquidity">—</strong><span>${tr("Liquidez", "Liquidity", "Liquidez")}</span></div><div class="market-item"><strong data-market="change">—</strong><span>${tr("Variação em 24h", "24h change", "Variación en 24h")}</span></div><div class="market-item"><strong data-market="volume">—</strong><span>${tr("Volume em 24h", "24h volume", "Volumen en 24h")}</span></div></div><p class="market-status" data-pump-source>${tr("Avaliação da Bonding Curve: aguardando snapshot da Pump.fun…", "Bonding Curve valuation: waiting for the Pump.fun snapshot…", "Valoración de la Bonding Curve: esperando la captura de Pump.fun…")}</p><p class="market-status" id="marketStatus" role="status" aria-live="polite">${tr("Carregando dados públicos…", "Loading public data…", "Cargando datos públicos…")}</p></section>`;
+        return `<section class="market-live" aria-labelledby="marketTitle"><div class="market-live-head"><h3 id="marketTitle">${tr("Dados de mercado", "Market data", "Datos de mercado")}</h3><a class="market-source" href="${links.dex}" target="_blank" rel="noopener noreferrer">${tr("Fonte pública: DexScreener", "Public source: DexScreener", "Fuente pública: DexScreener")} ↗</a></div><div class="market-grid"><div class="market-item"><strong data-market="price">—</strong><span>${tr("Preço em USD", "Price in USD", "Precio en USD")}</span></div><div class="market-item"><strong data-market="cap">—</strong><span>Market Cap</span></div><div class="market-item"><strong data-market="liquidity">—</strong><span>${tr("Liquidez", "Liquidity", "Liquidez")}</span></div><div class="market-item"><strong data-market="change">—</strong><span>${tr("Variação em 24h", "24h change", "Variación en 24h")}</span></div><div class="market-item"><strong data-market="volume">—</strong><span>${tr("Volume em 24h", "24h volume", "Volumen en 24h")}</span></div></div><p class="market-status" data-market-activity>${tr("Compras e vendas em 24h: aguardando um par DEX confirmado.", "24h buys and sells: waiting for a confirmed DEX pair.", "Compras y ventas en 24h: esperando un par DEX confirmado.")}</p><p class="market-status" data-pump-source>${tr("Avaliação da Bonding Curve: aguardando snapshot da Pump.fun…", "Bonding Curve valuation: waiting for the Pump.fun snapshot…", "Valoración de la Bonding Curve: esperando la captura de Pump.fun…")}</p><p class="market-status" id="marketStatus" role="status" aria-live="polite">${tr("Carregando dados públicos…", "Loading public data…", "Cargando datos públicos…")}</p></section>`;
+      }
+      function marketHistoryPanel() {
+        return `<section class="market-live" aria-labelledby="marketHistoryTitle"><div class="market-live-head"><h3 id="marketHistoryTitle">${tr("Histórico de preço e volume", "Price and volume history", "Historial de precio y volumen")}</h3><span class="market-source">7D · DexScreener · UTC</span></div><div id="marketHistory" class="history-plot" role="img" aria-label="${tr("Gráficos baseados em snapshots reais de preço e volume", "Charts based on real price and volume snapshots", "Gráficos basados en capturas reales de precio y volumen")}"><p class="market-status">${tr("A coleta começará quando existir um par DEX confirmado. Nenhum histórico é estimado.", "Collection will begin when a DEX pair is confirmed. No history is estimated.", "La recopilación comenzará cuando exista un par DEX confirmado. No se estima ningún historial.")}</p></div></section>`;
       }
       function creatorHoldingsPanel() {
         return `<section class="technical-data creator-holdings" aria-labelledby="creatorHoldingsTitle"><span class="eyebrow">${tr("Holdings declaradas", "Declared holdings", "Holdings declaradas")}</span><h3 id="creatorHoldingsTitle">${tr("Três carteiras declaradas", "Three declared wallets", "Tres carteras declaradas")}</h3><p class="muted">${tr("Saldos calculados on-chain. Estas carteiras declaradas não são automaticamente o Creator Address do token.", "Balances calculated on-chain. These declared wallets are not automatically the token Creator Address.", "Saldos calculados on-chain. Estas carteras declaradas no son automáticamente el Creator Address del token.")}</p><p class="market-status" data-bonding-status>${tr("Status da Bonding Curve: consultando a Pump.fun…", "Bonding Curve status: checking Pump.fun…", "Estado de la Bonding Curve: consultando Pump.fun…")}</p><div class="market-grid">${CREATOR_WALLETS.map((wallet, index) => `<div class="market-item"><strong data-creator-balance="${index}">—</strong><span>${tr("Carteira declarada", "Declared wallet", "Cartera declarada")} ${index + 1}</span></div>`).join("")}<div class="market-item"><strong data-creator-aggregate>—</strong><span>${tr("Total agregado confirmado", "Confirmed aggregate total", "Total agregado confirmado")}</span></div></div><p class="market-status" data-creator-status>${tr("Consultando o snapshot on-chain…", "Checking the on-chain snapshot…", "Consultando la captura on-chain…")}</p></section>`;
       }
       function holdersHistoryPanel() {
-        return `<section class="market-live holders-history" aria-labelledby="holdersHistoryTitle"><div class="market-live-head"><h3 id="holdersHistoryTitle">${tr("Histórico de holders", "Holder history", "Historial de holders")}</h3><span class="market-source">7D · ${tr("Fonte on-chain", "On-chain source", "Fuente on-chain")}</span></div><div id="holdersHistory" class="history-plot" role="img" aria-label="${tr("Gráfico do histórico real de holders", "Chart of real holder history", "Gráfico del historial real de holders")}"><p class="market-status">${tr("Coleta de snapshots reais iniciada. O gráfico aparecerá após três registros.", "Collection of real snapshots has started. The chart will appear after three records.", "La recopilación de capturas reales ha comenzado. El gráfico aparecerá después de tres registros.")}</p></div></section>`;
+        return `<section class="market-live holders-history" aria-labelledby="holdersHistoryTitle"><div class="market-live-head"><h3 id="holdersHistoryTitle">${tr("Histórico de holders", "Holder history", "Historial de holders")}</h3><span class="market-source">7D · ${tr("Fonte on-chain", "On-chain source", "Fuente on-chain")} · UTC</span></div><div id="holdersHistory" class="history-plot" role="img" aria-label="${tr("Gráfico do histórico real de holders", "Chart of real holder history", "Gráfico del historial real de holders")}"><p class="market-status">${tr("Coleta de snapshots reais iniciada. O gráfico aparecerá após três registros.", "Collection of real snapshots has started. The chart will appear after three records.", "La recopilación de capturas reales ha comenzado. El gráfico aparecerá después de tres registros.")}</p></div></section>`;
       }
       function transparency() {
         return shell(
@@ -588,7 +591,7 @@
               "Los datos siguientes son referencias públicas del proyecto. Los datos actuales, la información técnica y los planes están claramente separados.",
             ),
           ) +
-            `<div class="stats"><div class="stat"><strong>Solana</strong><span>${tr("Rede", "Network", "Red")}</span></div><div class="stat"><strong>1B PELOCO</strong><span>${tr("Supply total", "Total Supply", "Supply total")}</span></div><div class="stat"><strong data-holders>—</strong><span>${tr("Holders atuais", "Current Holders", "Holders actuales")}</span><small>${tr("Fonte on-chain em validação", "On-chain source under validation", "Fuente on-chain en validación")}</small></div><div class="stat"><strong data-market="cap">—</strong><span>Market Cap</span><small>DexScreener</small></div></div><div class="grid">${card("", tr("Existe hoje", "Exists today", "Existe hoy"), tr("Token identificável on-chain, supply total definido, presença pública, comunidade inicial e três carteiras declaradas do criador.", "On-chain identifiable token, defined total supply, public presence, initial community, and three declared creator wallets.", "Token identificable on-chain, supply total definido, presencia pública, comunidad inicial y tres carteras declaradas del creador."), status("exists", "EXISTE HOJE", "EXISTS TODAY", "EXISTE HOY"))}${card("", tr("Em construção", "Being built", "En construcción"), tr("Identidade, comunidade, documentação, histórico e estrutura pública de acompanhamento.", "Identity, community, documentation, track record, and a public tracking structure.", "Identidad, comunidad, documentación, historial y una estructura pública de seguimiento."), status("building", "EM CONSTRUÇÃO", "BEING BUILT", "EN CONSTRUCCIÓN"))}${card("", tr("Planejado — ainda não implementado", "Planned — not yet implemented", "Planificado — aún no implementado"), tr("Metas futuras: holdings agregadas do criador abaixo de 5%, lock de 2 anos e Public Reserve abaixo de 6%. Os mecanismos ainda serão divulgados e verificados.", "Future goals: aggregate creator holdings below 5%, a 2-year lock, and a Public Reserve below 6%. The mechanisms are yet to be disclosed and verified.", "Metas futuras: holdings agregadas del creador por debajo del 5%, bloqueo de 2 años y Public Reserve por debajo del 6%. Los mecanismos aún deberán publicarse y verificarse."), status("planned", "PLANEJADO", "PLANNED", "PLANIFICADO"))}</div>${marketPanel()}${creatorHoldingsPanel()}${holdersHistoryPanel()}<section class="technical-data"><span class="eyebrow">${tr("Dados técnicos", "Technical data", "Datos técnicos")}</span><div class="data-row"><strong>${tr("Endereço do token", "Token address", "Dirección del token")}</strong><code>${TOKEN}</code><a class="btn" href="${links.token}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div><div class="data-row"><strong>Bonding curve</strong><code>${CURVE}</code><a class="btn" href="${links.curve}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div></section>`,
+            `<div class="stats"><div class="stat"><strong>Solana</strong><span>${tr("Rede", "Network", "Red")}</span></div><div class="stat"><strong>1B PELOCO</strong><span>${tr("Supply total", "Total Supply", "Supply total")}</span></div><div class="stat"><strong data-holders>—</strong><span>${tr("Proprietários on-chain", "On-chain owners", "Propietarios on-chain")}</span><small>${tr("Carregando dados on-chain…", "Loading on-chain data…", "Cargando datos on-chain…")}</small></div><div class="stat"><strong data-market="cap">—</strong><span>Market Cap</span><small>DexScreener</small></div></div><p class="stats-note">${tr("Carregando a contagem de proprietários únicos com saldo positivo, incluindo contas técnicas.", "Loading the count of unique positive-balance owners, including technical accounts.", "Cargando el recuento de propietarios únicos con saldo positivo, incluidas las cuentas técnicas.")}</p><div class="grid">${card("", tr("Existe hoje", "Exists today", "Existe hoy"), tr("Token identificável on-chain, supply total definido, presença pública, comunidade inicial e três carteiras declaradas do criador.", "On-chain identifiable token, defined total supply, public presence, initial community, and three declared creator wallets.", "Token identificable on-chain, supply total definido, presencia pública, comunidad inicial y tres carteras declaradas del creador."), status("exists", "EXISTE HOJE", "EXISTS TODAY", "EXISTE HOY"))}${card("", tr("Em construção", "Being built", "En construcción"), tr("Identidade, comunidade, documentação, histórico e estrutura pública de acompanhamento.", "Identity, community, documentation, track record, and a public tracking structure.", "Identidad, comunidad, documentación, historial y una estructura pública de seguimiento."), status("building", "EM CONSTRUÇÃO", "BEING BUILT", "EN CONSTRUCCIÓN"))}${card("", tr("Planejado — ainda não implementado", "Planned — not yet implemented", "Planificado — aún no implementado"), tr("Metas futuras: holdings agregadas do criador abaixo de 5%, lock de 2 anos e Public Reserve abaixo de 6%. Os mecanismos ainda serão divulgados e verificados.", "Future goals: aggregate creator holdings below 5%, a 2-year lock, and a Public Reserve below 6%. The mechanisms are yet to be disclosed and verified.", "Metas futuras: holdings agregadas del creador por debajo del 5%, bloqueo de 2 años y Public Reserve por debajo del 6%. Los mecanismos aún deberán publicarse y verificarse."), status("planned", "PLANEJADO", "PLANNED", "PLANIFICADO"))}</div>${marketPanel()}${marketHistoryPanel()}${creatorHoldingsPanel()}${holdersHistoryPanel()}<section class="technical-data"><span class="eyebrow">${tr("Dados técnicos", "Technical data", "Datos técnicos")}</span><div class="data-row"><strong>${tr("Endereço do token", "Token address", "Dirección del token")}</strong><code>${TOKEN}</code><a class="btn" href="${links.token}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div><div class="data-row"><strong>Bonding curve</strong><code>${CURVE}</code><a class="btn" href="${links.curve}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div></section>`,
         );
       }
       function building() {
@@ -676,7 +679,7 @@
               )
               .join(
                 "",
-              )}</div><p class="build-note">${tr("Acesso à Binance Wallet. O PELOCO está na carteira Web3 e não está listado na corretora Binance.", "Access via Binance Wallet. PELOCO is available through the Web3 wallet and is not listed on the Binance exchange.", "Acceso mediante Binance Wallet. PELOCO está disponible en la cartera Web3 y no está listado en el exchange Binance.")}</p>`,
+              )}</div><p class="build-note">${tr("A Binance pode abrir a tela geral da Wallet dependendo do aparelho. Nesse caso, pesquise usando o CA oficial mostrado acima. O PELOCO não está listado na corretora Binance.", "Binance may open the general Wallet screen depending on the device. If it does, search using the official CA shown above. PELOCO is not listed on the Binance exchange.", "Binance puede abrir la pantalla general de Wallet según el dispositivo. En ese caso, busca usando el CA oficial que aparece arriba. PELOCO no está listado en el exchange Binance.")}</p>`,
         );
       }
       function updates() {
@@ -725,7 +728,7 @@
             ready: "Disponível",
             soon: "Em desenvolvimento",
             gestures: "Gestos e emoções oficiais",
-            gallery: "Universo visual",
+            gallery: "ORBIS PELOCI · Universo visual",
             doctor: "Médico",
             builder: "Construtor",
             surfer: "Surfista",
@@ -739,7 +742,7 @@
             ready: "Available",
             soon: "In development",
             gestures: "Official gestures and emotions",
-            gallery: "Visual universe",
+            gallery: "ORBIS PELOCI · Visual universe",
             doctor: "Doctor",
             builder: "Builder",
             surfer: "Surfer",
@@ -753,7 +756,7 @@
             ready: "Disponible",
             soon: "En desarrollo",
             gestures: "Gestos y emociones oficiales",
-            gallery: "Universo visual",
+            gallery: "ORBIS PELOCI · Universo visual",
             doctor: "Médico",
             builder: "Constructor",
             surfer: "Surfista",
@@ -761,7 +764,7 @@
         }[lang];
         return shell(
           head("FLOCK • AVATAR STUDIO", t.title, t.lead) +
-            `<div class="flock-studio"><div class="avatar-stage"><div class="avatar-view" id="avatarView" role="img" aria-label="PELOCO 360°" tabindex="0"><img id="avatarFrame" src="peloco-360-v2-0.webp" alt="" draggable="false" decoding="async" width="384" height="512"></div><div class="rotate-controls"><button type="button" id="rotateLeft" aria-label="${tr("Girar para a esquerda", "Rotate left", "Girar a la izquierda")}">←</button><span class="rotate-hint">↔ ${t.hint}</span><button type="button" id="rotateRight" aria-label="${tr("Girar para a direita", "Rotate right", "Girar a la derecha")}">→</button></div></div><div class="studio-panel"><section class="studio-card"><span class="eyebrow">360°</span><h3>${t.choose}</h3><div class="choice-grid"><button class="avatar-choice active" type="button"><strong>🐣 ${t.base}</strong><span>${t.ready}</span></button><button class="avatar-choice" type="button" disabled><strong>🩺 ${t.doctor}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏗️ ${t.builder}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏄 ${t.surfer}</strong><span>${t.soon}</span></button></div><p class="build-note">${tr("Cada roupa será criada sobre o mesmo avatar oficial e validada em todos os ângulos antes de ser liberada.", "Every outfit will use the same official avatar and be validated from every angle before release.", "Cada traje se creará sobre el mismo avatar oficial y se validará desde todos los ángulos antes de su lanzamiento.")}</p></section><section class="studio-card"><span class="eyebrow">${t.gestures}</span><img class="expression-sheet" src="peloco-expressions.webp" alt="${tr("PELOCO em oito gestos e emoções oficiais", "PELOCO in eight official gestures and emotions", "PELOCO en ocho gestos y emociones oficiales")}" loading="lazy" decoding="async" width="1536" height="1024"></section></div></div><div class="section-head"><span class="eyebrow">${t.gallery}</span><h2>${tr("Ele pode ser tudo o que quiser.", "He can be anything he wants.", "Puede ser todo lo que quiera.")}</h2></div><div class="gallery">${images.map((src, i) => `<figure><img src="${src}" loading="lazy" decoding="async" alt="PELOCO FLOCK — ${tr("arte", "art", "arte")} ${i + 1}"></figure>`).join("")}</div>`,
+            `<div class="flock-studio"><div class="avatar-stage"><div class="avatar-view" id="avatarView" role="slider" aria-label="${tr("Rotação 360 graus do PELOCO. Use as setas esquerda e direita.", "PELOCO 360-degree rotation. Use the left and right arrow keys.", "Rotación de 360 grados de PELOCO. Usa las flechas izquierda y derecha.")}" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" aria-valuetext="${tr("frente", "front", "frente")}" tabindex="0"><img id="avatarFrame" src="peloco-360-v2-0.webp" alt="" draggable="false" decoding="async" width="384" height="512"></div><div class="rotate-controls"><button type="button" id="rotateLeft" aria-label="${tr("Girar para a esquerda", "Rotate left", "Girar a la izquierda")}">←</button><span class="rotate-hint">↔ ${t.hint}</span><button type="button" id="rotateRight" aria-label="${tr("Girar para a direita", "Rotate right", "Girar a la derecha")}">→</button></div></div><div class="studio-panel"><section class="studio-card"><span class="eyebrow">360°</span><h3>${t.choose}</h3><div class="choice-grid"><button class="avatar-choice active" type="button"><strong>🐣 ${t.base}</strong><span>${t.ready}</span></button><button class="avatar-choice" type="button" disabled><strong>🩺 ${t.doctor}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏗️ ${t.builder}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏄 ${t.surfer}</strong><span>${t.soon}</span></button></div><p class="build-note">${tr("Cada roupa será criada sobre o mesmo avatar oficial e validada em todos os ângulos antes de ser liberada.", "Every outfit will use the same official avatar and be validated from every angle before release.", "Cada traje se creará sobre el mismo avatar oficial y se validará desde todos los ángulos antes de su lanzamiento.")}</p></section><section class="studio-card"><span class="eyebrow">${t.gestures}</span><img class="expression-sheet" src="peloco-expressions.webp" alt="${tr("PELOCO em oito gestos e emoções oficiais", "PELOCO in eight official gestures and emotions", "PELOCO en ocho gestos y emociones oficiales")}" loading="lazy" decoding="async" width="1536" height="1024"></section></div></div><div class="section-head"><span class="eyebrow">${t.gallery}</span><h2>${tr("Ele pode ser tudo o que quiser.", "He can be anything he wants.", "Puede ser todo lo que quiera.")}</h2></div><div class="gallery">${images.map((src, i) => `<figure><img src="${src}" loading="lazy" decoding="async" alt="PELOCO FLOCK — ${tr("arte", "art", "arte")} ${i + 1}"></figure>`).join("")}</div>`,
         );
       }
       function community() {
@@ -980,10 +983,12 @@
           const firstDate = new Intl.DateTimeFormat(locale, {
             dateStyle: "short",
             timeStyle: "short",
+            timeZone: "UTC",
           }).format(new Date(minTime));
           const lastDate = new Intl.DateTimeFormat(locale, {
             dateStyle: "short",
             timeStyle: "short",
+            timeZone: "UTC",
           }).format(new Date(maxTime));
           host.innerHTML = `<svg viewBox="0 0 600 210" aria-hidden="true" focusable="false"><line x1="42" y1="166" x2="558" y2="166"></line><polyline points="${coordinates}"></polyline><text x="42" y="194">${firstDate}</text><text x="558" y="194" text-anchor="end">${lastDate}</text><text x="42" y="28">${maxValue.toLocaleString(locale)}</text><text x="42" y="158">${minValue.toLocaleString(locale)}</text></svg><p class="market-status">${tr(`Último valor: ${points.at(-1).value.toLocaleString(locale)} holders · ${points.length} snapshots reais.`, `Latest value: ${points.at(-1).value.toLocaleString(locale)} holders · ${points.length} real snapshots.`, `Último valor: ${points.at(-1).value.toLocaleString(locale)} holders · ${points.length} capturas reales.`)}</p>`;
         } catch {
@@ -991,9 +996,79 @@
         }
       }
 
+      async function setupMarketHistory() {
+        const host = document.getElementById("marketHistory");
+        if (!host) return;
+        try {
+          const response = await fetch(`data/history.json?t=${Date.now()}`, {
+            cache: "no-store",
+            referrerPolicy: "no-referrer",
+          });
+          if (!response.ok) throw new Error("market history response");
+          const history = await response.json();
+          const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+          const points = (Array.isArray(history?.snapshots)
+            ? history.snapshots
+            : []
+          )
+            .map((item) => ({
+              time: new Date(item?.checkedAt).getTime(),
+              price: Number(item?.priceUsd),
+              volume: Number(item?.volume24h),
+            }))
+            .filter(
+              (item) =>
+                Number.isFinite(item.time) &&
+                item.time >= cutoff &&
+                Number.isFinite(item.price) &&
+                item.price > 0 &&
+                Number.isFinite(item.volume) &&
+                item.volume >= 0,
+            );
+          if (points.length < 3) return;
+          const locale = { pt: "pt-BR", en: "en-US", es: "es-ES" }[lang];
+          const chart = (key, label, formatter) => {
+            const values = points.map((item) => item[key]);
+            const min = Math.min(...values);
+            const max = Math.max(...values);
+            const first = points[0].time;
+            const last = points.at(-1).time;
+            const timeRange = Math.max(1, last - first);
+            const valueRange = Math.max(Number.EPSILON, max - min);
+            const coordinates = points
+              .map((item) => {
+                const x = 34 + ((item.time - first) / timeRange) * 532;
+                const y = 150 - ((item[key] - min) / valueRange) * 112;
+                return `${x.toFixed(1)},${y.toFixed(1)}`;
+              })
+              .join(" ");
+            return `<figure><figcaption>${label}</figcaption><svg viewBox="0 0 600 180" aria-hidden="true" focusable="false"><line x1="34" y1="150" x2="566" y2="150"></line><polyline points="${coordinates}"></polyline><text x="34" y="24">${formatter(max)}</text><text x="34" y="144">${formatter(min)}</text></svg><p class="market-status">${tr("Último valor", "Latest value", "Último valor")}: ${formatter(values.at(-1))}</p></figure>`;
+          };
+          const money = (value, compact = false) =>
+            new Intl.NumberFormat(locale, {
+              style: "currency",
+              currency: "USD",
+              notation: compact ? "compact" : "standard",
+              maximumFractionDigits: compact ? 2 : Number(value) < 0.01 ? 8 : 4,
+            }).format(value);
+          host.innerHTML = `<div class="market-history-grid">${chart("price", tr("Preço em USD", "Price in USD", "Precio en USD"), (value) => money(value))}${chart("volume", tr("Volume em 24h", "24h volume", "Volumen en 24h"), (value) => money(value, true))}</div><p class="market-status">${points.length} ${tr("snapshots reais · sem estimativas", "real snapshots · no estimates", "capturas reales · sin estimaciones")}.</p>`;
+        } catch {
+          host.innerHTML = `<p class="market-status">${tr("Histórico de mercado temporariamente indisponível.", "Market history temporarily unavailable.", "Historial de mercado temporalmente no disponible.")}</p>`;
+        }
+      }
+
       async function setupLiveData() {
         const holderNodes = document.querySelectorAll("[data-holders]");
         if (!holderNodes.length) return;
+        holderNodes.forEach((node) => {
+          const label = node.closest(".stat")?.querySelector("span");
+          if (label)
+            label.textContent = tr(
+              "Proprietários on-chain",
+              "On-chain owners",
+              "Propietarios on-chain",
+            );
+        });
         const setHolderText = (value) =>
           holderNodes.forEach((node) => {
             node.textContent = value;
@@ -1008,6 +1083,18 @@
             if (node.closest("main")) node.textContent = message;
           });
         };
+        setHolderDetails(
+          tr(
+            "Carregando dados on-chain…",
+            "Loading on-chain data…",
+            "Cargando datos on-chain…",
+          ),
+          tr(
+            "Carregando a contagem de proprietários únicos com saldo positivo, incluindo contas técnicas.",
+            "Loading the count of unique positive-balance owners, including technical accounts.",
+            "Cargando el recuento de propietarios únicos con saldo positivo, incluidas las cuentas técnicas.",
+          ),
+        );
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 8000);
         try {
@@ -1030,14 +1117,14 @@
             age <= 3 * 60 * 60 * 1000;
           if (!valid) throw new Error("stale snapshot");
           const locale = { pt: "pt-BR", en: "en-US", es: "es-ES" }[lang];
-          const updated = new Intl.DateTimeFormat(locale, {
+          const updated = `${new Intl.DateTimeFormat(locale, {
             day: "2-digit",
             month: "2-digit",
             year: "numeric",
             hour: "2-digit",
             minute: "2-digit",
-            timeZoneName: "short",
-          }).format(checkedAt);
+            timeZone: "UTC",
+          }).format(checkedAt)} UTC`;
           setHolderText(holders.toLocaleString(locale));
           const pump = snapshot?.pumpFun;
           const pumpMarketCap = Number(pump?.marketCapUsd);
@@ -1162,12 +1249,14 @@
         }
         clearTimeout(timeout);
         setupHolderHistory();
+        setupMarketHistory();
         clearInterval(liveDataTimer);
         liveDataTimer = setInterval(setupLiveData, 5 * 60 * 1000);
       }
 
       async function setupMarketData() {
         const status = document.getElementById("marketStatus");
+        const activity = document.querySelector("[data-market-activity]");
         const resetMarket = () => {
           document.querySelectorAll("[data-market]").forEach((node) => {
             node.textContent = "—";
@@ -1176,6 +1265,9 @@
         };
         const setStatus = (message) => {
           if (status) status.textContent = message;
+        };
+        const setActivity = (message) => {
+          if (activity) activity.textContent = message;
         };
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 8000);
@@ -1204,6 +1296,13 @@
             )[0] || null;
           if (!pair) {
             resetMarket();
+            setActivity(
+              tr(
+                "Compras e vendas em 24h: aguardando um par DEX confirmado.",
+                "24h buys and sells: waiting for a confirmed DEX pair.",
+                "Compras y ventas en 24h: esperando un par DEX confirmado.",
+              ),
+            );
             setStatus(
               tr(
                 "Nenhum par DEX confirmado. Preço, liquidez, volume e variação permanecem indisponíveis; a avaliação da Bonding Curve é exibida separadamente quando o snapshot da Pump.fun está atual.",
@@ -1253,10 +1352,26 @@
               changeNode.textContent = `${change > 0 ? "+" : ""}${change.toLocaleString(locale, { maximumFractionDigits: 2 })}%`;
               changeNode.classList.add(change >= 0 ? "positive" : "negative");
             });
-          const updated = new Intl.DateTimeFormat(locale, {
+          const buys = Number(pair.txns?.h24?.buys);
+          const sells = Number(pair.txns?.h24?.sells);
+          setActivity(
+            Number.isInteger(buys) && Number.isInteger(sells)
+              ? tr(
+                  `Transações em 24h: ${buys.toLocaleString(locale)} compras · ${sells.toLocaleString(locale)} vendas.`,
+                  `24h transactions: ${buys.toLocaleString(locale)} buys · ${sells.toLocaleString(locale)} sells.`,
+                  `Transacciones en 24h: ${buys.toLocaleString(locale)} compras · ${sells.toLocaleString(locale)} ventas.`,
+                )
+              : tr(
+                  "Compras e vendas em 24h: dados indisponíveis.",
+                  "24h buys and sells: data unavailable.",
+                  "Compras y ventas en 24h: datos no disponibles.",
+                ),
+          );
+          const updated = `${new Intl.DateTimeFormat(locale, {
             dateStyle: "short",
             timeStyle: "short",
-          }).format(new Date());
+            timeZone: "UTC",
+          }).format(new Date())} UTC`;
           setStatus(
             tr(
               `Atualizado em ${updated}. Par priorizado por liquidez e volume.`,
@@ -1266,6 +1381,13 @@
           );
         } catch {
           resetMarket();
+          setActivity(
+            tr(
+              "Compras e vendas em 24h: dados temporariamente indisponíveis.",
+              "24h buys and sells: data temporarily unavailable.",
+              "Compras y ventas en 24h: datos temporalmente no disponibles.",
+            ),
+          );
           setStatus(
             tr(
               "Dados temporariamente indisponíveis. Verifique diretamente no DexScreener.",
@@ -1335,7 +1457,8 @@
         const show = (next) => {
           frame = (next + frameCount) % frameCount;
           frameImage.src = `peloco-360-v2-${frame}.webp`;
-          viewer.setAttribute("aria-label", `PELOCO 360° — ${angles[frame]}`);
+          viewer.setAttribute("aria-valuenow", String(frame));
+          viewer.setAttribute("aria-valuetext", angles[frame]);
         };
         const rotate = (step) => show(frame + step);
         document
@@ -1393,8 +1516,13 @@
           copy[lang].footer;
         document.querySelector('[data-t="privacyLink"]').textContent =
           copy[lang].nav[11];
-        document.querySelector('[data-t="binanceLink"]').textContent =
-          "Binance Wallet ↗";
+        const binanceLink = document.querySelector('[data-t="binanceLink"]');
+        binanceLink.textContent = "Binance Wallet ↗";
+        binanceLink.title = tr(
+          "Pode abrir a tela geral da Binance Wallet; pesquise pelo CA oficial do PELOCO.",
+          "May open the general Binance Wallet screen; search using PELOCO's official CA.",
+          "Puede abrir la pantalla general de Binance Wallet; busca con el CA oficial de PELOCO.",
+        );
         const content = document.getElementById("content");
         content.innerHTML = page();
         document
@@ -1422,11 +1550,40 @@
         document.querySelectorAll("[data-copy]").forEach((btn) =>
           btn.addEventListener("click", async () => {
             const original = btn.textContent;
+            let copied = false;
             try {
               await navigator.clipboard.writeText(btn.dataset.copy);
+              copied = true;
+            } catch {}
+            if (!copied) {
+              const field = document.createElement("textarea");
+              field.value = btn.dataset.copy;
+              field.setAttribute("readonly", "");
+              field.className = "copy-fallback";
+              document.body.appendChild(field);
+              field.select();
+              field.setSelectionRange(0, field.value.length);
+              try {
+                copied = document.execCommand("copy");
+              } catch {}
+              field.remove();
+            }
+            if (copied) {
               btn.textContent = tr("Copiado ✓", "Copied ✓", "Copiado ✓");
-            } catch {
-              btn.textContent = tr("Falhou", "Failed", "Error");
+            } else {
+              const code = btn.closest(".data-row")?.querySelector("code");
+              if (code) {
+                const selection = window.getSelection();
+                const range = document.createRange();
+                range.selectNodeContents(code);
+                selection.removeAllRanges();
+                selection.addRange(range);
+              }
+              btn.textContent = tr(
+                "Selecionado",
+                "Selected",
+                "Seleccionado",
+              );
             }
             setTimeout(() => {
               btn.textContent = original;

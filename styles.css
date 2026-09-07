@@ -705,6 +705,14 @@ h3 {
   white-space: nowrap;
 }
 
+.copy-fallback {
+  position: fixed;
+  inset: 0 auto auto -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
 .wallet-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1202,6 +1210,36 @@ h3 {
   font: 12px PelocoSans, system-ui, sans-serif;
 }
 
+.market-history-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
+}
+
+.market-history-grid figure {
+  min-width: 0;
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.market-history-grid figcaption {
+  color: var(--white);
+  font-weight: 800;
+}
+
+.hero .subtle-link {
+  min-height: 44px;
+  padding-inline: 10px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-color: rgba(184, 216, 232, 0.35);
+  text-underline-offset: 0.3em;
+}
+
 .verify-links {
   margin-top: 18px;
 }
@@ -1394,6 +1432,10 @@ h3 {
 }
 
 @media (max-width: 620px) {
+  .market-history-grid {
+    grid-template-columns: 1fr;
+  }
+
   :root {
     --header-height: 62px;
     --radius: 19px;
