@@ -225,7 +225,7 @@
           ],
           [
             "O CRIADOR E SUAS HOLDINGS",
-            "A posição atual representa aproximadamente 0,96% do supply. Permanecer abaixo de 5%, alcançar 4,8%–4,9% e realizar um lock de dois anos são intenções planejadas, ainda não implementadas.",
+            "O PELOCO está distribuído em três carteiras declaradas do criador. A participação agregada atual só será publicada após confirmação on-chain com data e fonte. Permanecer abaixo de 5%, alcançar 4,8%–4,9% e realizar um lock de dois anos são planos ainda não implementados.",
           ],
           [
             "CREATOR FEES E REINVESTIMENTO",
@@ -249,7 +249,7 @@
           ],
           [
             "O QUE EXISTE HOJE",
-            "Supply de 1 bilhão, rede Solana, token identificável on-chain, presença pública, comunidade inicial e holdings do criador em aproximadamente 0,96%.",
+            "Supply total de 1 bilhão, rede Solana, token identificável on-chain, presença pública, comunidade inicial e três carteiras declaradas do criador.",
           ],
           [
             "O QUE ESTÁ SENDO CONSTRUÍDO",
@@ -285,7 +285,7 @@
           ],
           [
             "RESUMO DOS PRINCIPAIS COMPROMISSOS",
-            "Supply de 1 bilhão existente; holdings atuais de aproximadamente 0,96%; limites, lock e Public Reserve claramente identificados como planejados.",
+            "Supply total de 1 bilhão e três carteiras declaradas existentes; participação agregada pendente de confirmação; limites, lock e Public Reserve identificados como planejados.",
           ],
           [
             "A REGRA",
@@ -327,7 +327,7 @@
           ],
           [
             "THE CREATOR AND THEIR HOLDINGS",
-            "The current position is approximately 0.96% of supply. Staying below 5%, reaching 4.8%–4.9%, and a two-year lock are planned intentions, not active mechanisms.",
+            "PELOCO is held across three declared creator wallets. The current aggregate share will only be published after on-chain confirmation with a date and source. Staying below 5%, reaching 4.8%–4.9%, and a two-year lock are plans, not active mechanisms.",
           ],
           [
             "CREATOR FEES AND REINVESTMENT",
@@ -351,7 +351,7 @@
           ],
           [
             "WHAT EXISTS TODAY",
-            "A 1 billion supply, Solana network, identifiable on-chain token, public presence, an initial community, and creator holdings at approximately 0.96%.",
+            "A Total Supply of 1 billion, Solana network, identifiable on-chain token, public presence, an initial community, and three declared creator wallets.",
           ],
           [
             "WHAT IS BEING BUILT",
@@ -387,7 +387,7 @@
           ],
           [
             "SUMMARY OF KEY COMMITMENTS",
-            "A current 1 billion supply; current holdings at approximately 0.96%; limits, lock, and Public Reserve clearly identified as planned.",
+            "An existing Total Supply of 1 billion and three declared wallets; aggregate position pending confirmation; limits, lock, and Public Reserve identified as planned.",
           ],
           [
             "THE RULE",
@@ -429,7 +429,7 @@
           ],
           [
             "EL CREADOR Y SUS HOLDINGS",
-            "La posición declarada representa aproximadamente el 0,96% del supply. Mantenerse por debajo del 5%, alcanzar entre 4,8% y 4,9% y realizar un bloqueo de dos años son intenciones planificadas, aún no implementadas.",
+            "PELOCO está distribuido en tres carteras declaradas del creador. La participación agregada actual solo se publicará tras confirmación on-chain con fecha y fuente. Mantenerse por debajo del 5%, alcanzar entre 4,8% y 4,9% y realizar un bloqueo de dos años son planes aún no implementados.",
           ],
           [
             "CREATOR FEES Y REINVERSIÓN",
@@ -453,7 +453,7 @@
           ],
           [
             "LO QUE EXISTE HOY",
-            "Supply de mil millones, red Solana, token identificable on-chain, presencia pública, comunidad inicial y holdings del creador declarados en aproximadamente 0,96%.",
+            "Supply total de mil millones, red Solana, token identificable on-chain, presencia pública, comunidad inicial y tres carteras declaradas del creador.",
           ],
           [
             "LO QUE SE ESTÁ CONSTRUYENDO",
@@ -489,7 +489,7 @@
           ],
           [
             "RESUMEN DE LOS PRINCIPALES COMPROMISOS",
-            "Supply existente de mil millones; holdings declarados de aproximadamente 0,96%; límites, bloqueo y Public Reserve claramente identificados como planificados.",
+            "Supply total de mil millones y tres carteras declaradas existentes; posición agregada pendiente de confirmación; límites, bloqueo y Public Reserve identificados como planificados.",
           ],
           [
             "LA REGLA",
@@ -581,7 +581,7 @@
               "Los datos siguientes son referencias públicas del proyecto. Los datos actuales, la información técnica y los planes están claramente separados.",
             ),
           ) +
-            `<div class="stats"><div class="stat"><strong>Solana</strong><span>${tr("Rede", "Network", "Red")}</span></div><div class="stat"><strong>1B PELOCO</strong><span>${tr("Supply total", "Total Supply", "Supply total")}</span></div><div class="stat"><strong data-holders>—</strong><span>${tr("Holders atuais", "Current Holders", "Holders actuales")}</span><small>${tr("Fonte ainda não integrada", "Source not yet integrated", "Fuente aún no integrada")}</small></div><div class="stat"><strong data-market="cap">—</strong><span>Market Cap</span><small>DexScreener</small></div></div><div class="grid">${card("", tr("Existe hoje", "Exists today", "Existe hoy"), tr("Token identificável on-chain, supply total definido, presença pública, comunidade inicial e três carteiras declaradas do criador.", "On-chain identifiable token, defined total supply, public presence, initial community, and three declared creator wallets.", "Token identificable on-chain, supply total definido, presencia pública, comunidad inicial y tres carteras declaradas del creador."), status("exists", "EXISTE HOJE", "EXISTS TODAY", "EXISTE HOY"))}${card("", tr("Em construção", "Being built", "En construcción"), tr("Identidade, comunidade, documentação, histórico e estrutura pública de acompanhamento.", "Identity, community, documentation, track record, and a public tracking structure.", "Identidad, comunidad, documentación, historial y una estructura pública de seguimiento."), status("building", "EM CONSTRUÇÃO", "BEING BUILT", "EN CONSTRUCCIÓN"))}${card("", tr("Planejado — ainda não implementado", "Planned — not yet implemented", "Planificado — aún no implementado"), tr("Metas futuras: holdings agregadas do criador abaixo de 5%, lock de 2 anos e Public Reserve abaixo de 6%. Os mecanismos ainda serão divulgados e verificados.", "Future goals: aggregate creator holdings below 5%, a 2-year lock, and a Public Reserve below 6%. The mechanisms are yet to be disclosed and verified.", "Metas futuras: holdings agregadas del creador por debajo del 5%, bloqueo de 2 años y Public Reserve por debajo del 6%. Los mecanismos aún deberán publicarse y verificarse."), status("planned", "PLANEJADO", "PLANNED", "PLANIFICADO"))}</div>${marketPanel()}<section class="technical-data"><span class="eyebrow">${tr("Dados técnicos", "Technical data", "Datos técnicos")}</span><div class="data-row"><strong>${tr("Casas decimais", "Token decimals", "Decimales del token")}</strong><code>6</code></div><div class="data-row"><strong>${tr("Endereço do token", "Token address", "Dirección del token")}</strong><code>${TOKEN}</code><a class="btn" href="${links.token}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div><div class="data-row"><strong>Bonding curve</strong><code>${CURVE}</code><a class="btn" href="${links.curve}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div></section>`,
+            `<div class="stats"><div class="stat"><strong>Solana</strong><span>${tr("Rede", "Network", "Red")}</span></div><div class="stat"><strong>1B PELOCO</strong><span>${tr("Supply total", "Total Supply", "Supply total")}</span></div><div class="stat"><strong data-holders>—</strong><span>${tr("Holders atuais", "Current Holders", "Holders actuales")}</span><small>${tr("Fonte on-chain em validação", "On-chain source under validation", "Fuente on-chain en validación")}</small></div><div class="stat"><strong data-market="cap">—</strong><span>Market Cap</span><small>DexScreener</small></div></div><div class="grid">${card("", tr("Existe hoje", "Exists today", "Existe hoy"), tr("Token identificável on-chain, supply total definido, presença pública, comunidade inicial e três carteiras declaradas do criador.", "On-chain identifiable token, defined total supply, public presence, initial community, and three declared creator wallets.", "Token identificable on-chain, supply total definido, presencia pública, comunidad inicial y tres carteras declaradas del creador."), status("exists", "EXISTE HOJE", "EXISTS TODAY", "EXISTE HOY"))}${card("", tr("Em construção", "Being built", "En construcción"), tr("Identidade, comunidade, documentação, histórico e estrutura pública de acompanhamento.", "Identity, community, documentation, track record, and a public tracking structure.", "Identidad, comunidad, documentación, historial y una estructura pública de seguimiento."), status("building", "EM CONSTRUÇÃO", "BEING BUILT", "EN CONSTRUCCIÓN"))}${card("", tr("Planejado — ainda não implementado", "Planned — not yet implemented", "Planificado — aún no implementado"), tr("Metas futuras: holdings agregadas do criador abaixo de 5%, lock de 2 anos e Public Reserve abaixo de 6%. Os mecanismos ainda serão divulgados e verificados.", "Future goals: aggregate creator holdings below 5%, a 2-year lock, and a Public Reserve below 6%. The mechanisms are yet to be disclosed and verified.", "Metas futuras: holdings agregadas del creador por debajo del 5%, bloqueo de 2 años y Public Reserve por debajo del 6%. Los mecanismos aún deberán publicarse y verificarse."), status("planned", "PLANEJADO", "PLANNED", "PLANIFICADO"))}</div>${marketPanel()}<section class="technical-data"><span class="eyebrow">${tr("Dados técnicos", "Technical data", "Datos técnicos")}</span><div class="data-row"><strong>${tr("Endereço do token", "Token address", "Dirección del token")}</strong><code>${TOKEN}</code><a class="btn" href="${links.token}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div><div class="data-row"><strong>Bonding curve</strong><code>${CURVE}</code><a class="btn" href="${links.curve}" target="_blank" rel="noopener noreferrer">Solscan ↗</a></div></section>`,
         );
       }
       function building() {
@@ -976,7 +976,8 @@
                 node.textContent = value;
               });
           set("price", money(pair.priceUsd));
-          set("cap", money(pair.marketCap || pair.fdv || 0, true));
+          const marketCap = Number(pair.marketCap);
+          set("cap", marketCap > 0 ? money(marketCap, true) : "—");
           set("liquidity", money(pair.liquidity?.usd || 0, true));
           const change = Number(pair.priceChange?.h24);
           const changeNodes = document.querySelectorAll(
@@ -1014,6 +1015,12 @@
         const viewer = document.getElementById("avatarView");
         if (!viewer) return;
         const frameCount = 8;
+        const frameImage = document.getElementById("avatarFrame");
+        let lastValidFrame = 0;
+        for (let index = 0; index < frameCount; index += 1) {
+          const preload = new Image();
+          preload.src = `peloco-360-${index}.webp`;
+        }
         const angles = {
           pt: [
             "frente",
@@ -1049,9 +1056,17 @@
         let frame = 0,
           startX = 0,
           dragFrame = 0;
+        frameImage.addEventListener("load", () => {
+          lastValidFrame = frame;
+        });
+        frameImage.addEventListener("error", () => {
+          frame = lastValidFrame;
+          const fallback = `peloco-360-${lastValidFrame}.webp`;
+          if (!frameImage.src.endsWith(fallback)) frameImage.src = fallback;
+        });
         const show = (next) => {
           frame = (next + frameCount) % frameCount;
-          document.getElementById("avatarFrame").src = `peloco-360-${frame}.webp`;
+          frameImage.src = `peloco-360-${frame}.webp`;
           viewer.setAttribute("aria-label", `PELOCO 360° — ${angles[frame]}`);
         };
         const rotate = (step) => show(frame + step);
@@ -1079,7 +1094,7 @@
         });
         viewer.addEventListener("pointermove", (event) => {
           if (!viewer.hasPointerCapture(event.pointerId)) return;
-          show(dragFrame + Math.round((startX - event.clientX) / 38));
+          show(dragFrame + Math.round((startX - event.clientX) / 64));
         });
         const stop = (event) => {
           viewer.classList.remove("dragging");
@@ -1131,7 +1146,7 @@
           .getElementById("navMore")
           .classList.toggle("active", moreRoutes.includes(route));
         document.getElementById("navMore").removeAttribute("open");
-        document.title = `PELOCO — ${copy[lang].nav[routeKeys.indexOf(route)] || "404"}`;
+        document.title = `${copy[lang].nav[routeKeys.indexOf(route)] || "404"} | PELOCO`;
         document.querySelectorAll("[data-copy]").forEach((btn) =>
           btn.addEventListener("click", async () => {
             const original = btn.textContent;
