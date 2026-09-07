@@ -1552,7 +1552,12 @@
             const original = btn.textContent;
             let copied = false;
             try {
-              await navigator.clipboard.writeText(btn.dataset.copy);
+              await Promise.race([
+                navigator.clipboard.writeText(btn.dataset.copy),
+                new Promise((_, reject) =>
+                  setTimeout(() => reject(new Error("clipboard timeout")), 700),
+                ),
+              ]);
               copied = true;
             } catch {}
             if (!copied) {
