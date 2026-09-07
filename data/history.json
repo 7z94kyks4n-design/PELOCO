@@ -4,9 +4,9 @@
   "methodology": "unique positive-balance Token-2022 account owners",
   "snapshots": [
     {
-      "checkedAt": "2026-09-07T09:27:39Z",
+      "checkedAt": "2026-09-07T09:32:59Z",
       "holders": 6,
-      "slot": 445031076,
+      "slot": 445032091,
       "priceUsd": null,
       "volume24h": null
     }
