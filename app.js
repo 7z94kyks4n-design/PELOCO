@@ -17,19 +17,13 @@
           TOKEN +
           "&binanceChainId=CT_501&chain=sol",
       };
-      const images = [
-        "10EBDDE5-6EFC-42A9-8C39-8ADF569518FC_6AF52B24-1924-4FE1-B6BF-E5B06A9C6182.jpeg",
-        "37C68752-7929-47C6-B080-F33EDFA8AE2B_4F0AB4BE-8861-48A3-823C-5DEECA4E7DE6.jpeg",
-        "4D3348E3-6B5E-4FF7-8256-31750DCAA853_E1EAD1A2-36FD-4883-941B-12DF49912FDC.jpeg",
-        "61B5FB93-6FF4-45FE-9BB8-EEBF14E950A0_E4A9C9AF-06F7-4953-BE19-4FDEDDF4F293.jpeg",
-        "A33563E8-3A9F-4A8B-9E9E-330255DCB047_C369DCE9-325A-4493-B95D-48137FE69CD4.jpeg",
-        "A6A72B13-752A-49F9-B75A-9F1D53F88CE2_C811238D-81A6-4766-AFD8-4936F5C7AE40.jpeg",
-        "AC9D9DDC-22D7-4424-8A0F-1A25B58981AC_79434228-D26C-423F-904B-DCB309DBAE45.jpeg",
-        "C5888D3F-4A6D-446A-88EF-178A65615F20_95E555E3-EE01-4246-A5A9-16EFEB6551F4.jpeg",
-        "E2A92965-83A1-46E5-A192-75E331647F93_9F19735C-656B-47C6-832E-CCD31871B126.jpeg",
-        "F0C33AEE-1946-4702-B096-BC30048AF0E2_EEB6ACBC-DE57-49D3-885D-3715B42853CD.jpeg",
-        "IMG_6901.jpeg",
-        "dc3bec48-27f7-49ca-9b66-cc982aee7f30.jpeg",
+      const ORBIS_RESIDENTS = [
+        { name: "PELOCO", src: "orbis-peloco.webp", role: ["Protagonista", "Protagonist", "Protagonista"], species: ["Pintinho", "Chick", "Pollito"] },
+        { name: "Vulpira", src: "orbis-vulpira.webp", role: ["Inteligência e coragem", "Insight and courage", "Ingenio y coraje"], species: ["Raposa", "Fox", "Zorra"] },
+        { name: "Fidelis", src: "orbis-fidelis.webp", role: ["Lealdade e cuidado", "Loyalty and care", "Lealtad y cuidado"], species: ["Cão", "Dog", "Perro"] },
+        { name: "Anatis", src: "orbis-anatis.webp", role: ["Curiosidade e movimento", "Curiosity and motion", "Curiosidad y movimiento"], species: ["Pato", "Duck", "Pato"] },
+        { name: "Porcellus", src: "orbis-porcellus.webp", role: ["Alegria e abundância", "Joy and abundance", "Alegría y abundancia"], species: ["Porco", "Pig", "Cerdo"] },
+        { name: "Noctua", src: "orbis-noctua.webp", role: ["Sabedoria e observação", "Wisdom and observation", "Sabiduría y observación"], species: ["Coruja", "Owl", "Búho"] },
       ];
       const copy = {
         pt: {
@@ -728,7 +722,8 @@
             ready: "Disponível",
             soon: "Em desenvolvimento",
             gestures: "Gestos e emoções oficiais",
-            gallery: "ORBIS PELOCI · Universo visual",
+            gallery: "ORBIS PELOCI · Habitantes",
+            residents: "Animais conscientes de um mesmo universo. PELOCO é o protagonista; cada integrante tem espécie, personalidade e papel próprios.",
             doctor: "Médico",
             builder: "Construtor",
             surfer: "Surfista",
@@ -742,7 +737,8 @@
             ready: "Available",
             soon: "In development",
             gestures: "Official gestures and emotions",
-            gallery: "ORBIS PELOCI · Visual universe",
+            gallery: "ORBIS PELOCI · Residents",
+            residents: "Conscious animals from one shared universe. PELOCO is the protagonist; every resident has a distinct species, personality, and role.",
             doctor: "Doctor",
             builder: "Builder",
             surfer: "Surfer",
@@ -756,7 +752,8 @@
             ready: "Disponible",
             soon: "En desarrollo",
             gestures: "Gestos y emociones oficiales",
-            gallery: "ORBIS PELOCI · Universo visual",
+            gallery: "ORBIS PELOCI · Habitantes",
+            residents: "Animales conscientes de un mismo universo. PELOCO es el protagonista; cada integrante tiene su propia especie, personalidad y función.",
             doctor: "Médico",
             builder: "Constructor",
             surfer: "Surfista",
@@ -764,7 +761,7 @@
         }[lang];
         return shell(
           head("FLOCK • AVATAR STUDIO", t.title, t.lead) +
-            `<div class="flock-studio"><div class="avatar-stage"><div class="avatar-view" id="avatarView" role="slider" aria-label="${tr("Rotação 360 graus do PELOCO. Use as setas esquerda e direita.", "PELOCO 360-degree rotation. Use the left and right arrow keys.", "Rotación de 360 grados de PELOCO. Usa las flechas izquierda y derecha.")}" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" aria-valuetext="${tr("frente", "front", "frente")}" tabindex="0"><img id="avatarFrame" src="peloco-360-v2-0.webp" alt="" draggable="false" decoding="async" width="384" height="512"></div><div class="rotate-controls"><button type="button" id="rotateLeft" aria-label="${tr("Girar para a esquerda", "Rotate left", "Girar a la izquierda")}">←</button><span class="rotate-hint">↔ ${t.hint}</span><button type="button" id="rotateRight" aria-label="${tr("Girar para a direita", "Rotate right", "Girar a la derecha")}">→</button></div></div><div class="studio-panel"><section class="studio-card"><span class="eyebrow">360°</span><h3>${t.choose}</h3><div class="choice-grid"><button class="avatar-choice active" type="button"><strong>🐣 ${t.base}</strong><span>${t.ready}</span></button><button class="avatar-choice" type="button" disabled><strong>🩺 ${t.doctor}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏗️ ${t.builder}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏄 ${t.surfer}</strong><span>${t.soon}</span></button></div><p class="build-note">${tr("Cada roupa será criada sobre o mesmo avatar oficial e validada em todos os ângulos antes de ser liberada.", "Every outfit will use the same official avatar and be validated from every angle before release.", "Cada traje se creará sobre el mismo avatar oficial y se validará desde todos los ángulos antes de su lanzamiento.")}</p></section><section class="studio-card"><span class="eyebrow">${t.gestures}</span><img class="expression-sheet" src="peloco-expressions.webp" alt="${tr("PELOCO em oito gestos e emoções oficiais", "PELOCO in eight official gestures and emotions", "PELOCO en ocho gestos y emociones oficiales")}" loading="lazy" decoding="async" width="1536" height="1024"></section></div></div><div class="section-head"><span class="eyebrow">${t.gallery}</span><h2>${tr("Ele pode ser tudo o que quiser.", "He can be anything he wants.", "Puede ser todo lo que quiera.")}</h2></div><div class="gallery">${images.map((src, i) => `<figure><img src="${src}" loading="lazy" decoding="async" alt="PELOCO FLOCK — ${tr("arte", "art", "arte")} ${i + 1}"></figure>`).join("")}</div>`,
+            `<div class="flock-studio"><div class="avatar-stage"><div class="avatar-view" id="avatarView" role="slider" aria-label="${tr("Rotação 360 graus do PELOCO. Use as setas esquerda e direita.", "PELOCO 360-degree rotation. Use the left and right arrow keys.", "Rotación de 360 grados de PELOCO. Usa las flechas izquierda y derecha.")}" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" aria-valuetext="${tr("frente", "front", "frente")}" tabindex="0"><img id="avatarFrame" src="peloco-360-v2-0.webp" alt="" draggable="false" decoding="async" width="384" height="512"></div><div class="rotate-controls"><button type="button" id="rotateLeft" aria-label="${tr("Girar para a esquerda", "Rotate left", "Girar a la izquierda")}">←</button><span class="rotate-hint">↔ ${t.hint}</span><button type="button" id="rotateRight" aria-label="${tr("Girar para a direita", "Rotate right", "Girar a la derecha")}">→</button></div></div><div class="studio-panel"><section class="studio-card"><span class="eyebrow">360°</span><h3>${t.choose}</h3><div class="choice-grid"><button class="avatar-choice active" type="button"><strong>🐣 ${t.base}</strong><span>${t.ready}</span></button><button class="avatar-choice" type="button" disabled><strong>🩺 ${t.doctor}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏗️ ${t.builder}</strong><span>${t.soon}</span></button><button class="avatar-choice" type="button" disabled><strong>🏄 ${t.surfer}</strong><span>${t.soon}</span></button></div><p class="build-note">${tr("Cada roupa será criada sobre o mesmo avatar oficial e validada em todos os ângulos antes de ser liberada.", "Every outfit will use the same official avatar and be validated from every angle before release.", "Cada traje se creará sobre el mismo avatar oficial y se validará desde todos los ángulos antes de su lanzamiento.")}</p></section><section class="studio-card"><span class="eyebrow">${t.gestures}</span><img class="expression-sheet" src="peloco-expressions.webp" alt="${tr("PELOCO em oito gestos e emoções oficiais", "PELOCO in eight official gestures and emotions", "PELOCO en ocho gestos y emociones oficiales")}" loading="lazy" decoding="async" width="1536" height="1024"></section></div></div><section class="orbis-section" aria-labelledby="orbisTitle"><div class="section-head"><span class="eyebrow">${t.gallery}</span><h2 id="orbisTitle">ORBIS PELOCI</h2><p>${t.residents}</p></div><div class="orbis-gallery">${ORBIS_RESIDENTS.map((resident) => { const localeIndex = { pt: 0, en: 1, es: 2 }[lang]; return `<figure class="orbis-resident"><img src="${resident.src}" loading="lazy" decoding="async" width="1024" height="1024" alt="${resident.name}, ${resident.species[localeIndex]} — ORBIS PELOCI"><figcaption><strong>${resident.name}</strong><span>${resident.species[localeIndex]} · ${resident.role[localeIndex]}</span></figcaption></figure>`; }).join("")}</div></section>`,
         );
       }
       function community() {
@@ -1526,7 +1523,7 @@
         const content = document.getElementById("content");
         content.innerHTML = page();
         document
-          .querySelectorAll(".gallery img, .expression-sheet")
+          .querySelectorAll(".orbis-gallery img, .expression-sheet")
           .forEach((image) => {
             image.decoding = "async";
           });
