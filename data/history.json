@@ -374,6 +374,17 @@
       "liquidityUsd": null,
       "buys24h": null,
       "sells24h": null
+    },
+    {
+      "checkedAt": "2026-09-08T22:28:06Z",
+      "holders": 6,
+      "slot": 445451770,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
+      "liquidityUsd": null,
+      "buys24h": null,
+      "sells24h": null
     }
   ]
 }
