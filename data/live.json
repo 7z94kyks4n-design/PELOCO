@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "mint": "HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump",
-  "checkedAt": "2026-09-10T04:30:19Z",
+  "checkedAt": "2026-09-10T05:28:13Z",
   "sources": {
     "onChain": "Solana JSON-RPC",
     "market": "DexScreener",
     "launch": "Pump.fun"
   },
   "onChain": {
-    "slot": 445793131,
+    "slot": 445804108,
     "program": "spl-token-2022",
     "mintAuthority": null,
     "freezeAuthority": null,
@@ -43,18 +43,7 @@
       "sharePercent": 0.9679587412449999
     }
   },
-  "market": {
-    "pairAddress": "CjesdxRmP3ncNpnSzLxabPw3AAiVts2HEKH7i3nbK262",
-    "dexId": "pumpfun",
-    "priceUsd": "0.000002978",
-    "marketCap": 2978.05,
-    "fdv": 2978.05,
-    "liquidityUsd": null,
-    "volume24h": 0.1,
-    "change24h": -0.08,
-    "buys24h": 3,
-    "sells24h": 0
-  },
+  "market": null,
   "pumpFun": {
     "creatorAddress": "BGAmHnySzhRd25ikw7Xpgf2P3DJuHJhaU79tuucgkTmG",
     "bondingCurve": "CjesdxRmP3ncNpnSzLxabPw3AAiVts2HEKH7i3nbK262",
