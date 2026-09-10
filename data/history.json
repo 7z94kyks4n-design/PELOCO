@@ -682,6 +682,17 @@
       "liquidityUsd": null,
       "buys24h": 3,
       "sells24h": 0
+    },
+    {
+      "checkedAt": "2026-09-10T02:29:48Z",
+      "holders": 6,
+      "slot": 445770215,
+      "priceUsd": "0.000002978",
+      "volume24h": 0.1,
+      "marketCap": 2978.05,
+      "liquidityUsd": null,
+      "buys24h": 3,
+      "sells24h": 0
     }
   ]
 }
