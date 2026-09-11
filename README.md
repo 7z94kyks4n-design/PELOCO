@@ -1,6 +1,6 @@
 # PELOCO
 
-Site oficial do PELOCO: [7z94kyks4n-design.github.io/PELOCO](https://7z94kyks4n-design.github.io/PELOCO/).
+Site oficial do PELOCO: [pelococoin.com](https://pelococoin.com/).
 
 Da Família à Comunidade. Construído publicamente. Crescendo organicamente.
 

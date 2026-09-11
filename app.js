@@ -137,11 +137,13 @@
       let lang = supportedLangs.includes(savedLang) ? savedLang : "pt";
       let marketTimer = null;
       let liveDataTimer = null;
+      let marketController = null;
+      let liveDataController = null;
       const tr = (pt, en, es) => ({ pt, en, es })[lang];
       const shell = (x) =>
         `<section class="page"><div class="shell">${x}</div></section>`;
       const head = (ey, title, lead = "") =>
-        `<div class="section-head"><span class="eyebrow">${ey}</span><h2>${title}</h2>${lead ? `<p class="lead">${lead}</p>` : ""}</div>`;
+        `<div class="section-head"><span class="eyebrow">${ey}</span><h1 class="page-title">${title}</h1>${lead ? `<p class="lead">${lead}</p>` : ""}</div>`;
       const status = (kind, pt, en, es) =>
         `<span class="status ${kind}">${tr(pt, en, es || en)}</span>`;
       const card = (n, t, p, tag = "") =>
@@ -1036,11 +1038,17 @@
               time: new Date(item?.checkedAt).getTime(),
               price: Number(item?.priceUsd),
               volume: Number(item?.volume24h),
+              dexId: String(item?.dexId || "").toLowerCase(),
+              baseTokenAddress: item?.baseTokenAddress,
+              dexMigrationComplete: item?.dexMigrationComplete === true,
             }))
             .filter(
               (item) =>
                 Number.isFinite(item.time) &&
                 item.time >= cutoff &&
+                item.dexMigrationComplete &&
+                item.dexId !== "pumpfun" &&
+                item.baseTokenAddress === TOKEN &&
                 Number.isFinite(item.price) &&
                 item.price > 0 &&
                 Number.isFinite(item.volume) &&
@@ -1116,7 +1124,9 @@
             "Cargando el recuento de propietarios únicos con saldo positivo, incluidas las cuentas técnicas.",
           ),
         );
+        liveDataController?.abort();
         const controller = new AbortController();
+        liveDataController = controller;
         const timeout = setTimeout(() => controller.abort(), 8000);
         try {
           const response = await fetch(`data/live.json?t=${Date.now()}`, {
@@ -1269,14 +1279,17 @@
           );
         }
         clearTimeout(timeout);
+        if (liveDataController === controller) liveDataController = null;
         setupHolderHistory();
         setupMarketHistory();
         clearInterval(liveDataTimer);
-        liveDataTimer = setInterval(setupLiveData, 5 * 60 * 1000);
+        if (holderNodes[0]?.isConnected)
+          liveDataTimer = setInterval(setupLiveData, 5 * 60 * 1000);
       }
 
       async function setupMarketData() {
         const status = document.getElementById("marketStatus");
+        if (!status) return;
         const activity = document.querySelector("[data-market-activity]");
         const resetMarket = () => {
           document.querySelectorAll("[data-market]").forEach((node) => {
@@ -1290,9 +1303,44 @@
         const setActivity = (message) => {
           if (activity) activity.textContent = message;
         };
+        marketController?.abort();
         const controller = new AbortController();
+        marketController = controller;
         const timeout = setTimeout(() => controller.abort(), 8000);
         try {
+          const launchResponse = await fetch(`data/live.json?t=${Date.now()}`, {
+            cache: "no-store",
+            signal: controller.signal,
+            referrerPolicy: "no-referrer",
+          });
+          if (!launchResponse.ok) throw new Error("launch snapshot response");
+          const launchSnapshot = await launchResponse.json();
+          const launchCheckedAt = new Date(launchSnapshot?.checkedAt).getTime();
+          const launchAge = Date.now() - launchCheckedAt;
+          const migrationComplete =
+            launchSnapshot?.mint === TOKEN &&
+            launchSnapshot?.pumpFun?.migrationComplete === true &&
+            Number.isFinite(launchAge) &&
+            launchAge >= 0 &&
+            launchAge <= 3 * 60 * 60 * 1000;
+          if (!migrationComplete) {
+            resetMarket();
+            setActivity(
+              tr(
+                "Compras e vendas em 24h: aguardando um par DEX confirmado.",
+                "24h buys and sells: waiting for a confirmed DEX pair.",
+                "Compras y ventas en 24h: esperando un par DEX confirmado.",
+              ),
+            );
+            setStatus(
+              tr(
+                "Migração para DEX ainda não concluída. Os dados da Bonding Curve são exibidos separadamente.",
+                "DEX migration is not complete yet. Bonding Curve data is shown separately.",
+                "La migración a DEX aún no está completa. Los datos de la Bonding Curve se muestran por separado.",
+              ),
+            );
+            return;
+          }
           const response = await fetch(
             `https://api.dexscreener.com/token-pairs/v1/solana/${TOKEN}`,
             { signal: controller.signal, referrerPolicy: "no-referrer" },
@@ -1303,8 +1351,8 @@
             ? pairs.filter(
                 (item) =>
                   item?.chainId === "solana" &&
-                  (item?.baseToken?.address === TOKEN ||
-                    item?.quoteToken?.address === TOKEN) &&
+                  item?.baseToken?.address === TOKEN &&
+                  String(item?.dexId || "").toLowerCase() !== "pumpfun" &&
                   Number(item?.priceUsd) > 0,
               )
             : [];
@@ -1418,8 +1466,10 @@
           );
         } finally {
           clearTimeout(timeout);
+          if (marketController === controller) marketController = null;
           clearInterval(marketTimer);
-          marketTimer = setInterval(setupMarketData, 60 * 1000);
+          if (status.isConnected)
+            marketTimer = setInterval(setupMarketData, 60 * 1000);
         }
       }
       function setupFlock() {
@@ -1518,6 +1568,10 @@
         show(0);
       }
       function render() {
+        marketController?.abort();
+        liveDataController?.abort();
+        marketController = null;
+        liveDataController = null;
         clearInterval(marketTimer);
         clearInterval(liveDataTimer);
         marketTimer = null;
@@ -1527,7 +1581,7 @@
           routes[route] ||
           (() =>
             shell(
-              `<div class="error"><h2>404</h2><p>${tr("Esta página não existe.", "This page does not exist.", "Esta página no existe.")}</p><a class="btn primary" href="#/home">${tr("Voltar ao início", "Back to Home", "Volver al inicio")}</a></div>`,
+              `<div class="error"><h1 class="page-title">404</h1><p>${tr("Esta página não existe.", "This page does not exist.", "Esta página no existe.")}</p><a class="btn primary" href="#/home">${tr("Voltar ao início", "Back to Home", "Volver al inicio")}</a></div>`,
             ));
         document.documentElement.lang = { pt: "pt-BR", en: "en", es: "es" }[
           lang
@@ -1551,11 +1605,10 @@
           .forEach((image) => {
             image.decoding = "async";
           });
-        document
-          .querySelectorAll("[data-route]")
-          .forEach((a) =>
-            a.toggleAttribute("aria-current", a.dataset.route === route),
-          );
+        document.querySelectorAll("[data-route]").forEach((a) => {
+          if (a.dataset.route === route) a.setAttribute("aria-current", "page");
+          else a.removeAttribute("aria-current");
+        });
         const moreRoutes = [
           "updates",
           "community",

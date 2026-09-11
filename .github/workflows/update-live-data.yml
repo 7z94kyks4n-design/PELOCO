@@ -19,11 +19,22 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - name: Query Solana and DexScreener
-        run: python3 tools/update_live_data.py
+      - name: Query and validate public data
+        env:
+          SOLANA_RPC_URL: ${{ vars.SOLANA_RPC_URL }}
+          SOLANA_RPC_FALLBACK_URL: ${{ secrets.SOLANA_RPC_FALLBACK_URL }}
+        run: |
+          for attempt in 1 2; do
+            python3 tools/update_live_data.py && exit 0
+            if [ "$attempt" -lt 2 ]; then
+              echo "Temporary data-source failure; retrying in 20 seconds."
+              sleep 20
+            fi
+          done
+          exit 1
       - name: Publish timestamped snapshot
         run: |
           git config user.name "github-actions[bot]"

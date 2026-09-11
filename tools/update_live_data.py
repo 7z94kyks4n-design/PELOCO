@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import json
+import os
+import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,30 +22,65 @@ DECLARED_WALLETS = [
     "2BvMhRQS3bghmgJav8sbnGXfh1UqcKwrJPTPAaRSHrEk",
 ]
 TOKEN_2022 = "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
-SOLANA_RPC = "https://api.mainnet-beta.solana.com"
+DEFAULT_SOLANA_RPC = "https://api.mainnet-beta.solana.com"
+RPC_URLS = list(
+    dict.fromkeys(
+        url
+        for url in (
+            os.environ.get("SOLANA_RPC_URL") or DEFAULT_SOLANA_RPC,
+            os.environ.get("SOLANA_RPC_FALLBACK_URL"),
+        )
+        if url
+    )
+)
+REQUEST_TIMEOUT = max(5.0, float(os.environ.get("PUBLIC_DATA_TIMEOUT_SECONDS", "12")))
+REQUEST_ATTEMPTS = max(1, int(os.environ.get("PUBLIC_DATA_REQUEST_ATTEMPTS", "3")))
 DEX_API = f"https://api.dexscreener.com/token-pairs/v1/solana/{MINT}"
 PUMP_API = f"https://frontend-api-v3.pump.fun/coins/{MINT}"
 
 
-def request_json(url: str, payload: dict | None = None) -> dict | list:
+def request_json(
+    url: str,
+    payload: dict | None = None,
+    headers: dict[str, str] | None = None,
+) -> dict | list:
     body = json.dumps(payload).encode() if payload is not None else None
-    request = Request(
-        url,
-        data=body,
-        headers={"Content-Type": "application/json", "User-Agent": "PELOCO-public-data/1.0"},
-    )
-    with urlopen(request, timeout=30) as response:
-        return json.load(response)
+    request_headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "User-Agent": "PELOCO-public-data/1.0",
+    }
+    if headers:
+        request_headers.update(headers)
+    last_error: Exception | None = None
+    for attempt in range(1, REQUEST_ATTEMPTS + 1):
+        request = Request(url, data=body, headers=request_headers)
+        try:
+            with urlopen(request, timeout=REQUEST_TIMEOUT) as response:
+                return json.load(response)
+        except Exception as error:
+            last_error = error
+            if attempt < REQUEST_ATTEMPTS:
+                time.sleep(attempt * 2)
+    raise RuntimeError(
+        f"Request failed after {REQUEST_ATTEMPTS} attempts: {url}"
+    ) from last_error
 
 
 def rpc(method: str, params: list) -> dict:
-    response = request_json(
-        SOLANA_RPC,
-        {"jsonrpc": "2.0", "id": 1, "method": method, "params": params},
-    )
-    if not isinstance(response, dict) or response.get("error"):
-        raise RuntimeError(f"Solana RPC {method} failed: {response}")
-    return response["result"]
+    errors = []
+    for rpc_url in RPC_URLS:
+        try:
+            response = request_json(
+                rpc_url,
+                {"jsonrpc": "2.0", "id": 1, "method": method, "params": params},
+            )
+            if not isinstance(response, dict) or response.get("error") or "result" not in response:
+                raise RuntimeError(f"Invalid response: {response}")
+            return response["result"]
+        except Exception as error:
+            errors.append(f"{rpc_url}: {error}")
+    raise RuntimeError(f"Solana RPC {method} failed on every endpoint: {'; '.join(errors)}")
 
 
 def on_chain_data() -> dict:
@@ -116,10 +153,8 @@ def market_data() -> dict | None:
         pair
         for pair in pairs
         if pair.get("chainId") == "solana"
-        and MINT in {
-            (pair.get("baseToken") or {}).get("address"),
-            (pair.get("quoteToken") or {}).get("address"),
-        }
+        and (pair.get("baseToken") or {}).get("address") == MINT
+        and str(pair.get("dexId") or "").lower() != "pumpfun"
         and float(pair.get("priceUsd") or 0) > 0
     ]
     if not exact:
@@ -134,6 +169,8 @@ def market_data() -> dict | None:
     return {
         "pairAddress": pair.get("pairAddress"),
         "dexId": pair.get("dexId"),
+        "baseTokenAddress": (pair.get("baseToken") or {}).get("address"),
+        "quoteTokenAddress": (pair.get("quoteToken") or {}).get("address"),
         "priceUsd": pair.get("priceUsd"),
         "marketCap": pair.get("marketCap"),
         "fdv": pair.get("fdv"),
@@ -146,18 +183,16 @@ def market_data() -> dict | None:
 
 
 def pump_fun_data() -> dict | None:
-    request = Request(
-        PUMP_API,
-        headers={
+    try:
+        coin = request_json(
+            PUMP_API,
+            headers={
             "Accept": "application/json",
             "Origin": "https://pump.fun",
             "Referer": "https://pump.fun/",
             "User-Agent": "Mozilla/5.0 PELOCO-public-data/1.0",
-        },
-    )
-    try:
-        with urlopen(request, timeout=30) as response:
-            coin = json.load(response)
+            },
+        )
     except Exception:
         return None
     if not isinstance(coin, dict) or coin.get("mint") != MINT:
@@ -174,6 +209,26 @@ def pump_fun_data() -> dict | None:
     }
 
 
+def validate_on_chain(data: dict) -> None:
+    if data.get("program") != "spl-token-2022":
+        raise RuntimeError(f"Unexpected token program: {data.get('program')}")
+    if data.get("decimals") != 6:
+        raise RuntimeError(f"Unexpected decimals: {data.get('decimals')}")
+    if data.get("supplyRaw") != "1000000000000000":
+        raise RuntimeError(f"Unexpected supply: {data.get('supplyRaw')}")
+    if not isinstance(data.get("uniquePositiveOwners"), int):
+        raise RuntimeError("Missing on-chain owner count")
+
+
+def atomic_write_json(path: Path, value: dict) -> None:
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(
+        json.dumps(value, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    temporary.replace(path)
+
+
 def main() -> None:
     checked_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     with ThreadPoolExecutor(max_workers=3) as executor:
@@ -183,6 +238,11 @@ def main() -> None:
         on_chain = on_chain_future.result()
         market = market_future.result()
         pump_fun = pump_future.result()
+    validate_on_chain(on_chain)
+    # A Pump.fun bonding curve is not a confirmed DEX pair. Keep all DEX
+    # metrics unavailable until Pump.fun confirms that migration is complete.
+    if not pump_fun or pump_fun.get("migrationComplete") is not True:
+        market = None
     result = {
         "schemaVersion": 1,
         "mint": MINT,
@@ -197,11 +257,12 @@ def main() -> None:
         "pumpFun": pump_fun,
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     try:
         history = json.loads(HISTORY.read_text(encoding="utf-8"))
-    except (FileNotFoundError, json.JSONDecodeError):
+    except FileNotFoundError:
         history = {"schemaVersion": 1, "mint": MINT, "methodology": "unique positive-balance Token-2022 account owners", "snapshots": []}
+    except json.JSONDecodeError as error:
+        raise RuntimeError("Existing history.json is invalid; refusing to overwrite it") from error
     snapshots = history.get("snapshots") if isinstance(history.get("snapshots"), list) else []
     snapshot = {
         "checkedAt": checked_at,
@@ -213,6 +274,14 @@ def main() -> None:
         "liquidityUsd": (result["market"] or {}).get("liquidityUsd"),
         "buys24h": (result["market"] or {}).get("buys24h"),
         "sells24h": (result["market"] or {}).get("sells24h"),
+        "dexId": (result["market"] or {}).get("dexId"),
+        "pairAddress": (result["market"] or {}).get("pairAddress"),
+        "baseTokenAddress": (result["market"] or {}).get("baseTokenAddress"),
+        "dexMigrationComplete": bool(
+            result["market"]
+            and result["pumpFun"]
+            and result["pumpFun"].get("migrationComplete") is True
+        ),
     }
     if snapshots:
         previous = datetime.fromisoformat(snapshots[-1]["checkedAt"].replace("Z", "+00:00"))
@@ -224,7 +293,10 @@ def main() -> None:
     else:
         snapshots.append(snapshot)
     history["snapshots"] = snapshots[-1460:]
-    HISTORY.write_text(json.dumps(history, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    # Do not expose partially-written JSON if the process is interrupted. The
+    # checkedAt timestamp only advances after required on-chain validation.
+    atomic_write_json(OUTPUT, result)
+    atomic_write_json(HISTORY, history)
 
 
 if __name__ == "__main__":

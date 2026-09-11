@@ -8,42 +8,90 @@
       "holders": 6,
       "slot": 445032091,
       "priceUsd": null,
-      "volume24h": null
+      "volume24h": null,
+      "marketCap": null,
+      "liquidityUsd": null,
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T10:29:50Z",
       "holders": 6,
       "slot": 445042871,
       "priceUsd": null,
-      "volume24h": null
+      "volume24h": null,
+      "marketCap": null,
+      "liquidityUsd": null,
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T11:30:01Z",
       "holders": 6,
       "slot": 445054280,
       "priceUsd": null,
-      "volume24h": null
+      "volume24h": null,
+      "marketCap": null,
+      "liquidityUsd": null,
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T12:36:23Z",
       "holders": 6,
       "slot": 445066831,
       "priceUsd": null,
-      "volume24h": null
+      "volume24h": null,
+      "marketCap": null,
+      "liquidityUsd": null,
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T13:31:21Z",
       "holders": 6,
       "slot": 445077264,
       "priceUsd": null,
-      "volume24h": null
+      "volume24h": null,
+      "marketCap": null,
+      "liquidityUsd": null,
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T14:29:58Z",
       "holders": 6,
       "slot": 445088355,
       "priceUsd": null,
-      "volume24h": null
+      "volume24h": null,
+      "marketCap": null,
+      "liquidityUsd": null,
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T16:29:31Z",
@@ -54,7 +102,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T17:28:00Z",
@@ -65,7 +117,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T18:32:22Z",
@@ -76,7 +132,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T19:27:12Z",
@@ -87,7 +147,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T20:29:05Z",
@@ -98,7 +162,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T21:28:14Z",
@@ -109,7 +177,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T22:27:54Z",
@@ -120,7 +192,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-07T23:26:37Z",
@@ -131,7 +207,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T00:39:47Z",
@@ -142,7 +222,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T01:28:27Z",
@@ -153,7 +237,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T02:29:56Z",
@@ -164,7 +252,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T03:29:42Z",
@@ -175,7 +267,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T04:30:06Z",
@@ -186,7 +282,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T05:29:06Z",
@@ -197,7 +297,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T06:35:26Z",
@@ -208,7 +312,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T07:30:26Z",
@@ -219,7 +327,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T08:31:32Z",
@@ -230,7 +342,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T09:30:40Z",
@@ -241,7 +357,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T10:30:20Z",
@@ -252,7 +372,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T11:29:12Z",
@@ -263,7 +387,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T12:36:17Z",
@@ -274,7 +402,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T13:31:35Z",
@@ -285,7 +417,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T14:31:56Z",
@@ -296,7 +432,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T15:32:16Z",
@@ -307,7 +447,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T16:32:36Z",
@@ -318,7 +462,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T17:28:58Z",
@@ -329,7 +477,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T18:33:20Z",
@@ -340,7 +492,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T19:27:32Z",
@@ -351,7 +507,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T20:29:22Z",
@@ -362,7 +522,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T21:26:39Z",
@@ -373,7 +537,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T22:28:06Z",
@@ -384,7 +552,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-08T23:26:51Z",
@@ -395,7 +567,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T00:39:26Z",
@@ -406,7 +582,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T01:29:35Z",
@@ -417,7 +597,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T02:29:33Z",
@@ -428,7 +612,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T03:29:55Z",
@@ -439,7 +627,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T04:29:41Z",
@@ -450,271 +642,371 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T05:28:58Z",
       "holders": 6,
       "slot": 445531467,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T06:35:50Z",
       "holders": 6,
       "slot": 445544108,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T07:31:01Z",
       "holders": 6,
       "slot": 445554551,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T08:30:40Z",
       "holders": 6,
       "slot": 445565889,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T09:30:51Z",
       "holders": 6,
       "slot": 445577309,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T10:30:50Z",
       "holders": 6,
       "slot": 445588689,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T11:29:49Z",
       "holders": 6,
       "slot": 445599888,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T12:36:25Z",
       "holders": 6,
       "slot": 445612533,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T13:31:59Z",
       "holders": 6,
       "slot": 445623055,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T14:31:00Z",
       "holders": 6,
       "slot": 445634190,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T15:30:42Z",
       "holders": 6,
       "slot": 445645543,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T16:31:30Z",
       "holders": 6,
       "slot": 445657027,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T17:28:49Z",
       "holders": 6,
       "slot": 445667907,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T18:33:17Z",
       "holders": 6,
       "slot": 445680127,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T19:27:26Z",
       "holders": 6,
       "slot": 445690384,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T20:29:38Z",
       "holders": 6,
       "slot": 445702040,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T21:27:47Z",
       "holders": 6,
       "slot": 445712963,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T22:27:53Z",
       "holders": 6,
       "slot": 445724274,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-09T23:26:56Z",
       "holders": 6,
       "slot": 445735475,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T00:35:39Z",
       "holders": 6,
       "slot": 445748502,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T01:27:44Z",
       "holders": 6,
       "slot": 445758407,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T02:29:48Z",
       "holders": 6,
       "slot": 445770215,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T03:30:15Z",
       "holders": 6,
       "slot": 445781686,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T04:30:19Z",
       "holders": 6,
       "slot": 445793131,
-      "priceUsd": "0.000002978",
-      "volume24h": 0.1,
-      "marketCap": 2978.05,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
       "liquidityUsd": null,
-      "buys24h": 3,
-      "sells24h": 0
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T05:28:13Z",
@@ -725,7 +1017,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T06:35:43Z",
@@ -736,7 +1032,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T07:30:32Z",
@@ -747,7 +1047,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T08:31:43Z",
@@ -758,7 +1062,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T09:30:10Z",
@@ -769,7 +1077,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T10:30:17Z",
@@ -780,7 +1092,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T11:29:07Z",
@@ -791,7 +1107,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T12:36:10Z",
@@ -802,7 +1122,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T13:28:36Z",
@@ -813,7 +1137,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T14:29:47Z",
@@ -824,7 +1152,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T15:30:13Z",
@@ -835,7 +1167,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T16:29:02Z",
@@ -846,7 +1182,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T17:27:12Z",
@@ -857,7 +1197,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T18:31:01Z",
@@ -868,7 +1212,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T19:25:20Z",
@@ -879,7 +1227,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T20:27:30Z",
@@ -890,7 +1242,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T21:26:56Z",
@@ -901,7 +1257,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T22:27:15Z",
@@ -912,7 +1272,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-10T23:25:58Z",
@@ -923,7 +1287,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-11T00:35:58Z",
@@ -934,7 +1302,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     },
     {
       "checkedAt": "2026-09-11T02:29:15Z",
@@ -945,7 +1317,11 @@
       "marketCap": null,
       "liquidityUsd": null,
       "buys24h": null,
-      "sells24h": null
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     }
   ]
 }
