@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071a31">
+  <meta name="robots" content="noindex,nofollow">
+  <title>PELOCO Stories — Prévia privada</title>
+  <style>
+    :root{
+      --ink:#071a31;--ink2:#0d2947;--panel:#123858;--gold:#f5c64e;
+      --gold2:#e99d24;--blue:#73cbed;--white:#fffdf7;--muted:#c4d7e8;
+      --line:rgba(115,203,237,.24);--shadow:0 30px 90px rgba(0,8,20,.48)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--ink)}
+    body{margin:0;color:var(--white);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
+      radial-gradient(circle at 15% 0,rgba(115,203,237,.18),transparent 28rem),
+      radial-gradient(circle at 88% 18%,rgba(245,198,78,.13),transparent 26rem),
+      linear-gradient(155deg,#0b3151 0,#071a31 42%,#0a2744 100%);overflow-x:hidden}
+    img{display:block;width:100%;height:auto}
+    button,a{font:inherit}
+    a{color:inherit}
+    .shell{width:min(1160px,calc(100% - 32px));margin:auto}
+    .preview-bar{position:sticky;top:0;z-index:30;background:rgba(7,26,49,.9);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(18px)}
+    .preview-inner{min-height:72px;display:flex;align-items:center;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.12em}
+    .brand img{width:44px;height:44px;border-radius:50%;background:#fff}
+    .badge{margin-left:auto;padding:.42rem .72rem;border:1px solid rgba(245,198,78,.45);border-radius:999px;color:var(--gold);font-size:.76rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+    .hero{position:relative;min-height:86svh;display:grid;align-items:end;padding:clamp(72px,10vw,132px) 0 70px;isolation:isolate}
+    .hero::before{content:"";position:absolute;inset:0;background:
+      linear-gradient(90deg,rgba(7,26,49,.95) 0%,rgba(7,26,49,.62) 46%,rgba(7,26,49,.06) 82%),
+      linear-gradient(0deg,var(--ink),transparent 36%),
+      url("https://raw.githubusercontent.com/7z94kyks4n-design/PELOCO/Adicionar-artes-originais-da-pr%C3%A9via-PELOCO-Stories/9DBE54FF-299B-4A29-A0A7-967BD71EB7CB.png") center/cover no-repeat;z-index:-2}
+    .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,black,transparent 70%);opacity:.18;z-index:-1}
+    .hero-copy{max-width:720px}
+    .kicker{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:.78rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+    .kicker::before{content:"";width:42px;height:1px;background:var(--gold)}
+    h1{margin:.55rem 0 1rem;font-size:clamp(3rem,9vw,7rem);line-height:.88;letter-spacing:-.055em;text-wrap:balance}
+    .lead{max-width:630px;margin:0;color:#e6f1f8;font-size:clamp(1.08rem,2vw,1.35rem)}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.75rem 1.05rem;border:1px solid var(--line);border-radius:14px;text-decoration:none;font-weight:850;background:rgba(13,41,71,.7)}
+    .btn.primary{color:var(--ink);background:linear-gradient(135deg,var(--gold),var(--gold2));border-color:transparent}
+    .intro{padding:90px 0 54px}
+    .intro-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,7vw,90px);align-items:start}
+    .section-no{color:var(--gold);font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+    h2{margin:.4rem 0 1rem;font-size:clamp(2.1rem,5vw,4.6rem);line-height:1;letter-spacing:-.04em;text-wrap:balance}
+    .intro-copy{font-size:clamp(1.05rem,2vw,1.32rem);color:var(--muted)}
+    .intro-copy strong{color:var(--white)}
+    .story{padding:30px 0 110px}
+    .scene{position:relative;min-height:78svh;margin:0 0 36px;overflow:hidden;border:1px solid rgba(255,255,255,.13);border-radius:30px;background:var(--panel);box-shadow:var(--shadow)}
+    .scene img{position:absolute;inset:0;height:100%;object-fit:cover}
+    .scene::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,15,29,.96) 0%,rgba(4,15,29,.42) 48%,rgba(4,15,29,.04) 78%)}
+    .scene-copy{position:absolute;z-index:2;left:clamp(22px,5vw,64px);right:clamp(22px,5vw,64px);bottom:clamp(24px,6vw,68px);max-width:690px}
+    .scene-label{color:var(--gold);font-size:.78rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    .scene h3{margin:.35rem 0 .65rem;font-size:clamp(2rem,5vw,4rem);line-height:.98;letter-spacing:-.04em}
+    .scene p{max-width:620px;margin:0;color:#d9e8f2;font-size:clamp(1rem,1.8vw,1.23rem)}
+    .scene.alt .scene-copy{margin-left:auto;text-align:right}
+    .scene.atlas{min-height:92svh}
+    .scene.atlas::after{background:linear-gradient(0deg,rgba(4,15,29,.95),rgba(4,15,29,.12) 70%)}
+    .clues{padding:0 0 110px}
+    .clue-head{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:end;margin-bottom:32px}
+    .clue-head p{color:var(--muted);font-size:1.1rem}
+    .clue-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .clue{min-height:170px;padding:20px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(18,56,88,.82),rgba(7,26,49,.72))}
+    .clue b{display:block;color:var(--gold);font-size:.73rem;letter-spacing:.12em;text-transform:uppercase}
+    .clue strong{display:block;margin-top:34px;font-size:1.05rem}
+    .clue span{display:block;color:var(--muted);font-size:.88rem}
+    .clue.locked{filter:saturate(.65)}
+    .ending{position:relative;padding:120px 0;overflow:hidden;border-top:1px solid rgba(255,255,255,.1);text-align:center}
+    .ending::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,rgba(245,198,78,.16),transparent 38%);pointer-events:none}
+    .ending blockquote{position:relative;max-width:860px;margin:0 auto;font-size:clamp(2rem,5vw,4.5rem);font-weight:850;line-height:1.08;letter-spacing:-.04em}
+    .ending p{position:relative;color:var(--muted)}
+    footer{padding:30px 0 calc(30px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,255,255,.1);color:var(--muted)}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px}
+    .gold{color:var(--gold)}
+    @media(max-width:760px){
+      .shell{width:min(100% - 22px,1160px)}
+      .preview-inner{min-height:62px}.brand{font-size:.9rem}.brand img{width:38px;height:38px}.badge{font-size:.64rem}
+      .hero{min-height:82svh;padding-bottom:44px}.hero::before{background:
+        linear-gradient(0deg,rgba(7,26,49,.98) 0%,rgba(7,26,49,.4) 56%,rgba(7,26,49,.08) 78%),
+        url("https://raw.githubusercontent.com/7z94kyks4n-design/PELOCO/Adicionar-artes-originais-da-pr%C3%A9via-PELOCO-Stories/9DBE54FF-299B-4A29-A0A7-967BD71EB7CB.png") center/cover no-repeat}
+      .intro{padding-top:66px}.intro-grid,.clue-head{grid-template-columns:1fr}
+      .scene{min-height:72svh;border-radius:22px;margin-bottom:18px}.scene.atlas{min-height:78svh}
+      .scene.alt .scene-copy{text-align:left}
+      .clue-grid{grid-template-columns:1fr 1fr}.clue:last-child{grid-column:1/-1}
+      .footer-inner{display:grid}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <header class="preview-bar">
+    <div class="shell preview-inner">
+      <div class="brand"><img src="https://raw.githubusercontent.com/7z94kyks4n-design/PELOCO/Adicionar-artes-originais-da-pr%C3%A9via-PELOCO-Stories/peloco-logo-header.png" alt="">PELOCO STORIES</div>
+      <div class="badge">Prévia · não publicada</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-copy">
+        <div class="kicker">Arquivo 01 · A porta</div>
+        <h1>O Atlas das<br><span class="gold">Rotas Perdidas</span></h1>
+        <p class="lead">Algumas histórias começam com uma resposta. Esta começa com uma porta que não deveria existir — e uma chave que parecia estar esperando por PELOCO.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#historia">Entrar na história ↓</a>
+          <a class="btn" href="#fragmentos">Examinar fragmentos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="shell intro-grid">
+        <div>
+          <div class="section-no">Prólogo</div>
+          <h2>Nada ali parecia novo.</h2>
+        </div>
+        <div class="intro-copy">
+          <p>A madeira carregava marcas antigas. A fechadura estava quente. E, embora ninguém tivesse contado a PELOCO sobre aquele lugar, <strong>alguma coisa do outro lado já sabia que ele havia chegado.</strong></p>
+          <p>Ele não encontrou um mapa do mundo. Encontrou um registro das conexões que o mundo perdeu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="story shell" id="historia">
+      <article class="scene">
+        <img src="https://raw.githubusercontent.com/7z94kyks4n-design/PELOCO/Adicionar-artes-originais-da-pr%C3%A9via-PELOCO-Stories/9DBE54FF-299B-4A29-A0A7-967BD71EB7CB.png" alt="PELOCO diante de uma pequena porta, segurando uma chave">
+        <div class="scene-copy">
+          <div class="scene-label">Cena 01 · O chamado</div>
+          <h3>Uma porta pequena demais.</h3>
+          <p>A chave não parecia ter sido feita para a porta. A porta parecia ter sido feita para ele.</p>
+        </div>
+      </article>
+
+      <article class="scene atlas alt">
+        <img src="https://raw.githubusercontent.com/7z94kyks4n-design/PELOCO/Adicionar-artes-originais-da-pr%C3%A9via-PELOCO-Stories/DA13B416-88BF-4F54-B903-4D1AEDEA3BB0.png" alt="PELOCO observa uma grande esfera mecânica iluminada">
+        <div class="scene-copy">
+          <div class="scene-label">Cena 02 · A câmara</div>
+          <h3>O Atlas despertou.</h3>
+          <p>Não mostrava países nem fronteiras. Cada linha registrava um caminho interrompido antes de alcançar seu destino.</p>
+        </div>
+      </article>
+
+      <article class="scene">
+        <img src="https://raw.githubusercontent.com/7z94kyks4n-design/PELOCO/Adicionar-artes-originais-da-pr%C3%A9via-PELOCO-Stories/3C0EC0DD-5514-4EDE-B1C3-9FCBB90F8A01.png" alt="Terceiro fragmento da descoberta de PELOCO">
+        <div class="scene-copy">
+          <div class="scene-label">Cena 03 · Reconhecimento</div>
+          <h3>Uma linha respondeu.</h3>
+          <p>PELOCO ainda não havia tocado em nada. Mesmo assim, um único traço ganhou luz — como se reconhecesse algo que ele carregava.</p>
+        </div>
+      </article>
+
+      <article class="scene alt">
+        <img src="https://raw.githubusercontent.com/7z94kyks4n-design/PELOCO/Adicionar-artes-originais-da-pr%C3%A9via-PELOCO-Stories/B2F38270-6AEE-49DA-AA69-FE66AA08B7A9.png" alt="Quarto fragmento da descoberta de PELOCO">
+        <div class="scene-copy">
+          <div class="scene-label">Cena 04 · Ausência</div>
+          <h3>O primeiro ponto apagado.</h3>
+          <p>Toda rota deveria terminar em alguém. Nesta, o destino continuava existindo — mas o nome havia sido removido.</p>
+        </div>
+      </article>
+
+      <article class="scene">
+        <img src="https://raw.githubusercontent.com/7z94kyks4n-design/PELOCO/Adicionar-artes-originais-da-pr%C3%A9via-PELOCO-Stories/F2F5E487-768D-4C0B-B6ED-C52474DC6CF3.png" alt="Quinto fragmento da descoberta de PELOCO">
+        <div class="scene-copy">
+          <div class="scene-label">Cena 05 · Ecos</div>
+          <h3>Outras histórias estavam ali.</h3>
+          <p>Uma costura impossível. Um selo restaurado. Um mapa incompleto. Uma reportagem sem fim. Um arquivo ausente. Separados, pareciam coincidências.</p>
+        </div>
+      </article>
+
+      <article class="scene alt">
+        <img src="https://raw.githubusercontent.com/7z94kyks4n-design/PELOCO/Adicionar-artes-originais-da-pr%C3%A9via-PELOCO-Stories/7E50B331-7517-4E71-87B2-8F73651D59A1.png" alt="Sexto fragmento da descoberta de PELOCO">
+        <div class="scene-copy">
+          <div class="scene-label">Cena 06 · Escolha</div>
+          <h3>A rota mais clara não era a mais antiga.</h3>
+          <p>PELOCO podia seguir a luz mais forte — ou procurar a primeira conexão que havia desaparecido. O Atlas aguardou.</p>
+        </div>
+      </article>
+
+      <article class="scene">
+        <img src="https://raw.githubusercontent.com/7z94kyks4n-design/PELOCO/Adicionar-artes-originais-da-pr%C3%A9via-PELOCO-Stories/517D5841-67EE-498B-BE25-16350E54D34B.png" alt="PELOCO caminha por uma cidade iluminada">
+        <div class="scene-copy">
+          <div class="scene-label">Cena 07 · Depois da porta</div>
+          <h3>A cidade continuava igual.</h3>
+          <p>Mas PELOCO não. Agora ele conseguia ver uma linha atravessando o céu — e sabia que, em algum lugar, alguém também podia vê-la.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="clues shell" id="fragmentos">
+      <div class="clue-head">
+        <div>
+          <div class="section-no">Conexões detectadas</div>
+          <h2>Cinco fragmentos. Nenhuma coincidência.</h2>
+        </div>
+        <p>O Atlas não explica as relações. Ele apenas confirma que elas existem. As identidades e os acontecimentos serão descobertos com o tempo.</p>
+      </div>
+      <div class="clue-grid">
+        <div class="clue"><b>Fragmento 01</b><strong>Tóquio</strong><span>Uma assinatura escondida numa costura.</span></div>
+        <div class="clue"><b>Fragmento 02</b><strong>Edimburgo</strong><span>Um símbolo preservado sob várias camadas.</span></div>
+        <div class="clue"><b>Fragmento 03</b><strong>Dublin</strong><span>Uma rota que não aparece em mapas comuns.</span></div>
+        <div class="clue"><b>Fragmento 04</b><strong>Londres</strong><span>Uma verdade escrita, mas nunca publicada.</span></div>
+        <div class="clue locked"><b>Fragmento 05</b><strong>Atenas</strong><span>Registro protegido. Origem desconhecida.</span></div>
+      </div>
+    </section>
+
+    <section class="ending">
+      <div class="shell">
+        <blockquote>“Isto não explica de onde PELOCO veio. É apenas a primeira prova de que sua história começou <span class="gold">muito antes de ele saber.</span>”</blockquote>
+        <p>O Arquivo 01 termina aqui. A rota permanece aberta.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <strong>PELOCO 🐣💛</strong>
+      <span>Construído publicamente. Descoberto lentamente.</span>
+    </div>
+  </footer>
+</body>
+</html>
