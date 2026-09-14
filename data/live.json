@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "mint": "HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump",
-  "checkedAt": "2026-09-14T03:30:43Z",
+  "checkedAt": "2026-09-14T04:30:41Z",
   "sources": {
     "onChain": "Solana JSON-RPC",
     "market": "DexScreener",
     "launch": "Pump.fun"
   },
   "onChain": {
-    "slot": 446874322,
+    "slot": 446885737,
     "program": "spl-token-2022",
     "mintAuthority": null,
     "freezeAuthority": null,
@@ -26,9 +26,9 @@
       },
       {
         "address": "BGAmHnySzhRd25ikw7Xpgf2P3DJuHJhaU79tuucgkTmG",
-        "balanceRaw": "2907681509794",
-        "balance": 2907681.509794,
-        "sharePercent": 0.2907681509794
+        "balanceRaw": "2938131534027",
+        "balance": 2938131.534027,
+        "sharePercent": 0.29381315340270003
       },
       {
         "address": "2BvMhRQS3bghmgJav8sbnGXfh1UqcKwrJPTPAaRSHrEk",
@@ -38,9 +38,9 @@
       }
     ],
     "declaredAggregate": {
-      "balanceRaw": "9703241438135",
-      "balance": 9703241.438135,
-      "sharePercent": 0.9703241438135
+      "balanceRaw": "9733691462368",
+      "balance": 9733691.462368,
+      "sharePercent": 0.9733691462368
     }
   },
   "market": null,
@@ -50,8 +50,8 @@
     "associatedBondingCurve": "8eyFyUc7mmZpT8mfjfMn4gjaTgHjHNQnSvZ2MYhY3f1T",
     "migrationComplete": false,
     "raydiumPool": null,
-    "marketCapUsd": 2847.2040530770914,
-    "marketCapSol": 28.55945368405884,
+    "marketCapUsd": 2881.5285732197167,
+    "marketCapSol": 28.561092013278984,
     "totalSupplyRaw": "1000000000000000"
   }
 }
