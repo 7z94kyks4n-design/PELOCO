@@ -1,223 +1,76 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#071a31">
-  <meta name="robots" content="noindex,nofollow">
-  <title>PELOCO Stories — Prévia privada</title>
-  <style>
-    :root{
-      --ink:#071a31;--ink2:#0d2947;--panel:#123858;--gold:#f5c64e;
-      --gold2:#e99d24;--blue:#73cbed;--white:#fffdf7;--muted:#c4d7e8;
-      --line:rgba(115,203,237,.24);--shadow:0 30px 90px rgba(0,8,20,.48)
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;background:var(--ink)}
-    body{margin:0;color:var(--white);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
-      radial-gradient(circle at 15% 0,rgba(115,203,237,.18),transparent 28rem),
-      radial-gradient(circle at 88% 18%,rgba(245,198,78,.13),transparent 26rem),
-      linear-gradient(155deg,#0b3151 0,#071a31 42%,#0a2744 100%);overflow-x:hidden}
-    img{display:block;width:100%;height:auto}
-    button,a{font:inherit}
-    a{color:inherit}
-    .shell{width:min(1160px,calc(100% - 32px));margin:auto}
-    .preview-bar{position:sticky;top:0;z-index:30;background:rgba(7,26,49,.9);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(18px)}
-    .preview-inner{min-height:72px;display:flex;align-items:center;gap:14px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.12em}
-    .brand img{width:44px;height:44px;border-radius:50%;background:#fff}
-    .badge{margin-left:auto;padding:.42rem .72rem;border:1px solid rgba(245,198,78,.45);border-radius:999px;color:var(--gold);font-size:.76rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
-    .hero{position:relative;min-height:86svh;display:grid;align-items:end;padding:clamp(72px,10vw,132px) 0 70px;isolation:isolate}
-    .hero::before{content:"";position:absolute;inset:0;background:
-      linear-gradient(90deg,rgba(7,26,49,.95) 0%,rgba(7,26,49,.62) 46%,rgba(7,26,49,.06) 82%),
-      linear-gradient(0deg,var(--ink),transparent 36%),
-      url("9DBE54FF-299B-4A29-A0A7-967BD71EB7CB.png") center/cover no-repeat;z-index:-2}
-    .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,black,transparent 70%);opacity:.18;z-index:-1}
-    .hero-copy{max-width:720px}
-    .kicker{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:.78rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
-    .kicker::before{content:"";width:42px;height:1px;background:var(--gold)}
-    h1{margin:.55rem 0 1rem;font-size:clamp(3rem,9vw,7rem);line-height:.88;letter-spacing:-.055em;text-wrap:balance}
-    .lead{max-width:630px;margin:0;color:#e6f1f8;font-size:clamp(1.08rem,2vw,1.35rem)}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.75rem 1.05rem;border:1px solid var(--line);border-radius:14px;text-decoration:none;font-weight:850;background:rgba(13,41,71,.7)}
-    .btn.primary{color:var(--ink);background:linear-gradient(135deg,var(--gold),var(--gold2));border-color:transparent}
-    .intro{padding:90px 0 54px}
-    .intro-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,7vw,90px);align-items:start}
-    .section-no{color:var(--gold);font-weight:900;letter-spacing:.14em;text-transform:uppercase}
-    h2{margin:.4rem 0 1rem;font-size:clamp(2.1rem,5vw,4.6rem);line-height:1;letter-spacing:-.04em;text-wrap:balance}
-    .intro-copy{font-size:clamp(1.05rem,2vw,1.32rem);color:var(--muted)}
-    .intro-copy strong{color:var(--white)}
-    .story{padding:30px 0 110px}
-    .scene{position:relative;min-height:78svh;margin:0 0 36px;overflow:hidden;border:1px solid rgba(255,255,255,.13);border-radius:30px;background:var(--panel);box-shadow:var(--shadow)}
-    .scene img{position:absolute;inset:0;height:100%;object-fit:cover}
-    .scene::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,15,29,.96) 0%,rgba(4,15,29,.42) 48%,rgba(4,15,29,.04) 78%)}
-    .scene-copy{position:absolute;z-index:2;left:clamp(22px,5vw,64px);right:clamp(22px,5vw,64px);bottom:clamp(24px,6vw,68px);max-width:690px}
-    .scene-label{color:var(--gold);font-size:.78rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
-    .scene h3{margin:.35rem 0 .65rem;font-size:clamp(2rem,5vw,4rem);line-height:.98;letter-spacing:-.04em}
-    .scene p{max-width:620px;margin:0;color:#d9e8f2;font-size:clamp(1rem,1.8vw,1.23rem)}
-    .scene.alt .scene-copy{margin-left:auto;text-align:right}
-    .scene.atlas{min-height:92svh}
-    .scene.atlas::after{background:linear-gradient(0deg,rgba(4,15,29,.95),rgba(4,15,29,.12) 70%)}
-    .clues{padding:0 0 110px}
-    .clue-head{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:end;margin-bottom:32px}
-    .clue-head p{color:var(--muted);font-size:1.1rem}
-    .clue-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-    .clue{min-height:170px;padding:20px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(18,56,88,.82),rgba(7,26,49,.72))}
-    .clue b{display:block;color:var(--gold);font-size:.73rem;letter-spacing:.12em;text-transform:uppercase}
-    .clue strong{display:block;margin-top:34px;font-size:1.05rem}
-    .clue span{display:block;color:var(--muted);font-size:.88rem}
-    .clue.locked{filter:saturate(.65)}
-    .ending{position:relative;padding:120px 0;overflow:hidden;border-top:1px solid rgba(255,255,255,.1);text-align:center}
-    .ending::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,rgba(245,198,78,.16),transparent 38%);pointer-events:none}
-    .ending blockquote{position:relative;max-width:860px;margin:0 auto;font-size:clamp(2rem,5vw,4.5rem);font-weight:850;line-height:1.08;letter-spacing:-.04em}
-    .ending p{position:relative;color:var(--muted)}
-    footer{padding:30px 0 calc(30px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,255,255,.1);color:var(--muted)}
-    .footer-inner{display:flex;justify-content:space-between;gap:20px}
-    .gold{color:var(--gold)}
-    @media(max-width:760px){
-      .shell{width:min(100% - 22px,1160px)}
-      .preview-inner{min-height:62px}.brand{font-size:.9rem}.brand img{width:38px;height:38px}.badge{font-size:.64rem}
-      .hero{min-height:82svh;padding-bottom:44px}.hero::before{background:
-        linear-gradient(0deg,rgba(7,26,49,.98) 0%,rgba(7,26,49,.4) 56%,rgba(7,26,49,.08) 78%),
-        url("9DBE54FF-299B-4A29-A0A7-967BD71EB7CB.png") center/cover no-repeat}
-      .intro{padding-top:66px}.intro-grid,.clue-head{grid-template-columns:1fr}
-      .scene{min-height:72svh;border-radius:22px;margin-bottom:18px}.scene.atlas{min-height:78svh}
-      .scene.alt .scene-copy{text-align:left}
-      .clue-grid{grid-template-columns:1fr 1fr}.clue:last-child{grid-column:1/-1}
-      .footer-inner{display:grid}
-    }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071a31">
+<meta name="robots" content="noindex,nofollow">
+<title>PELOCO Stories — O Atlas das Rotas Perdidas</title>
+<style>
+  *{box-sizing:border-box}
+  html{background:#04111f}
+  body{margin:0;min-height:100vh;padding:18px 12px 48px;background:radial-gradient(circle at 50% -10%,#17456b 0,#071a31 38%,#04111f 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .preview-note{width:min(430px,100%);margin:0 auto 14px;padding:10px 14px;border:1px solid rgba(245,198,78,.35);border-radius:14px;color:#f5c64e;background:rgba(7,26,49,.86);font-size:11px;font-weight:850;letter-spacing:.08em;text-align:center;text-transform:uppercase}
+  .nav{display:flex;flex-wrap:wrap;gap:7px;margin:0 auto 14px}
+  .nav-link{appearance:none;min-width:38px;padding:9px 11px;border:1px solid rgba(115,203,237,.25);border-radius:999px;color:#c4d7e8;background:#0d2947;font:800 12px/1 Inter,ui-sans-serif,system-ui;cursor:pointer}
+  .nav-link.active{border-color:#f5c64e;color:#071a31;background:#f5c64e}
+  [role="tabpanel"][hidden]{display:none!important}
+</style>
 </head>
 <body>
-  <header class="preview-bar">
-    <div class="shell preview-inner">
-      <div class="brand"><img src="peloco-logo-header.png" alt="">PELOCO STORIES</div>
-      <div class="badge">Prévia · não publicada</div>
-    </div>
-  </header>
+<div class="preview-note">Prévia isolada · não publicada</div>
+<div id="peloco-atlas-refined">
+  <style>
+    #peloco-atlas-refined { --peloco-night:#071a31; --peloco-night-soft:#0d2947; --peloco-panel:#123858; --peloco-gold:#f5c64e; --peloco-gold-deep:#e99d24; --peloco-white:#fffdf7; --peloco-muted:#c4d7e8; width:100%; display:grid; gap:14px; justify-items:center; color:var(--peloco-white); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    #peloco-atlas-refined * { box-sizing:border-box; }
+    #peloco-atlas-refined .nav { width:min(430px,100%); justify-content:center; }
+    #peloco-atlas-refined [role="tabpanel"] { width:min(430px,100%); }
+    #peloco-atlas-refined .peloco-page { width:100%; overflow:hidden; border-radius:30px; background:var(--peloco-night); box-shadow:0 24px 70px rgba(0,8,20,.32); }
+    #peloco-atlas-refined .peloco-header { min-height:62px; display:flex; align-items:center; gap:10px; padding:11px 15px; background:var(--peloco-night); border-bottom:1px solid rgba(255,255,255,.12); }
+    #peloco-atlas-refined .peloco-logo { width:40px; height:40px; display:block; flex:0 0 40px; border-radius:50%; object-fit:cover; background:var(--peloco-white); }
+    #peloco-atlas-refined .peloco-brand { font-size:12px; font-weight:900; letter-spacing:.12em; }
+    #peloco-atlas-refined .peloco-counter { margin-left:auto; color:var(--peloco-gold); font-size:10px; font-weight:800; }
+    #peloco-atlas-refined .peloco-art { width:100%; aspect-ratio:1; display:block; object-fit:cover; background:var(--peloco-night-soft); }
+    #peloco-atlas-refined .peloco-copy { min-height:206px; padding:24px 22px 28px; background:radial-gradient(circle at 95% 10%,rgba(245,198,78,.13),transparent 145px),linear-gradient(145deg,var(--peloco-panel),var(--peloco-night)); }
+    #peloco-atlas-refined .peloco-label { margin-bottom:8px; color:var(--peloco-gold); font-size:10px; font-weight:900; letter-spacing:.15em; text-transform:uppercase; }
+    #peloco-atlas-refined h2 { margin:0 0 10px; color:var(--peloco-white); font-size:32px; font-weight:900; line-height:1; letter-spacing:-.04em; }
+    #peloco-atlas-refined p { margin:0; color:var(--peloco-muted); font-size:14px; line-height:1.52; }
+    #peloco-atlas-refined .peloco-discovery { min-height:610px; display:grid; align-content:end; position:relative; padding:28px 22px; background:linear-gradient(0deg,rgba(7,26,49,1) 0%,rgba(7,26,49,.8) 50%,rgba(7,26,49,.1) 100%),url("https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/DA13B416-88BF-4F54-B903-4D1AEDEA3BB0.png") center/cover; }
+    #peloco-atlas-refined .peloco-record { position:relative; padding-top:18px; border-top:1px solid rgba(245,198,78,.55); }
+    #peloco-atlas-refined .peloco-record b { display:block; margin-bottom:10px; color:var(--peloco-gold); font-size:11px; letter-spacing:.13em; text-transform:uppercase; }
+    #peloco-atlas-refined .peloco-record strong { display:block; margin-bottom:12px; color:var(--peloco-white); font-size:29px; line-height:1.08; }
+    #peloco-atlas-refined .peloco-signal { display:grid; grid-template-columns:auto 1fr; gap:5px 12px; margin-top:18px; color:var(--peloco-muted); font-size:12px; }
+    #peloco-atlas-refined .peloco-signal span:nth-child(odd) { color:var(--peloco-gold); }
+    @media(max-width:360px){ #peloco-atlas-refined .peloco-page{border-radius:24px} #peloco-atlas-refined h2{font-size:28px} #peloco-atlas-refined .peloco-copy{padding-inline:18px} }
+  </style>
+  <div class="nav nav-pills" role="tablist" aria-label="Capítulos da prévia PELOCO">
+    <button class="nav-link active" id="atlas-tab-1" role="tab" aria-controls="atlas-panel-1" aria-selected="true" type="button">1</button><button class="nav-link" id="atlas-tab-2" role="tab" aria-controls="atlas-panel-2" aria-selected="false" type="button">2</button><button class="nav-link" id="atlas-tab-3" role="tab" aria-controls="atlas-panel-3" aria-selected="false" type="button">3</button><button class="nav-link" id="atlas-tab-4" role="tab" aria-controls="atlas-panel-4" aria-selected="false" type="button">4</button><button class="nav-link" id="atlas-tab-5" role="tab" aria-controls="atlas-panel-5" aria-selected="false" type="button">5</button><button class="nav-link" id="atlas-tab-6" role="tab" aria-controls="atlas-panel-6" aria-selected="false" type="button">6</button><button class="nav-link" id="atlas-tab-7" role="tab" aria-controls="atlas-panel-7" aria-selected="false" type="button">7</button><button class="nav-link" id="atlas-tab-final" role="tab" aria-controls="atlas-panel-final" aria-selected="false" type="button">Final</button>
+  </div>
+  <section id="atlas-panel-1" role="tabpanel" aria-labelledby="atlas-tab-1"><article class="peloco-page"><header class="peloco-header"><img class="peloco-logo" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/peloco-logo-header.png" alt=""><div class="peloco-brand">PELOCO STORIES</div><div class="peloco-counter">01 / 07</div></header><img class="peloco-art" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/9DBE54FF-299B-4A29-A0A7-967BD71EB7CB.png" alt="PELOCO diante da pequena porta, segurando a chave"><div class="peloco-copy"><div class="peloco-label">O chamado</div><h2>A porta não estava escondida.</h2><p>Estava esperando. A chave aqueceu em sua mão antes mesmo de tocar a fechadura.</p></div></article></section>
+  <section id="atlas-panel-2" role="tabpanel" aria-labelledby="atlas-tab-2" hidden><article class="peloco-page"><header class="peloco-header"><img class="peloco-logo" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/peloco-logo-header.png" alt=""><div class="peloco-brand">PELOCO STORIES</div><div class="peloco-counter">02 / 07</div></header><img class="peloco-art" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/DA13B416-88BF-4F54-B903-4D1AEDEA3BB0.png" alt="PELOCO observa o Atlas dentro da câmara"><div class="peloco-copy"><div class="peloco-label">A câmara</div><h2>O Atlas despertou.</h2><p>Não mostrava fronteiras. Suas linhas registravam conexões interrompidas antes de alcançarem o destino.</p></div></article></section>
+  <section id="atlas-panel-3" role="tabpanel" aria-labelledby="atlas-tab-3" hidden><article class="peloco-page"><header class="peloco-header"><img class="peloco-logo" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/peloco-logo-header.png" alt=""><div class="peloco-brand">PELOCO STORIES</div><div class="peloco-counter">03 / 07</div></header><img class="peloco-art" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/3C0EC0DD-5514-4EDE-B1C3-9FCBB90F8A01.png" alt="PELOCO diante de um espelho que mostra sua versão menor"><div class="peloco-copy"><div class="peloco-label">O reflexo</div><h2>O espelho não repetiu seu movimento.</h2><p>A imagem permaneceu olhando para ele. Menor. Familiar. Como uma lembrança que não pertencia à memória.</p></div></article></section>
+  <section id="atlas-panel-4" role="tabpanel" aria-labelledby="atlas-tab-4" hidden><article class="peloco-page"><header class="peloco-header"><img class="peloco-logo" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/peloco-logo-header.png" alt=""><div class="peloco-brand">PELOCO STORIES</div><div class="peloco-counter">04 / 07</div></header><img class="peloco-art" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/B2F38270-6AEE-49DA-AA69-FE66AA08B7A9.png" alt="PELOCO viajando pela cidade enquanto observa o reflexo na janela"><div class="peloco-copy"><div class="peloco-label">A primeira rota</div><h2>A linha saiu da câmara.</h2><p>Ela atravessou a cidade junto com ele. No vidro, porém, seu reflexo continuava olhando para trás.</p></div></article></section>
+  <section id="atlas-panel-5" role="tabpanel" aria-labelledby="atlas-tab-5" hidden><article class="peloco-page"><header class="peloco-header"><img class="peloco-logo" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/peloco-logo-header.png" alt=""><div class="peloco-brand">PELOCO STORIES</div><div class="peloco-counter">05 / 07</div></header><img class="peloco-art" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/F2F5E487-768D-4C0B-B6ED-C52474DC6CF3.png" alt="PELOCO encontra um barco de papel iluminado na chuva"><div class="peloco-copy"><div class="peloco-label">O mensageiro</div><h2>O menor caminho ainda carregava uma mensagem.</h2><p>O barco de papel não seguia a corrente. Seguia a mesma luz que havia acordado no Atlas.</p></div></article></section>
+  <section id="atlas-panel-6" role="tabpanel" aria-labelledby="atlas-tab-6" hidden><article class="peloco-page"><header class="peloco-header"><img class="peloco-logo" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/peloco-logo-header.png" alt=""><div class="peloco-brand">PELOCO STORIES</div><div class="peloco-counter">06 / 07</div></header><img class="peloco-art" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/7E50B331-7517-4E71-87B2-8F73651D59A1.png" alt="PELOCO pequeno segue uma trilha na montanha com uma lanterna"><div class="peloco-copy"><div class="peloco-label">O caminho antigo</div><h2>Ele reconheceu um lugar onde nunca esteve.</h2><p>As marcas no chão não indicavam para onde ir. Indicavam que alguém já esperava sua volta.</p></div></article></section>
+  <section id="atlas-panel-7" role="tabpanel" aria-labelledby="atlas-tab-7" hidden><article class="peloco-page"><header class="peloco-header"><img class="peloco-logo" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/peloco-logo-header.png" alt=""><div class="peloco-brand">PELOCO STORIES</div><div class="peloco-counter">07 / 07</div></header><img class="peloco-art" src="https://cdn.jsdelivr.net/gh/7z94kyks4n-design/PELOCO@peloco-atlas-preview/517D5841-67EE-498B-BE25-16350E54D34B.png" alt="PELOCO caminha por uma cidade iluminada"><div class="peloco-copy"><div class="peloco-label">Depois da porta</div><h2>A cidade continuava igual.</h2><p>Mas PELOCO agora via uma rota atravessando o céu — e sabia que alguém, em outro lugar, também podia vê-la.</p></div></article></section>
+  <section id="atlas-panel-final" role="tabpanel" aria-labelledby="atlas-tab-final" hidden><article class="peloco-page peloco-discovery"><div class="peloco-record"><b>Registro recuperado · Atlas 001</b><strong>A rota de PELOCO já existia antes de sua primeira lembrança.</strong><p>O Atlas não revelou quem iniciou o caminho. Apenas confirmou que a chegada de PELOCO àquela porta não foi o começo.</p><div class="peloco-signal"><span>Origem</span><span>Não identificada</span><span>Primeiro registro</span><span>Anterior à memória conhecida</span><span>Conexões</span><span>Cinco sinais ainda protegidos</span><span>Estado</span><span>Rota ativa</span></div></div></article></section>
+</div>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-copy">
-        <div class="kicker">Arquivo 01 · A porta</div>
-        <h1>O Atlas das<br><span class="gold">Rotas Perdidas</span></h1>
-        <p class="lead">Algumas histórias começam com uma resposta. Esta começa com uma porta que não deveria existir — e uma chave que parecia estar esperando por PELOCO.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#historia">Entrar na história ↓</a>
-          <a class="btn" href="#fragmentos">Examinar fragmentos</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="intro">
-      <div class="shell intro-grid">
-        <div>
-          <div class="section-no">Prólogo</div>
-          <h2>Nada ali parecia novo.</h2>
-        </div>
-        <div class="intro-copy">
-          <p>A madeira carregava marcas antigas. A fechadura estava quente. E, embora ninguém tivesse contado a PELOCO sobre aquele lugar, <strong>alguma coisa do outro lado já sabia que ele havia chegado.</strong></p>
-          <p>Ele não encontrou um mapa do mundo. Encontrou um registro das conexões que o mundo perdeu.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="story shell" id="historia">
-      <article class="scene">
-        <img src="9DBE54FF-299B-4A29-A0A7-967BD71EB7CB.png" alt="PELOCO diante de uma pequena porta, segurando uma chave">
-        <div class="scene-copy">
-          <div class="scene-label">Cena 01 · O chamado</div>
-          <h3>Uma porta pequena demais.</h3>
-          <p>A chave não parecia ter sido feita para a porta. A porta parecia ter sido feita para ele.</p>
-        </div>
-      </article>
-
-      <article class="scene atlas alt">
-        <img src="DA13B416-88BF-4F54-B903-4D1AEDEA3BB0.png" alt="PELOCO observa uma grande esfera mecânica iluminada">
-        <div class="scene-copy">
-          <div class="scene-label">Cena 02 · A câmara</div>
-          <h3>O Atlas despertou.</h3>
-          <p>Não mostrava países nem fronteiras. Cada linha registrava um caminho interrompido antes de alcançar seu destino.</p>
-        </div>
-      </article>
-
-      <article class="scene">
-        <img src="3C0EC0DD-5514-4EDE-B1C3-9FCBB90F8A01.png" alt="Terceiro fragmento da descoberta de PELOCO">
-        <div class="scene-copy">
-          <div class="scene-label">Cena 03 · Reconhecimento</div>
-          <h3>Uma linha respondeu.</h3>
-          <p>PELOCO ainda não havia tocado em nada. Mesmo assim, um único traço ganhou luz — como se reconhecesse algo que ele carregava.</p>
-        </div>
-      </article>
-
-      <article class="scene alt">
-        <img src="B2F38270-6AEE-49DA-AA69-FE66AA08B7A9.png" alt="Quarto fragmento da descoberta de PELOCO">
-        <div class="scene-copy">
-          <div class="scene-label">Cena 04 · Ausência</div>
-          <h3>O primeiro ponto apagado.</h3>
-          <p>Toda rota deveria terminar em alguém. Nesta, o destino continuava existindo — mas o nome havia sido removido.</p>
-        </div>
-      </article>
-
-      <article class="scene">
-        <img src="F2F5E487-768D-4C0B-B6ED-C52474DC6CF3.png" alt="Quinto fragmento da descoberta de PELOCO">
-        <div class="scene-copy">
-          <div class="scene-label">Cena 05 · Ecos</div>
-          <h3>Outras histórias estavam ali.</h3>
-          <p>Uma costura impossível. Um selo restaurado. Um mapa incompleto. Uma reportagem sem fim. Um arquivo ausente. Separados, pareciam coincidências.</p>
-        </div>
-      </article>
-
-      <article class="scene alt">
-        <img src="7E50B331-7517-4E71-87B2-8F73651D59A1.png" alt="Sexto fragmento da descoberta de PELOCO">
-        <div class="scene-copy">
-          <div class="scene-label">Cena 06 · Escolha</div>
-          <h3>A rota mais clara não era a mais antiga.</h3>
-          <p>PELOCO podia seguir a luz mais forte — ou procurar a primeira conexão que havia desaparecido. O Atlas aguardou.</p>
-        </div>
-      </article>
-
-      <article class="scene">
-        <img src="517D5841-67EE-498B-BE25-16350E54D34B.png" alt="PELOCO caminha por uma cidade iluminada">
-        <div class="scene-copy">
-          <div class="scene-label">Cena 07 · Depois da porta</div>
-          <h3>A cidade continuava igual.</h3>
-          <p>Mas PELOCO não. Agora ele conseguia ver uma linha atravessando o céu — e sabia que, em algum lugar, alguém também podia vê-la.</p>
-        </div>
-      </article>
-    </section>
-
-    <section class="clues shell" id="fragmentos">
-      <div class="clue-head">
-        <div>
-          <div class="section-no">Conexões detectadas</div>
-          <h2>Cinco fragmentos. Nenhuma coincidência.</h2>
-        </div>
-        <p>O Atlas não explica as relações. Ele apenas confirma que elas existem. As identidades e os acontecimentos serão descobertos com o tempo.</p>
-      </div>
-      <div class="clue-grid">
-        <div class="clue"><b>Fragmento 01</b><strong>Tóquio</strong><span>Uma assinatura escondida numa costura.</span></div>
-        <div class="clue"><b>Fragmento 02</b><strong>Edimburgo</strong><span>Um símbolo preservado sob várias camadas.</span></div>
-        <div class="clue"><b>Fragmento 03</b><strong>Dublin</strong><span>Uma rota que não aparece em mapas comuns.</span></div>
-        <div class="clue"><b>Fragmento 04</b><strong>Londres</strong><span>Uma verdade escrita, mas nunca publicada.</span></div>
-        <div class="clue locked"><b>Fragmento 05</b><strong>Atenas</strong><span>Registro protegido. Origem desconhecida.</span></div>
-      </div>
-    </section>
-
-    <section class="ending">
-      <div class="shell">
-        <blockquote>“Isto não explica de onde PELOCO veio. É apenas a primeira prova de que sua história começou <span class="gold">muito antes de ele saber.</span>”</blockquote>
-        <p>O Arquivo 01 termina aqui. A rota permanece aberta.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="shell footer-inner">
-      <strong>PELOCO 🐣💛</strong>
-      <span>Construído publicamente. Descoberto lentamente.</span>
-    </div>
-  </footer>
+<script>
+(() => {
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  const panels = [...document.querySelectorAll('[role="tabpanel"]')];
+  function select(tab){
+    tabs.forEach(item => {
+      const active = item === tab;
+      item.classList.toggle('active', active);
+      item.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    panels.forEach(panel => panel.hidden = panel.id !== tab.getAttribute('aria-controls'));
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  tabs.forEach(tab => tab.addEventListener('click', () => select(tab)));
+})();
+</script>
 </body>
 </html>
