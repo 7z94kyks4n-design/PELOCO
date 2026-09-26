@@ -1184,6 +1184,19 @@
                 `Bonding Curve in progress; DEX migration not yet complete. Source: Pump.fun · ${updated}.`,
                 `Bonding Curve en curso; la migración a DEX aún no se ha completado. Fuente: Pump.fun · ${updated}.`,
               );
+          } else {
+            const pumpSource = document.querySelector("[data-pump-source]");
+            if (pumpSource)
+              pumpSource.innerHTML = `${tr("Avaliação da Bonding Curve temporariamente indisponível.", "Bonding Curve valuation temporarily unavailable.", "Valoración de la Bonding Curve temporalmente no disponible.")} <a href="${links.pump}" target="_blank" rel="noopener noreferrer">${tr("Verificar na Pump.fun", "Verify on Pump.fun", "Verificar en Pump.fun")} ↗</a>`;
+            const bondingStatus = document.querySelector(
+              "[data-bonding-status]",
+            );
+            if (bondingStatus)
+              bondingStatus.textContent = tr(
+                "A fonte da Pump.fun está temporariamente indisponível. Nenhum valor antigo ou estimado será exibido.",
+                "The Pump.fun source is temporarily unavailable. No old or estimated value will be shown.",
+                "La fuente de Pump.fun no está disponible temporalmente. No se mostrará ningún valor antiguo ni estimado.",
+              );
           }
           const declared = snapshot?.onChain?.declaredWallets;
           const aggregate = snapshot?.onChain?.declaredAggregate;
