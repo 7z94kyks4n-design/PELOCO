@@ -53,15 +53,28 @@
         </div>
       </div>
 
-      <div class="mobile-hint" data-i18n="tap">TAP TO JUMP</div>
+      <div class="under-game">
+        <div class="mobile-hint" data-i18n="tap">TAP TO JUMP</div>
+        <button class="share-score" id="shareScore" type="button" data-i18n="share">SHARE SCORE</button>
+      </div>
+    </section>
+
+    <section class="challenge-card" aria-live="polite">
+      <div>
+        <span class="challenge-kicker" data-i18n="challengeKicker">YOUR RUN</span>
+        <strong id="challengeValue">00000</strong>
+      </div>
+      <p data-i18n="challengeText">Beat your best. Then challenge someone else.</p>
     </section>
 
     <div class="meta-row">
       <span class="meta-dot"></span>
       <p class="legal" data-i18n="legal">Prototype only. No wallet connection. No purchases. No rewards.</p>
     </div>
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
   </main>
   <script src="i18n.js" defer></script>
   <script src="game.js" defer></script>
+  <script src="enhancements.js" defer></script>
 </body>
 </html>
