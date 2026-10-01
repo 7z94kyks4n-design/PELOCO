@@ -12,6 +12,9 @@
       intro: 'Desvie dos obstáculos e colete moedas PELOCO.',
       play: 'JOGAR',
       tap: 'TOQUE PARA PULAR',
+      share: 'COMPARTILHAR PONTOS',
+      challengeKicker: 'SUA CORRIDA',
+      challengeText: 'Supere seu recorde. Depois desafie outra pessoa.',
       legal: 'Protótipo. Sem conexão de carteira. Sem compras. Sem recompensas.',
       backAria: 'Voltar ao PELOCO',
       languageAria: 'Idioma',
@@ -19,6 +22,9 @@
       canvasAria: 'Jogo de corrida infinita do PELOCO',
       runOver: 'FIM DA CORRIDA',
       playAgain: 'JOGAR NOVAMENTE',
+      copied: 'Resultado copiado.',
+      shareTitle: 'PELOCO RUN',
+      shareText: (score) => `Fiz ${score} pontos no PELOCO RUN. Consegue passar?`,
       gameOverText: (score, coins) => `Pontos ${score} · Moedas ${coins}. Toque em jogar e tente de novo.`
     },
     en: {
@@ -31,6 +37,9 @@
       intro: 'Jump over obstacles and collect PELOCO coins.',
       play: 'PLAY',
       tap: 'TAP TO JUMP',
+      share: 'SHARE SCORE',
+      challengeKicker: 'YOUR RUN',
+      challengeText: 'Beat your best. Then challenge someone else.',
       legal: 'Prototype only. No wallet connection. No purchases. No rewards.',
       backAria: 'Back to PELOCO',
       languageAria: 'Language',
@@ -38,6 +47,9 @@
       canvasAria: 'PELOCO endless runner game',
       runOver: 'RUN OVER',
       playAgain: 'PLAY AGAIN',
+      copied: 'Result copied.',
+      shareTitle: 'PELOCO RUN',
+      shareText: (score) => `I scored ${score} in PELOCO RUN. Can you beat it?`,
       gameOverText: (score, coins) => `Score ${score} · Coins ${coins}. Tap play and try again.`
     },
     es: {
@@ -50,6 +62,9 @@
       intro: 'Esquiva obstáculos y recoge monedas PELOCO.',
       play: 'JUGAR',
       tap: 'TOCA PARA SALTAR',
+      share: 'COMPARTIR PUNTOS',
+      challengeKicker: 'TU CARRERA',
+      challengeText: 'Supera tu récord. Después reta a otra persona.',
       legal: 'Prototipo. Sin conexión de cartera. Sin compras. Sin recompensas.',
       backAria: 'Volver a PELOCO',
       languageAria: 'Idioma',
@@ -57,6 +72,9 @@
       canvasAria: 'Juego de carrera infinita de PELOCO',
       runOver: 'FIN DE LA CARRERA',
       playAgain: 'JUGAR DE NUEVO',
+      copied: 'Resultado copiado.',
+      shareTitle: 'PELOCO RUN',
+      shareText: (score) => `Hice ${score} puntos en PELOCO RUN. ¿Puedes superarlo?`,
       gameOverText: (score, coins) => `Puntos ${score} · Monedas ${coins}. Toca jugar e inténtalo de nuevo.`
     }
   };
