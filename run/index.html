@@ -1,80 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-  <meta name="theme-color" content="#0a2846">
-  <meta name="robots" content="noindex,nofollow,noarchive">
-  <meta name="referrer" content="no-referrer">
-  <meta name="description" content="PELOCO RUN private game preview.">
-  <title>PELOCO RUN — Preview</title>
-  <link rel="stylesheet" href="game.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#071523">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>PELOCO RUN — Preview</title>
+<style>
+:root{--bg:#06111d;--bg2:#0b2741;--panel:#0a1a2a;--panel2:#0d2236;--gold:#f6c94a;--gold2:#d99c12;--cream:#f5e8cf;--muted:#90a4b8;--wine:#7d1f3c;--line:rgba(255,255,255,.11)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 50% -20%,#153e65 0,#0a2238 38%,#06111d 72%,#040a11 100%);color:#fff}body{overflow-x:hidden}.wrap{width:min(1080px,100%);margin:0 auto;padding:14px 12px 26px}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.brand{font-weight:950;letter-spacing:.12em;color:var(--gold);font-size:14px}.top-right{display:flex;align-items:center;gap:8px}.lang{display:flex;gap:3px;padding:3px;border:1px solid var(--line);background:rgba(2,10,16,.55);border-radius:999px}.lang button{border:0;background:transparent;color:#8ea3b7;font-weight:900;font-size:10px;padding:7px 9px;border-radius:999px}.lang button.active{background:var(--gold);color:#241500}.badge{border:1px solid rgba(246,201,74,.35);color:#f3cd69;background:rgba(246,201,74,.07);font-size:9px;font-weight:900;letter-spacing:.13em;border-radius:999px;padding:8px 9px}.hero{text-align:center;margin:8px auto 13px}.hero h1{margin:0;font-size:clamp(34px,9vw,62px);line-height:.96;letter-spacing:-.04em}.hero p{margin:10px 0 0;color:#c5d3df;font-size:14px}.card{background:linear-gradient(180deg,rgba(13,35,55,.97),rgba(6,18,30,.99));border:1px solid var(--line);border-radius:22px;padding:9px;box-shadow:0 30px 90px rgba(0,0,0,.42)}.hud{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:8px}.hud div{background:#06101a;border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:9px 10px}.hud span{display:block;color:#8499ad;font-size:9px;font-weight:950;letter-spacing:.16em;margin-bottom:3px}.hud strong{font-family:"Courier New",monospace;color:#ffd95e;font-size:21px}.gamebox{position:relative;overflow:hidden;border-radius:15px;aspect-ratio:16/9;background:var(--cream);touch-action:manipulation;border:1px solid rgba(255,255,255,.08)}canvas{display:block;width:100%;height:100%;image-rendering:pixelated}.overlay{position:absolute;inset:0;display:grid;place-items:center;padding:16px;background:linear-gradient(rgba(3,9,14,.12),rgba(3,9,14,.55))}.overlay.hidden{display:none}.panel{width:min(360px,90%);text-align:center;background:rgba(6,18,29,.93);border:1px solid rgba(255,255,255,.14);border-radius:21px;padding:21px;box-shadow:0 24px 70px rgba(0,0,0,.42);backdrop-filter:blur(8px)}.coinmark{width:65px;height:65px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif;font-size:36px;font-weight:900;color:#4c2a00;background:linear-gradient(145deg,#ffe889,#efb82f);border:4px solid #fff0a9;box-shadow:inset 0 -7px 0 rgba(145,86,0,.22),0 8px 20px rgba(0,0,0,.2)}.panel h2{margin:0 0 8px;font-size:27px}.panel p{margin:0 0 16px;color:#d5dfeb;line-height:1.4;font-size:14px}.panel button,.share-btn{appearance:none;border:0;border-radius:13px;padding:13px 21px;font-weight:1000;font-size:15px;letter-spacing:.06em;cursor:pointer}.panel button{color:#2a1600;background:linear-gradient(#ffe27f,#f0b62e);box-shadow:0 7px 0 #945d00}.panel button:active{transform:translateY(3px);box-shadow:0 4px 0 #945d00}.hint{text-align:center;color:#8198ad;font-size:10px;font-weight:950;letter-spacing:.17em;margin:10px 0 1px}.after{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:12px;padding:0 2px}.after p{margin:0;color:#7f93a8;font-size:10px}.share-btn{background:#0d2133;color:#f2c754;border:1px solid rgba(242,199,84,.28);padding:9px 12px;font-size:11px}@media(max-width:520px){.wrap{padding:10px 8px 22px}.badge{display:none}.hero{margin-top:5px}.hero h1{font-size:40px}.hero p{font-size:13px}.card{padding:7px}.hud{gap:5px}.hud div{padding:8px}.hud strong{font-size:19px}.panel{padding:18px 15px}}
+</style>
 </head>
 <body>
-  <main class="game-shell">
-    <header class="game-topbar">
-      <a class="back" href="../#/home" aria-label="Back to PELOCO" data-i18n-aria="backAria">← PELOCO</a>
-      <div class="top-actions">
-        <div class="language-switch" role="group" aria-label="Language" data-i18n-aria="languageAria">
-          <button class="lang-btn" type="button" data-lang="pt" aria-label="Português">PT</button>
-          <button class="lang-btn" type="button" data-lang="en" aria-label="English">EN</button>
-          <button class="lang-btn" type="button" data-lang="es" aria-label="Español">ES</button>
-        </div>
-        <span class="preview-badge" data-i18n="preview">PRIVATE PREVIEW</span>
-      </div>
-    </header>
-
-    <section class="hero">
-      <div class="title-lockup" aria-hidden="true">
-        <span class="title-mark">P</span>
-        <span class="title-line"></span>
-      </div>
-      <p class="eyebrow">PELOCO RUN</p>
-      <h1 data-i18n="heroTitle">Run. Jump. Keep going.</h1>
-      <p class="sub" data-i18n="heroSub">Tap anywhere or press Space / ↑ to jump.</p>
-    </section>
-
-    <section class="game-card" aria-label="PELOCO RUN game" data-i18n-aria="gameAria">
-      <div class="hud" aria-live="polite">
-        <div><span class="hud-label" data-i18n="score">SCORE</span><strong id="score">00000</strong></div>
-        <div><span class="hud-label" data-i18n="best">BEST</span><strong id="best">00000</strong></div>
-        <div><span class="hud-label" data-i18n="coins">COINS</span><strong id="coins">0</strong></div>
-      </div>
-
-      <div class="canvas-wrap" id="canvasWrap">
-        <canvas id="game" width="960" height="540" aria-label="PELOCO endless runner" data-i18n-aria="canvasAria"></canvas>
-        <div class="overlay" id="overlay">
-          <div class="panel">
-            <div class="pixel-p">P</div>
-            <h2 id="overlayTitle">PELOCO RUN</h2>
-            <p id="overlayText" data-i18n="intro">Jump over obstacles and collect PELOCO coins.</p>
-            <button id="playBtn" type="button" data-i18n="play">PLAY</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="under-game">
-        <div class="mobile-hint" data-i18n="tap">TAP TO JUMP</div>
-        <button class="share-score" id="shareScore" type="button" data-i18n="share">SHARE SCORE</button>
-      </div>
-    </section>
-
-    <section class="challenge-card" aria-live="polite">
-      <div>
-        <span class="challenge-kicker" data-i18n="challengeKicker">YOUR RUN</span>
-        <strong id="challengeValue">00000</strong>
-      </div>
-      <p data-i18n="challengeText">Beat your best. Then challenge someone else.</p>
-    </section>
-
-    <div class="meta-row">
-      <span class="meta-dot"></span>
-      <p class="legal" data-i18n="legal">Prototype only. No wallet connection. No purchases. No rewards.</p>
-    </div>
-    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-  </main>
-  <script src="i18n.js" defer></script>
-  <script src="game.js" defer></script>
-  <script src="enhancements.js" defer></script>
+<main class="wrap">
+  <div class="top"><div class="brand">PELOCO</div><div class="top-right"><div class="lang" aria-label="Idioma"><button data-lang="pt">PT</button><button data-lang="en">EN</button><button data-lang="es">ES</button></div><div class="badge" data-t="preview">PRÉVIA PRIVADA</div></div></div>
+  <section class="hero"><h1>PELOCO RUN</h1><p data-t="tagline">Corre. Pula. Pega as moedas. Não bate.</p></section>
+  <section class="card">
+    <div class="hud"><div><span data-t="score">PONTOS</span><strong id="score">00000</strong></div><div><span data-t="best">RECORDE</span><strong id="best">00000</strong></div><div><span data-t="coins">MOEDAS</span><strong id="coins">0</strong></div></div>
+    <div class="gamebox" id="gamebox"><canvas id="game" width="960" height="540"></canvas><div class="overlay" id="overlay"><div class="panel"><div class="coinmark">P</div><h2 id="overlayTitle">PELOCO RUN</h2><p id="overlayText" data-t="intro">Toque na tela ou aperte Espaço / ↑ para pular.</p><button id="playBtn" type="button" data-t="play">JOGAR</button></div></div></div>
+    <div class="hint" data-t="hint">TOQUE / ESPAÇO / ↑ PARA PULAR</div>
+  </section>
+  <div class="after"><p data-t="legal">Protótipo. Sem carteira, compras ou recompensas.</p><button class="share-btn" id="shareBtn" data-t="share">COMPARTILHAR RESULTADO</button></div>
+</main>
+<script>
+(()=>{'use strict';const I18N={pt:{preview:'PRÉVIA PRIVADA',tagline:'Corre. Pula. Pega as moedas. Não bate.',score:'PONTOS',best:'RECORDE',coins:'MOEDAS',intro:'Toque na tela ou aperte Espaço / ↑ para pular.',play:'JOGAR',hint:'TOQUE / ESPAÇO / ↑ PARA PULAR',legal:'Protótipo. Sem carteira, compras ou recompensas.',share:'COMPARTILHAR RESULTADO',over:'FIM DA CORRIDA',again:'JOGAR NOVAMENTE',overText:(s,c)=>`Pontos ${s} · Moedas ${c}. Tenta mais uma vez.`,shareText:(s)=>`Fiz ${s} pontos no PELOCO RUN. Consegue passar?`},en:{preview:'PRIVATE PREVIEW',tagline:'Run. Jump. Grab coins. Don’t crash.',score:'SCORE',best:'BEST',coins:'COINS',intro:'Tap the screen or press Space / ↑ to jump.',play:'PLAY',hint:'TAP / SPACE / ↑ TO JUMP',legal:'Prototype. No wallet, purchases or rewards.',share:'SHARE SCORE',over:'RUN OVER',again:'PLAY AGAIN',overText:(s,c)=>`Score ${s} · Coins ${c}. Try one more run.`,shareText:(s)=>`I scored ${s} in PELOCO RUN. Can you beat it?`},es:{preview:'VISTA PREVIA PRIVADA',tagline:'Corre. Salta. Toma monedas. No choques.',score:'PUNTOS',best:'RÉCORD',coins:'MONEDAS',intro:'Toca la pantalla o pulsa Espacio / ↑ para saltar.',play:'JUGAR',hint:'TOCA / ESPACIO / ↑ PARA SALTAR',legal:'Prototipo. Sin cartera, compras ni recompensas.',share:'COMPARTIR RESULTADO',over:'FIN DE LA CARRERA',again:'JUGAR DE NUEVO',overText:(s,c)=>`Puntos ${s} · Monedas ${c}. Inténtalo otra vez.`,shareText:(s)=>`Hice ${s} puntos en PELOCO RUN. ¿Puedes superarlo?`}};let lang=localStorage.getItem('pelocoRunLang')||((navigator.language||'pt').slice(0,2));if(!I18N[lang])lang='pt';const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),overlay=document.getElementById('overlay'),overlayTitle=document.getElementById('overlayTitle'),overlayText=document.getElementById('overlayText'),playBtn=document.getElementById('playBtn'),scoreEl=document.getElementById('score'),bestEl=document.getElementById('best'),coinsEl=document.getElementById('coins'),shareBtn=document.getElementById('shareBtn'),gamebox=document.getElementById('gamebox');const W=960,H=540,groundY=430;let state='ready',score=0,coins=0,speed=7,last=performance.now(),spawn=95,coinSpawn=150;let best=Number(localStorage.getItem('pelocoRunBest')||0),obstacles=[],coinItems=[],particles=[];const player={x:135,y:320,w:74,h:106,vy:0,grounded:true,frame:0,tick:0};function pad(v){return Math.max(0,Math.floor(v)).toString().padStart(5,'0')}function applyLang(){document.documentElement.lang=lang==='pt'?'pt-BR':lang;document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(typeof I18N[lang][k]==='string')el.textContent=I18N[lang][k]});document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));if(state==='ready'){overlayTitle.textContent='PELOCO RUN';overlayText.textContent=I18N[lang].intro;playBtn.textContent=I18N[lang].play}if(state==='gameover'){overlayTitle.textContent=I18N[lang].over;overlayText.textContent=I18N[lang].overText(pad(score),coins);playBtn.textContent=I18N[lang].again}}document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.lang;localStorage.setItem('pelocoRunLang',lang);applyLang()}));applyLang();function reset(){score=0;coins=0;speed=7;spawn=95;coinSpawn=145;obstacles=[];coinItems=[];particles=[];player.y=groundY-player.h;player.vy=0;player.grounded=true;updateHud()}function start(){reset();state='playing';overlay.classList.add('hidden');last=performance.now()}function end(){state='gameover';if(Math.floor(score)>best){best=Math.floor(score);localStorage.setItem('pelocoRunBest',best)}updateHud();overlayTitle.textContent=I18N[lang].over;overlayText.textContent=I18N[lang].overText(pad(score),coins);playBtn.textContent=I18N[lang].again;overlay.classList.remove('hidden');if(navigator.vibrate)navigator.vibrate(35)}function jump(){if(state==='ready'||state==='gameover'){start();setTimeout(jump,0);return}if(state!=='playing'||!player.grounded)return;player.vy=-17.8;player.grounded=false;dust(player.x+20,groundY-4,9,'#cbb38e')}function updateHud(){scoreEl.textContent=pad(score);bestEl.textContent=pad(best);coinsEl.textContent=coins}function spawnObstacle(){const t=[['crate',44,55],['log',67,34],['rock',39,48]][Math.floor(Math.random()*3)];obstacles.push({kind:t[0],x:W+30,y:groundY-t[2],w:t[1],h:t[2]})}function spawnCoins(){const count=3+Math.floor(Math.random()*3),base=W+30,centerY=310-Math.random()*45;for(let i=0;i<count;i++)coinItems.push({x:base+i*58,y:centerY-Math.sin(i/(count-1)*Math.PI)*62,r:16,taken:false,spin:0})}function dust(x,y,n,color){for(let i=0;i<n;i++)particles.push({x,y,vx:(Math.random()-.5)*5,vy:-1-Math.random()*4,life:1,s:2+Math.random()*4,color})}function overlap(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y}function rectCircle(rx,ry,rw,rh,cx,cy,cr){const nx=Math.max(rx,Math.min(cx,rx+rw)),ny=Math.max(ry,Math.min(cy,ry+rh)),dx=cx-nx,dy=cy-ny;return dx*dx+dy*dy<cr*cr}function update(dt){if(state!=='playing')return;const step=Math.min(2,dt/16.667);speed=Math.min(15.5,speed+0.0016*step);score+=0.17*speed*step;player.vy+=0.92*step;player.y+=player.vy*step;player.tick+=step;if(player.tick>5){player.frame=(player.frame+1)%4;player.tick=0}if(player.y>=groundY-player.h){player.y=groundY-player.h;player.vy=0;player.grounded=true}spawn-=step;if(spawn<=0){spawnObstacle();spawn=92+Math.random()*70-speed*1.8}coinSpawn-=step;if(coinSpawn<=0){spawnCoins();coinSpawn=155+Math.random()*100}obstacles.forEach(o=>o.x-=speed*step);obstacles=obstacles.filter(o=>o.x+o.w>-30);coinItems.forEach(c=>{c.x-=speed*step;c.spin+=.15*step;if(!c.taken&&rectCircle(player.x+15,player.y+10,player.w-30,player.h-16,c.x,c.y,c.r)){c.taken=true;coins++;score+=25;dust(c.x,c.y,10,'#ffd35d');if(navigator.vibrate)navigator.vibrate(12)}});coinItems=coinItems.filter(c=>!c.taken&&c.x+c.r>-20);particles.forEach(p=>{p.x+=p.vx*step;p.y+=p.vy*step;p.vy+=.16*step;p.life-=.035*step});particles=particles.filter(p=>p.life>0);const hit={x:player.x+18,y:player.y+14,w:player.w-34,h:player.h-18};for(const o of obstacles){if(overlap(hit,{x:o.x+5,y:o.y+5,w:o.w-10,h:o.h-5})){end();break}}updateHud()}function rr(x,y,w,h,r,fill,stroke){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.stroke()}}function background(){const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#f7e8cb');g.addColorStop(.58,'#efd59f');g.addColorStop(1,'#caa770');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);ctx.fillStyle='#d3b180';for(let i=0;i<10;i++){const x=i*120-((score*.45)%120)-20,h=55+(i*31)%80;ctx.fillRect(x,groundY-145-h,84,h)}for(let i=0;i<7;i++){const x=i*170-((score*.8)%170)+30;ctx.fillStyle='#6f8f4a';ctx.fillRect(x,groundY-115,18,90);ctx.beginPath();ctx.arc(x+9,groundY-125,35,0,Math.PI*2);ctx.fill()}ctx.fillStyle='#789e42';ctx.fillRect(0,groundY,W,18);ctx.fillStyle='#486b2d';ctx.fillRect(0,groundY+18,W,8);ctx.fillStyle='#8a633e';ctx.fillRect(0,groundY+26,W,H-groundY-26);ctx.fillStyle='#6c4a2e';for(let x=-((score*2)%48);x<W;x+=48){ctx.fillRect(x,groundY+37,28,11);ctx.fillRect(x+17,groundY+58,26,10)}}function drawCoin(c){ctx.save();ctx.translate(c.x,c.y);ctx.scale(.75+.25*Math.abs(Math.cos(c.spin)),1);ctx.beginPath();ctx.arc(0,0,c.r,0,Math.PI*2);ctx.fillStyle='#f3b827';ctx.fill();ctx.lineWidth=3;ctx.strokeStyle='#ffe88b';ctx.stroke();ctx.fillStyle='#6c3b00';ctx.font='bold 18px Georgia';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('P',0,1);ctx.restore()}function drawObstacle(o){if(o.kind==='crate'){rr(o.x,o.y,o.w,o.h,5,'#8a4e24','#5e3217');ctx.strokeStyle='#5e3217';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(o.x+7,o.y+8);ctx.lineTo(o.x+o.w-7,o.y+o.h-8);ctx.moveTo(o.x+o.w-7,o.y+8);ctx.lineTo(o.x+7,o.y+o.h-8);ctx.stroke()}else if(o.kind==='log'){rr(o.x,o.y,o.w,o.h,15,'#6d4327','#4e2d18');ctx.beginPath();ctx.arc(o.x+o.w-10,o.y+o.h/2,11,0,Math.PI*2);ctx.strokeStyle='#b47a47';ctx.stroke()}else{ctx.fillStyle='#6f6f72';ctx.beginPath();ctx.moveTo(o.x,o.y+o.h);ctx.lineTo(o.x+8,o.y+12);ctx.lineTo(o.x+o.w*.55,o.y);ctx.lineTo(o.x+o.w,o.y+o.h);ctx.closePath();ctx.fill()}}function drawPlayer(){const x=player.x,y=player.y,bob=player.grounded?[0,2,0,-1][player.frame]:0;ctx.save();ctx.translate(x,y+bob);rr(0,43,20,39,6,'#15171b');ctx.fillStyle='#6e1f37';ctx.fillRect(4,48,3,27);const shift=player.grounded?[0,5,0,-4][player.frame]:1;rr(24,79,18,21,4,'#15161a');rr(46,79+shift,18,21,4,'#15161a');rr(17,95,31,10,4,'#050607');rr(42,95+shift,31,10,4,'#050607');rr(15,42,50,43,13,'#1a1b1f');ctx.fillStyle='#7e1e3d';ctx.fillRect(19,46,5,30);ctx.fillRect(57,46,5,30);rr(26,49,30,30,7,'#0d0e10');rr(6,51,18,28,8,'#17181c');rr(58,49,17,28,8,'#17181c');rr(4,69,17,16,8,'#efb92a');rr(63,66,15,16,7,'#efb92a');ctx.fillStyle='#f2bb29';ctx.beginPath();ctx.ellipse(40,31,34,31,0,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.moveTo(27,9);ctx.lineTo(24,-9);ctx.lineTo(39,5);ctx.lineTo(43,-12);ctx.lineTo(49,5);ctx.lineTo(59,-5);ctx.lineTo(55,12);ctx.closePath();ctx.fill();rr(18,23,22,17,8,'#fff9ee');rr(42,23,22,17,8,'#fff9ee');ctx.fillStyle='#4a2b17';ctx.fillRect(29,27,8,10);ctx.fillRect(47,27,8,10);ctx.fillStyle='#12100f';ctx.fillRect(32,29,4,6);ctx.fillRect(48,29,4,6);ctx.strokeStyle='#5a2b16';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(19,20);ctx.lineTo(38,17);ctx.moveTo(44,17);ctx.lineTo(63,20);ctx.stroke();ctx.fillStyle='#ed6f8e';ctx.globalAlpha=.78;ctx.beginPath();ctx.arc(16,43,10,0,Math.PI*2);ctx.arc(64,43,10,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;ctx.fillStyle='#dc7d18';ctx.beginPath();ctx.moveTo(35,42);ctx.lineTo(48,42);ctx.lineTo(42,49);ctx.lineTo(35,46);ctx.closePath();ctx.fill();ctx.strokeStyle='#dcae35';ctx.lineWidth=2;ctx.beginPath();ctx.arc(41,67,17,.2,2.9);ctx.stroke();ctx.beginPath();ctx.arc(41,73,10,0,Math.PI*2);ctx.fillStyle='#e0aa24';ctx.fill();ctx.strokeStyle='#ffe176';ctx.stroke();ctx.fillStyle='#5b3400';ctx.font='bold 11px Georgia';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('P',41,73);ctx.restore()}function draw(){ctx.clearRect(0,0,W,H);background();coinItems.forEach(drawCoin);obstacles.forEach(drawObstacle);drawPlayer();particles.forEach(p=>{ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,p.s,p.s)});ctx.globalAlpha=1}function loop(t){const dt=Math.min(34,t-last);last=t;update(dt);draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);playBtn.addEventListener('click',e=>{e.stopPropagation();start()});gamebox.addEventListener('pointerdown',e=>{e.preventDefault();jump()});window.addEventListener('keydown',e=>{if(e.code==='Space'||e.code==='ArrowUp'){e.preventDefault();jump()}});shareBtn.addEventListener('click',async()=>{const text=I18N[lang].shareText(pad(best||score));try{if(navigator.share)await navigator.share({title:'PELOCO RUN',text});else{await navigator.clipboard.writeText(text);shareBtn.textContent='COPIED ✓';setTimeout(applyLang,1300)}}catch(_){}})})();
+</script>
 </body>
 </html>
