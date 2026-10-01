@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "mint": "HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump",
-  "checkedAt": "2026-10-01T19:31:48Z",
+  "checkedAt": "2026-10-01T20:34:03Z",
   "sources": {
     "onChain": "Solana JSON-RPC",
     "market": "DexScreener",
     "launch": "Pump.fun"
   },
   "onChain": {
-    "slot": 452382280,
+    "slot": 452396244,
     "program": "spl-token-2022",
     "mintAuthority": null,
     "freezeAuthority": null,
@@ -32,15 +32,15 @@
       },
       {
         "address": "2BvMhRQS3bghmgJav8sbnGXfh1UqcKwrJPTPAaRSHrEk",
-        "balanceRaw": "510015996857",
-        "balance": 510015.996857,
-        "sharePercent": 0.0510015996857
+        "balanceRaw": "3046316409497",
+        "balance": 3046316.409497,
+        "sharePercent": 0.3046316409497
       }
     ],
     "declaredAggregate": {
-      "balanceRaw": "9874134172617",
-      "balance": 9874134.172617,
-      "sharePercent": 0.9874134172617001
+      "balanceRaw": "12410434585257",
+      "balance": 12410434.585257,
+      "sharePercent": 1.2410434585257
     }
   },
   "market": null,
