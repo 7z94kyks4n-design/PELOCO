@@ -1,0 +1,1 @@
+V12 core HTML created. Binary PELOCO asset still needs proper blob upload before preview is shared.
