@@ -1,0 +1,1 @@
+V12 asset note: binary image upload pending replacement via git blob. Do not use this file in runtime.
