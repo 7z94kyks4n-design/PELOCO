@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#06111d">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>PELOCO RUN V8</title>
+<link rel="stylesheet" href="v8.css">
+</head>
+<body>
+<div id="app" class="app">
+  <header class="globalbar">
+    <button id="homeBtn" class="brandbtn" aria-label="PELOCO RUN home">PELOCO RUN</button>
+    <div class="global-actions">
+      <div class="langs" aria-label="Idioma">
+        <button data-lang="pt">PT</button><button data-lang="en">EN</button><button data-lang="es">ES</button>
+      </div>
+      <button id="soundBtn" class="roundbtn" aria-label="Som">🔊</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="screen-home" class="screen active home-screen">
+      <div class="home-art">
+        <div class="sun"></div>
+        <div class="mountains"></div>
+        <div class="hero-peloco" aria-hidden="true">
+          <div class="crest"></div><div class="head"></div><div class="eye e1"></div><div class="eye e2"></div><div class="beak"></div><div class="cheek c1"></div><div class="cheek c2"></div><div class="body"></div><div class="medal">P</div><div class="leg l1"></div><div class="leg l2"></div>
+        </div>
+        <div class="coin coin-a">P</div><div class="coin coin-b">P</div><div class="coin coin-c">P</div>
+      </div>
+      <div class="home-copy">
+        <p class="kicker">ORBIS PELOCI</p>
+        <h1>PELOCO<br>RUN</h1>
+        <p id="homeTag" class="lead"></p>
+        <button id="primaryPlay" class="primary big"></button>
+        <div class="home-buttons">
+          <button id="howBtn" class="secondary"></button>
+          <button id="rankBtn" class="secondary"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-profile" class="screen panel-screen">
+      <div class="panel-wrap narrow">
+        <p class="kicker" id="profileKicker"></p>
+        <h2 id="profileTitle"></h2>
+        <p id="profileDesc" class="muted"></p>
+        <label class="field-label" id="nameLabel" for="nameInput"></label>
+        <input id="nameInput" class="input" maxlength="18" autocomplete="nickname" autocapitalize="off" spellcheck="false">
+        <div class="difficulty-grid">
+          <button class="difficulty active" data-mode="easy"><strong id="easyTitle"></strong><span id="easyDesc"></span></button>
+          <button class="difficulty" data-mode="hard"><strong id="hardTitle"></strong><span id="hardDesc"></span></button>
+          <button class="difficulty" data-mode="advanced"><strong id="advancedTitle"></strong><span id="advancedDesc"></span></button>
+        </div>
+        <button id="saveProfile" class="primary"></button>
+        <button id="profileBack" class="textbtn"></button>
+      </div>
+    </section>
+
+    <section id="screen-map" class="screen panel-screen">
+      <div class="map-wrap">
+        <div class="map-head">
+          <div>
+            <p class="kicker" id="mapKicker"></p>
+            <h2 id="mapTitle"></h2>
+            <p id="mapDesc" class="muted"></p>
+          </div>
+          <button id="editProfileBtn" class="secondary compact"></button>
+        </div>
+        <div class="profile-chip"><span class="avatar">P</span><div><strong id="mapProfile"></strong><small id="mapMode"></small></div></div>
+        <div class="world-path">
+          <article class="world unlocked" data-world="1"><div class="world-art city"></div><div class="world-meta"><span>01</span><h3 id="world1Title"></h3><p id="world1Desc"></p></div></article>
+          <article class="world locked" data-world="2"><div class="world-art temple"></div><div class="world-meta"><span>02</span><h3 id="world2Title"></h3><p id="world2Desc"></p></div></article>
+          <article class="world locked" data-world="3"><div class="world-art mountain"></div><div class="world-meta"><span>03</span><h3 id="world3Title"></h3><p id="world3Desc"></p></div></article>
+        </div>
+        <button id="mapPlayBtn" class="primary big"></button>
+      </div>
+    </section>
+
+    <section id="screen-game" class="screen game-screen">
+      <div class="game-top">
+        <div class="hudbox"><span id="hudScoreLabel"></span><strong id="hudScore">00000</strong></div>
+        <div class="hudbox"><span id="hudCoinsLabel"></span><strong id="hudCoins">0</strong></div>
+        <div class="hudbox"><span id="hudPhaseLabel"></span><strong id="hudPhase">1-1</strong></div>
+        <div class="hearts" id="hearts">♥♥♥</div>
+        <button id="pauseBtn" class="roundbtn pause">Ⅱ</button>
+      </div>
+      <div id="gameShell" class="game-shell">
+        <canvas id="game" width="1280" height="720"></canvas>
+        <div id="phaseBanner" class="phase-banner hidden"></div>
+      </div>
+      <div class="game-footer"><span id="gameHint"></span><span id="comboText"></span></div>
+    </section>
+
+    <section id="screen-result" class="screen panel-screen result-screen">
+      <div class="result-wrap">
+        <div class="result-emote" id="resultEmote">😤</div>
+        <p class="kicker" id="resultKicker"></p>
+        <h2 id="resultTitle"></h2>
+        <p id="resultSummary" class="lead"></p>
+        <div class="result-grid">
+          <div><span id="resultScoreLabel"></span><strong id="resultScore"></strong></div>
+          <div><span id="resultCoinsLabel"></span><strong id="resultCoins"></strong></div>
+          <div><span id="resultPhaseLabel"></span><strong id="resultPhase"></strong></div>
+          <div><span id="resultBestLabel"></span><strong id="resultBest"></strong></div>
+        </div>
+        <button id="againBtn" class="primary big"></button>
+        <div class="result-actions"><button id="resultRankBtn" class="secondary"></button><button id="shareBtn" class="secondary"></button></div>
+        <button id="resultHomeBtn" class="textbtn"></button>
+      </div>
+    </section>
+
+    <section id="screen-ranking" class="screen panel-screen">
+      <div class="panel-wrap ranking-wrap">
+        <p class="kicker" id="rankKicker"></p><h2 id="rankTitle"></h2><p id="rankDesc" class="muted"></p>
+        <div class="rank-tabs"><button class="active" data-rank="all" id="rankAll"></button><button data-rank="easy" id="rankEasy"></button><button data-rank="hard" id="rankHard"></button><button data-rank="advanced" id="rankAdvanced"></button></div>
+        <div id="leaderboard" class="leaderboard"></div>
+        <button id="rankBack" class="secondary"></button>
+      </div>
+    </section>
+
+    <section id="screen-how" class="screen panel-screen">
+      <div class="panel-wrap how-wrap">
+        <p class="kicker" id="howKicker"></p><h2 id="howTitle"></h2>
+        <div class="how-grid">
+          <article><div class="how-icon">🏃</div><h3 id="how1Title"></h3><p id="how1Desc"></p></article>
+          <article><div class="how-icon">↥</div><h3 id="how2Title"></h3><p id="how2Desc"></p></article>
+          <article><div class="how-icon">P</div><h3 id="how3Title"></h3><p id="how3Desc"></p></article>
+          <article><div class="how-icon">✦</div><h3 id="how4Title"></h3><p id="how4Desc"></p></article>
+        </div>
+        <button id="howBack" class="secondary"></button>
+      </div>
+    </section>
+  </main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="v8.js" defer></script>
+</body>
+</html>
