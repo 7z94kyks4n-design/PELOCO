@@ -5,46 +5,63 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#0a2846">
   <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="PELOCO RUN private game preview.">
   <title>PELOCO RUN — Preview</title>
   <link rel="stylesheet" href="game.css">
 </head>
 <body>
   <main class="game-shell">
     <header class="game-topbar">
-      <a class="back" href="../#/home" aria-label="Back to PELOCO">← PELOCO</a>
-      <span class="preview-badge">PRIVATE PREVIEW</span>
+      <a class="back" href="../#/home" aria-label="Back to PELOCO" data-i18n-aria="backAria">← PELOCO</a>
+      <div class="top-actions">
+        <div class="language-switch" role="group" aria-label="Language" data-i18n-aria="languageAria">
+          <button class="lang-btn" type="button" data-lang="pt" aria-label="Português">PT</button>
+          <button class="lang-btn" type="button" data-lang="en" aria-label="English">EN</button>
+          <button class="lang-btn" type="button" data-lang="es" aria-label="Español">ES</button>
+        </div>
+        <span class="preview-badge" data-i18n="preview">PRIVATE PREVIEW</span>
+      </div>
     </header>
 
     <section class="hero">
+      <div class="title-lockup" aria-hidden="true">
+        <span class="title-mark">P</span>
+        <span class="title-line"></span>
+      </div>
       <p class="eyebrow">PELOCO RUN</p>
-      <h1>Run. Jump. Keep going.</h1>
-      <p class="sub">Tap anywhere or press Space / ↑ to jump.</p>
+      <h1 data-i18n="heroTitle">Run. Jump. Keep going.</h1>
+      <p class="sub" data-i18n="heroSub">Tap anywhere or press Space / ↑ to jump.</p>
     </section>
 
-    <section class="game-card" aria-label="PELOCO RUN game">
+    <section class="game-card" aria-label="PELOCO RUN game" data-i18n-aria="gameAria">
       <div class="hud" aria-live="polite">
-        <div><span class="hud-label">SCORE</span><strong id="score">00000</strong></div>
-        <div><span class="hud-label">BEST</span><strong id="best">00000</strong></div>
-        <div><span class="hud-label">COINS</span><strong id="coins">0</strong></div>
+        <div><span class="hud-label" data-i18n="score">SCORE</span><strong id="score">00000</strong></div>
+        <div><span class="hud-label" data-i18n="best">BEST</span><strong id="best">00000</strong></div>
+        <div><span class="hud-label" data-i18n="coins">COINS</span><strong id="coins">0</strong></div>
       </div>
 
       <div class="canvas-wrap" id="canvasWrap">
-        <canvas id="game" width="960" height="540" aria-label="PELOCO endless runner"></canvas>
+        <canvas id="game" width="960" height="540" aria-label="PELOCO endless runner" data-i18n-aria="canvasAria"></canvas>
         <div class="overlay" id="overlay">
           <div class="panel">
             <div class="pixel-p">P</div>
             <h2 id="overlayTitle">PELOCO RUN</h2>
-            <p id="overlayText">Jump over obstacles and collect PELOCO coins.</p>
-            <button id="playBtn" type="button">PLAY</button>
+            <p id="overlayText" data-i18n="intro">Jump over obstacles and collect PELOCO coins.</p>
+            <button id="playBtn" type="button" data-i18n="play">PLAY</button>
           </div>
         </div>
       </div>
 
-      <div class="mobile-hint">TAP TO JUMP</div>
+      <div class="mobile-hint" data-i18n="tap">TAP TO JUMP</div>
     </section>
 
-    <p class="legal">Prototype only. No wallet connection. No purchases. No rewards.</p>
+    <div class="meta-row">
+      <span class="meta-dot"></span>
+      <p class="legal" data-i18n="legal">Prototype only. No wallet connection. No purchases. No rewards.</p>
+    </div>
   </main>
+  <script src="i18n.js" defer></script>
   <script src="game.js" defer></script>
 </body>
 </html>
