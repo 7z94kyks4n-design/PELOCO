@@ -151,7 +151,7 @@
       function home() {
         const t = copy[lang].home;
         return shell(
-          `<div class="hero"><div><span class="eyebrow">${t.ey}</span><h1 class="hero-title">${t.title}</h1><p class="lead">${t.lead}</p><div class="actions"><a class="btn primary" href="${links.pump}" target="_blank" rel="noopener noreferrer" aria-label="${tr("Comprar PELOCO na Pump.fun — abre um serviço externo", "Buy PELOCO on Pump.fun — opens an external service", "Comprar PELOCO en Pump.fun — abre un servicio externo")}">${tr("Comprar PELOCO", "Buy PELOCO", "Comprar PELOCO")} ↗</a><a class="btn" href="#/manifesto">${tr("Ler o Manifesto", "Read the Manifesto", "Leer el Manifiesto")}</a><a class="btn subtle-link" href="#/verify">${tr("Verificar on-chain", "Verify on-chain", "Verificar on-chain")}</a></div></div><div class="hero-art"><img src="peloco-manifesto-cutout.webp" width="1254" height="1254" decoding="async" alt="${tr("PELOCO, o pequeno pintinho amarelo com corrente e medalha dourada", "PELOCO, the little yellow chick with a gold chain and medal", "PELOCO, el pequeño pollito amarillo con cadena y medalla dorada")}"><div class="pulse"><i></i>${tr("Construção pública", "Building in public", "Construcción pública")}</div></div></div><div class="stats"><div class="stat"><strong>Solana</strong><span>${tr("Rede", "Network", "Red")}</span></div><div class="stat"><strong>1B PELOCO</strong><span>${tr("Supply total", "Total Supply", "Supply total")}</span></div><div class="stat"><strong data-holders>—</strong><span>${tr("Proprietários on-chain", "On-chain owners", "Propietarios on-chain")}</span><small>${tr("Carregando dados on-chain…", "Loading on-chain data…", "Cargando datos on-chain…")}</small></div><div class="stat"><strong data-market="cap">—</strong><span>Market Cap</span><small>DexScreener</small></div></div><p class="stats-note">${tr("Carregando a contagem de proprietários únicos com saldo positivo, incluindo contas técnicas.", "Loading the count of unique positive-balance owners, including technical accounts.", "Cargando el recuento de propietarios únicos con saldo positivo, incluidas las cuentas técnicas.")}</p>`,
+          `<div class="hero"><div><span class="eyebrow">${t.ey}</span><h1 class="hero-title">${t.title}</h1><p class="lead">${t.lead}</p><div class="actions"><a class="btn primary" href="${links.pump}" target="_blank" rel="noopener noreferrer" aria-label="${tr("Comprar PELOCO na Pump.fun — abre um serviço externo", "Buy PELOCO on Pump.fun — opens an external service", "Comprar PELOCO en Pump.fun — abre un servicio externo")}">${tr("Comprar PELOCO", "Buy PELOCO", "Comprar PELOCO")} ↗</a><a class="btn" href="#/manifesto">${tr("Ler o Manifesto", "Read the Manifesto", "Leer el Manifiesto")}</a><a class="btn subtle-link" href="#/verify">${tr("Verificar on-chain", "Verify on-chain", "Verificar on-chain")}</a></div></div><div class="hero-art"><img src="peloco-manifesto-cutout.webp" width="1254" height="1254" decoding="async" alt="${tr("PELOCO, o pequeno pintinho amarelo com corrente e medalha dourada", "PELOCO, the little yellow chick with a gold chain and medal", "PELOCO, el pequeño pollito amarillo con cadena y medalla dorada")}"><div class="pulse"><i></i>${tr("Construção pública", "Building in public", "Construcción pública")}</div></div></div><div class="stats"><div class="stat"><strong>Solana</strong><span>${tr("Rede", "Network", "Red")}</span></div><div class="stat"><strong>1B PELOCO</strong><span>${tr("Supply total", "Total Supply", "Supply total")}</span></div><div class="stat"><strong data-holders>—</strong><span>${tr("Proprietários on-chain", "On-chain owners", "Propietarios on-chain")}</span><small>${tr("Carregando dados on-chain…", "Loading on-chain data…", "Cargando datos on-chain…")}</small></div><div class="stat"><strong data-market="cap">—</strong><span>Market Cap</span><small>DexScreener</small></div></div><p class="stats-note">${tr("Carregando a contagem de proprietários únicos com saldo positivo, incluindo contas técnicas.", "Loading the count of unique positive-balance owners, including technical accounts.", "Cargando el recuento de propietarios únicos con saldo positivo, incluidas las cuentas técnicas.")}</p><p class="market-status" id="marketStatus" role="status" aria-live="polite">${tr("Carregando dados públicos…", "Loading public data…", "Cargando datos públicos…")}</p>`,
         );
       }
       function idea() {
@@ -1112,6 +1112,7 @@
             if (node.closest("main")) node.textContent = message;
           });
         };
+        setHolderText("—");
         setHolderDetails(
           tr(
             "Carregando dados on-chain…",
@@ -1138,7 +1139,7 @@
           const snapshot = await response.json();
           const checkedAt = new Date(snapshot?.checkedAt);
           const age = Date.now() - checkedAt.getTime();
-          const holders = Number(snapshot?.onChain?.uniquePositiveOwners);
+          const holders = snapshot?.onChain?.uniquePositiveOwners;
           const valid =
             snapshot?.mint === TOKEN &&
             Number.isInteger(holders) &&
@@ -1316,6 +1317,7 @@
         const setActivity = (message) => {
           if (activity) activity.textContent = message;
         };
+        resetMarket();
         marketController?.abort();
         const controller = new AbortController();
         marketController = controller;
@@ -1330,13 +1332,31 @@
           const launchSnapshot = await launchResponse.json();
           const launchCheckedAt = new Date(launchSnapshot?.checkedAt).getTime();
           const launchAge = Date.now() - launchCheckedAt;
-          const migrationComplete =
+          const launchIsCurrent =
             launchSnapshot?.mint === TOKEN &&
-            launchSnapshot?.pumpFun?.migrationComplete === true &&
             Number.isFinite(launchAge) &&
             launchAge >= 0 &&
             launchAge <= 3 * 60 * 60 * 1000;
-          if (!migrationComplete) {
+          if (!launchIsCurrent) {
+            resetMarket();
+            setActivity(
+              tr(
+                "Compras e vendas em 24h: dados temporariamente indisponíveis.",
+                "24h buys and sells: data temporarily unavailable.",
+                "Compras y ventas en 24h: datos temporalmente no disponibles.",
+              ),
+            );
+            setStatus(
+              tr(
+                "Snapshot de mercado inválido ou desatualizado. Dados de mercado indisponíveis.",
+                "Market snapshot is invalid or out of date. Market data is unavailable.",
+                "La captura de mercado no es válida o está desactualizada. Datos de mercado no disponibles.",
+              ),
+            );
+            return;
+          }
+          const migrationComplete = launchSnapshot?.pumpFun?.migrationComplete;
+          if (migrationComplete !== true) {
             resetMarket();
             setActivity(
               tr(
@@ -1346,11 +1366,17 @@
               ),
             );
             setStatus(
-              tr(
-                "Migração para DEX ainda não concluída. Os dados da Bonding Curve são exibidos separadamente.",
-                "DEX migration is not complete yet. Bonding Curve data is shown separately.",
-                "La migración a DEX aún no está completa. Los datos de la Bonding Curve se muestran por separado.",
-              ),
+              migrationComplete === false
+                ? tr(
+                    "Migração para DEX ainda não concluída. Dados de mercado DEX indisponíveis.",
+                    "DEX migration is not complete yet. DEX market data is unavailable.",
+                    "La migración a DEX aún no está completa. Datos de mercado DEX no disponibles.",
+                  )
+                : tr(
+                    "Migração DEX não confirmada no snapshot. Dados de mercado indisponíveis.",
+                    "DEX migration is not confirmed in the snapshot. Market data is unavailable.",
+                    "La migración a DEX no está confirmada en la captura. Datos de mercado no disponibles.",
+                  ),
             );
             return;
           }
