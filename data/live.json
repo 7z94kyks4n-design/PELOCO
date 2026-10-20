@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "mint": "HprAo1GwX5ezFSp7yaYTeAhkj5pCjXVgs2mwRXjqpump",
-  "checkedAt": "2026-10-20T17:13:25Z",
+  "checkedAt": "2026-10-20T20:39:41Z",
   "sources": {
     "onChain": "Solana JSON-RPC",
     "market": "DexScreener",
     "launch": "Pump.fun"
   },
   "onChain": {
-    "slot": 459308597,
+    "slot": 459365795,
     "program": "spl-token-2022",
     "mintAuthority": null,
     "freezeAuthority": null,
