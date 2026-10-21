@@ -10247,6 +10247,21 @@
       "pairAddress": null,
       "baseTokenAddress": null,
       "dexMigrationComplete": false
+    },
+    {
+      "checkedAt": "2026-10-21T04:55:10Z",
+      "holders": 7,
+      "slot": 459503180,
+      "priceUsd": null,
+      "volume24h": null,
+      "marketCap": null,
+      "liquidityUsd": null,
+      "buys24h": null,
+      "sells24h": null,
+      "dexId": null,
+      "pairAddress": null,
+      "baseTokenAddress": null,
+      "dexMigrationComplete": false
     }
   ]
 }
