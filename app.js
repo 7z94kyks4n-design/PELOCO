@@ -988,9 +988,15 @@
                     item.value >= 0,
                 )
             : [];
-          if (points.length < 3 ||
-              history?.mint !== TOKEN ||
-              Date.now() - Math.max(...points.map((point) => point.time)) > 3 * 60 * 60 * 1000) return;
+          if (history?.mint !== TOKEN || points.length < 3 ||
+              Date.now() - Math.max(...points.map((point) => point.time)) > 3 * 60 * 60 * 1000) {
+            host.textContent = tr(
+              "Histórico indisponível ou desatualizado. Aguardando novos registros.",
+              "History unavailable or out of date. Waiting for new records.",
+              "Historial no disponible o desactualizado. Esperando nuevos registros."
+            );
+            return;
+          }
           const minTime = Math.min(...points.map((item) => item.time));
           const maxTime = Math.max(...points.map((item) => item.time));
           const minValue = Math.min(...points.map((item) => item.value));
@@ -1038,8 +1044,8 @@
           )
             .map((item) => ({
               time: new Date(item?.checkedAt).getTime(),
-              price: Number(item?.priceUsd),
-              volume: Number(item?.volume24h),
+              price: typeof item?.priceUsd === "number" ? item.priceUsd : null,
+              volume: typeof item?.volume24h === "number" ? item.volume24h : null,
               dexId: String(item?.dexId || "").toLowerCase(),
               baseTokenAddress: item?.baseTokenAddress,
               dexMigrationComplete: item?.dexMigrationComplete === true,
@@ -1056,7 +1062,15 @@
                 Number.isFinite(item.volume) &&
                 item.volume >= 0,
             );
-          if (points.length < 3) return;
+          if (history?.mint !== TOKEN || points.length < 3 ||
+              Date.now() - Math.max(...points.map((point) => point.time)) > 3 * 60 * 60 * 1000) {
+            host.textContent = tr(
+              "Histórico de mercado indisponível ou desatualizado.",
+              "Market history unavailable or out of date.",
+              "Historial de mercado no disponible o desactualizado."
+            );
+            return;
+          }
           const locale = { pt: "pt-BR", en: "en-US", es: "es-ES" }[lang];
           const chart = (key, label, formatter) => {
             const values = points.map((item) => item[key]);
@@ -1503,6 +1517,7 @@
             ),
           );
         } catch {
+          if (marketController !== controller) return;
           resetMarket();
           setActivity(
             tr(
