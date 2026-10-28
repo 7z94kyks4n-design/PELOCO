@@ -2,6 +2,7 @@ name: Update public on-chain data
 
 on:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/update-live-data.yml"
       - "tools/update_live_data.py"
@@ -42,4 +43,5 @@ jobs:
           git add data/live.json data/history.json
           git diff --cached --quiet && exit 0
           git commit -m "Update public on-chain data"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main
