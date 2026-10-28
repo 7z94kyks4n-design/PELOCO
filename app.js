@@ -1147,7 +1147,10 @@
             snapshot?.schemaVersion === 1 &&
             snapshot?.onChain?.program === "spl-token-2022" &&
             snapshot?.onChain?.decimals === 6 &&
-            snapshot?.onChain?.supplyRaw === "1000000000000000" &&
+            typeof snapshot?.onChain?.supplyRaw === "string" &&
+            /^\d+$/.test(snapshot.onChain.supplyRaw) &&
+            BigInt(snapshot.onChain.supplyRaw) > 0n &&
+            BigInt(snapshot.onChain.supplyRaw) <= 1000000000000000n &&
             Number.isInteger(holders) &&
             holders >= 0 &&
             Number.isFinite(age) &&
@@ -1780,7 +1783,7 @@
       });
       document.querySelector('a[href="#content"]')?.addEventListener("click", (event) => {
         event.preventDefault();
-        document.getElementById("content")?.focus({ preventScroll: true });
+        document.getElementById("content")?.focus();
       });
       window.addEventListener("hashchange", render);
       renderNav();
