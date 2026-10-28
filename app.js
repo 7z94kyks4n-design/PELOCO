@@ -1778,6 +1778,10 @@
           .setAttribute("aria-expanded", "false");
         document.getElementById("navMore").removeAttribute("open");
       });
+      document.querySelector('a[href="#content"]')?.addEventListener("click", (event) => {
+        event.preventDefault();
+        document.getElementById("content")?.focus({ preventScroll: true });
+      });
       window.addEventListener("hashchange", render);
       renderNav();
       if (!location.hash) history.replaceState(null, "", "#/home");
