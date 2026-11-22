@@ -978,7 +978,7 @@
             ? history.snapshots
                 .map((item) => ({
                   time: new Date(item?.checkedAt).getTime(),
-                  value: Number(item?.holders),
+                  value: typeof item?.holders === "number" ? item.holders : null,
                 }))
                 .filter(
                   (item) =>
@@ -988,7 +988,15 @@
                     item.value >= 0,
                 )
             : [];
-          if (points.length < 3) return;
+          if (history?.mint !== TOKEN || points.length < 3 ||
+              Date.now() - Math.max(...points.map((point) => point.time)) > 3 * 60 * 60 * 1000) {
+            host.textContent = tr(
+              "Histórico indisponível ou desatualizado. Aguardando novos registros.",
+              "History unavailable or out of date. Waiting for new records.",
+              "Historial no disponible o desactualizado. Esperando nuevos registros."
+            );
+            return;
+          }
           const minTime = Math.min(...points.map((item) => item.time));
           const maxTime = Math.max(...points.map((item) => item.time));
           const minValue = Math.min(...points.map((item) => item.value));
@@ -1036,8 +1044,8 @@
           )
             .map((item) => ({
               time: new Date(item?.checkedAt).getTime(),
-              price: Number(item?.priceUsd),
-              volume: Number(item?.volume24h),
+              price: typeof item?.priceUsd === "number" ? item.priceUsd : null,
+              volume: typeof item?.volume24h === "number" ? item.volume24h : null,
               dexId: String(item?.dexId || "").toLowerCase(),
               baseTokenAddress: item?.baseTokenAddress,
               dexMigrationComplete: item?.dexMigrationComplete === true,
@@ -1054,7 +1062,15 @@
                 Number.isFinite(item.volume) &&
                 item.volume >= 0,
             );
-          if (points.length < 3) return;
+          if (history?.mint !== TOKEN || points.length < 3 ||
+              Date.now() - Math.max(...points.map((point) => point.time)) > 3 * 60 * 60 * 1000) {
+            host.textContent = tr(
+              "Histórico de mercado indisponível ou desatualizado.",
+              "Market history unavailable or out of date.",
+              "Historial de mercado no disponible o desactualizado."
+            );
+            return;
+          }
           const locale = { pt: "pt-BR", en: "en-US", es: "es-ES" }[lang];
           const chart = (key, label, formatter) => {
             const values = points.map((item) => item[key]);
@@ -1142,6 +1158,13 @@
           const holders = snapshot?.onChain?.uniquePositiveOwners;
           const valid =
             snapshot?.mint === TOKEN &&
+            snapshot?.schemaVersion === 1 &&
+            snapshot?.onChain?.program === "spl-token-2022" &&
+            snapshot?.onChain?.decimals === 6 &&
+            typeof snapshot?.onChain?.supplyRaw === "string" &&
+            /^\d+$/.test(snapshot.onChain.supplyRaw) &&
+            BigInt(snapshot.onChain.supplyRaw) > 0n &&
+            BigInt(snapshot.onChain.supplyRaw) <= 1000000000000000n &&
             Number.isInteger(holders) &&
             holders >= 0 &&
             Number.isFinite(age) &&
@@ -1207,8 +1230,10 @@
             declared.every(
               (item, index) =>
                 item?.address === CREATOR_WALLETS[index] &&
-                Number.isFinite(Number(item?.balance)) &&
-                Number.isFinite(Number(item?.sharePercent)),
+                typeof item?.balance === "number" &&
+                Number.isFinite(item.balance) && item.balance >= 0 &&
+                typeof item?.sharePercent === "number" &&
+                Number.isFinite(item.sharePercent) && item.sharePercent >= 0 && item.sharePercent <= 100,
             )
           ) {
             declared.forEach((item, index) => {
@@ -1221,7 +1246,10 @@
             const aggregateNode = document.querySelector(
               "[data-creator-aggregate]",
             );
-            if (aggregateNode && aggregate)
+            if (aggregateNode && aggregate &&
+                typeof aggregate.balance === "number" && Number.isFinite(aggregate.balance) && aggregate.balance >= 0 &&
+                typeof aggregate.sharePercent === "number" && Number.isFinite(aggregate.sharePercent) &&
+                aggregate.sharePercent >= 0 && aggregate.sharePercent <= 100)
               aggregateNode.textContent = `${Number(aggregate.balance).toLocaleString(locale, { maximumFractionDigits: 2 })} PELOCO · ${Number(aggregate.sharePercent).toLocaleString(locale, { maximumFractionDigits: 4 })}%`;
             const creatorStatus = document.querySelector(
               "[data-creator-status]",
@@ -1246,6 +1274,7 @@
             ),
           );
         } catch {
+          if (liveDataController !== controller) return;
           setHolderText("—");
           const pumpSource = document.querySelector("[data-pump-source]");
           if (pumpSource)
@@ -1488,6 +1517,7 @@
             ),
           );
         } catch {
+          if (marketController !== controller) return;
           resetMarket();
           setActivity(
             tr(
@@ -1615,9 +1645,10 @@
         clearInterval(liveDataTimer);
         marketTimer = null;
         liveDataTimer = null;
-        const route = location.hash.replace("#/", "") || "home";
+        const rawRoute = location.hash.replace(/^#\//, "");
+        const route = rawRoute === "" ? "home" : routeKeys.includes(rawRoute) ? rawRoute : null;
         const page =
-          routes[route] ||
+          (route !== null ? routes[route] : null) ||
           (() =>
             shell(
               `<div class="error"><h1 class="page-title">404</h1><p>${tr("Esta página não existe.", "This page does not exist.", "Esta página no existe.")}</p><a class="btn primary" href="#/home">${tr("Voltar ao início", "Back to Home", "Volver al inicio")}</a></div>`,
@@ -1764,6 +1795,10 @@
           .getElementById("menuBtn")
           .setAttribute("aria-expanded", "false");
         document.getElementById("navMore").removeAttribute("open");
+      });
+      document.querySelector('a[href="#content"]')?.addEventListener("click", (event) => {
+        event.preventDefault();
+        document.getElementById("content")?.focus();
       });
       window.addEventListener("hashchange", render);
       renderNav();

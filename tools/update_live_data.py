@@ -10,6 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.request import Request, urlopen
+from urllib.parse import urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,6 +40,13 @@ DEX_API = f"https://api.dexscreener.com/token-pairs/v1/solana/{MINT}"
 PUMP_API = f"https://frontend-api-v3.pump.fun/coins/{MINT}"
 
 
+def safe_host(url: str) -> str:
+    try:
+        return urlparse(url).hostname or "unknown"
+    except ValueError:
+        return "unknown"
+
+
 def request_json(
     url: str,
     payload: dict | None = None,
@@ -63,8 +71,8 @@ def request_json(
             if attempt < REQUEST_ATTEMPTS:
                 time.sleep(attempt * 2)
     raise RuntimeError(
-        f"Request failed after {REQUEST_ATTEMPTS} attempts: {url}"
-    ) from last_error
+        f"Request failed after {REQUEST_ATTEMPTS} attempts to {safe_host(url)}"
+    ) from None
 
 
 def rpc(method: str, params: list) -> dict:
@@ -76,10 +84,10 @@ def rpc(method: str, params: list) -> dict:
                 {"jsonrpc": "2.0", "id": 1, "method": method, "params": params},
             )
             if not isinstance(response, dict) or response.get("error") or "result" not in response:
-                raise RuntimeError(f"Invalid response: {response}")
+                raise RuntimeError("Invalid RPC response")
             return response["result"]
         except Exception as error:
-            errors.append(f"{rpc_url}: {error}")
+            errors.append(f"{safe_host(rpc_url)}: {type(error).__name__}")
     raise RuntimeError(f"Solana RPC {method} failed on every endpoint: {'; '.join(errors)}")
 
 
@@ -214,8 +222,9 @@ def validate_on_chain(data: dict) -> None:
         raise RuntimeError(f"Unexpected token program: {data.get('program')}")
     if data.get("decimals") != 6:
         raise RuntimeError(f"Unexpected decimals: {data.get('decimals')}")
-    if data.get("supplyRaw") != "1000000000000000":
-        raise RuntimeError(f"Unexpected supply: {data.get('supplyRaw')}")
+    supply = data.get("supplyRaw")
+    if not isinstance(supply, str) or not supply.isdecimal() or not 0 < int(supply) <= 10**15:
+        raise RuntimeError("Invalid token supply")
     if not isinstance(data.get("uniquePositiveOwners"), int):
         raise RuntimeError("Missing on-chain owner count")
 
